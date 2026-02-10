@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Complete Health & Lifestyle Guide</title>
+    <title>الدليل الشامل للصحة ونمط الحياة</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap');
+
         /* ============================================
            CSS VARIABLES & RESET
            ============================================ */
@@ -35,7 +37,7 @@
             --shadow-glow: 0 0 40px rgba(79, 172, 254, 0.15);
             --radius: 16px;
             --radius-sm: 8px;
-            --font-main: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-main: 'Tajawal', 'Segoe UI', sans-serif;
             --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
             --max-width: 900px;
         }
@@ -108,7 +110,7 @@
             display: flex;
             gap: 0.25rem;
             flex-wrap: wrap;
-            justify-content: flex-end;
+            justify-content: flex-start;
         }
 
         .nav-links a {
@@ -349,13 +351,13 @@
         }
 
         .section ul, .section ol {
-            margin: 0.75rem 0 1.25rem 1.5rem;
+            margin: 0.75rem 1.5rem 1.25rem 0;
             color: var(--text-secondary);
         }
 
         .section li {
             margin-bottom: 0.4rem;
-            padding-left: 0.25rem;
+            padding-right: 0.25rem;
         }
 
         .section li::marker {
@@ -386,7 +388,7 @@
             border-radius: var(--radius);
             padding: 1.25rem 1.5rem;
             margin: 1.5rem 0;
-            border-left: 4px solid;
+            border-right: 4px solid;
         }
 
         .callout.info {
@@ -444,7 +446,7 @@
 
         th {
             padding: 0.85rem 1rem;
-            text-align: left;
+            text-align: right;
             font-weight: 700;
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -612,7 +614,7 @@
         .back-to-top {
             position: fixed;
             bottom: 2rem;
-            right: 2rem;
+            left: 2rem;
             width: 44px;
             height: 44px;
             border-radius: 50%;
@@ -689,17 +691,17 @@
      ============================================ -->
 <nav class="nav">
     <div class="nav-inner">
-        <div class="nav-logo">HealthGuide</div>
+        <div class="nav-logo">دليل الصحة</div>
         <div class="nav-links">
-            <a href="#brain">Brain</a>
-            <a href="#mental">Mental</a>
-            <a href="#nutrition">Nutrition</a>
-            <a href="#exercise">Exercise</a>
-            <a href="#sleep">Sleep</a>
-            <a href="#body">Body</a>
-            <a href="#longevity">Longevity</a>
-            <a href="#habits">Habits</a>
-            <a href="#biomarkers">Biomarkers</a>
+            <a href="#brain">الدماغ</a>
+            <a href="#mental">النفسية</a>
+            <a href="#nutrition">التغذية</a>
+            <a href="#exercise">الرياضة</a>
+            <a href="#sleep">النوم</a>
+            <a href="#body">الجسم</a>
+            <a href="#longevity">طول العمر</a>
+            <a href="#habits">العادات</a>
+            <a href="#biomarkers">المؤشرات</a>
         </div>
     </div>
 </nav>
@@ -709,21 +711,21 @@
      ============================================ -->
 <header class="hero">
     <div class="hero-content">
-        <div class="hero-badge">Evidence-Based Health Science</div>
-        <h1>The Complete Guide to Human Health & Performance</h1>
-        <p>A deep, comprehensive exploration of how your body works, what it needs, and how to optimize every system for a longer, healthier, more fulfilling life. Backed by research, powered by science.</p>
+        <div class="hero-badge">علوم صحية مبنية على الأدلة</div>
+        <h1>الدليل الشامل لصحة الإنسان والأداء</h1>
+        <p>استكشاف عميق وشامل لكيفية عمل جسمك، وما يحتاجه، وكيفية تحسين كل نظام لحياة أطول وأكثر صحة وإشباعاً. مدعوم بالأبحاث، مبني على العلم.</p>
         <div class="hero-stats">
             <div class="hero-stat">
-                <div class="hero-stat-number">9</div>
-                <div class="hero-stat-label">Major Sections</div>
+                <div class="hero-stat-number">٩</div>
+                <div class="hero-stat-label">أقسام رئيسية</div>
             </div>
             <div class="hero-stat">
-                <div class="hero-stat-number">200+</div>
-                <div class="hero-stat-label">Research Facts</div>
+                <div class="hero-stat-number">+٢٠٠</div>
+                <div class="hero-stat-label">حقيقة علمية</div>
             </div>
             <div class="hero-stat">
-                <div class="hero-stat-number">50+</div>
-                <div class="hero-stat-label">Action Items</div>
+                <div class="hero-stat-number">+٥٠</div>
+                <div class="hero-stat-label">خطوة عملية</div>
             </div>
         </div>
     </div>
@@ -736,39 +738,39 @@
     <div class="toc-grid">
         <a href="#brain" class="toc-item">
             <span class="toc-icon">&#129504;</span>
-            <div><div class="toc-text">Your Brain</div><div class="toc-desc">Neurotransmitters, neuroplasticity, and how your brain shapes everything</div></div>
+            <div><div class="toc-text">دماغك</div><div class="toc-desc">الناقلات العصبية، المرونة العصبية، وكيف يشكّل دماغك كل شيء</div></div>
         </a>
         <a href="#mental" class="toc-item">
             <span class="toc-icon">&#128161;</span>
-            <div><div class="toc-text">Mental Health</div><div class="toc-desc">Anxiety, depression, therapy types, meditation, and breathing</div></div>
+            <div><div class="toc-text">الصحة النفسية</div><div class="toc-desc">القلق، الاكتئاب، أنواع العلاج، التأمل، وتقنيات التنفس</div></div>
         </a>
         <a href="#nutrition" class="toc-item">
             <span class="toc-icon">&#129382;</span>
-            <div><div class="toc-text">Nutrition & Food</div><div class="toc-desc">Macros, micros, gut health, superfoods, and meal timing</div></div>
+            <div><div class="toc-text">التغذية والغذاء</div><div class="toc-desc">المغذيات الكبرى والصغرى، صحة الأمعاء، الأطعمة الخارقة، وتوقيت الوجبات</div></div>
         </a>
         <a href="#exercise" class="toc-item">
             <span class="toc-icon">&#127947;</span>
-            <div><div class="toc-text">Exercise & Movement</div><div class="toc-desc">Strength, cardio, flexibility, recovery, and body composition</div></div>
+            <div><div class="toc-text">الرياضة والحركة</div><div class="toc-desc">القوة، تمارين القلب، المرونة، التعافي، وتكوين الجسم</div></div>
         </a>
         <a href="#sleep" class="toc-item">
             <span class="toc-icon">&#128164;</span>
-            <div><div class="toc-text">Sleep Science</div><div class="toc-desc">Cycles, circadian rhythm, hygiene, and why sleep is non-negotiable</div></div>
+            <div><div class="toc-text">علم النوم</div><div class="toc-desc">الدورات، الإيقاع اليومي، نظافة النوم، ولماذا النوم غير قابل للتفاوض</div></div>
         </a>
         <a href="#body" class="toc-item">
             <span class="toc-icon">&#129728;</span>
-            <div><div class="toc-text">Body Systems</div><div class="toc-desc">How 11 interconnected systems keep you alive and how to protect them</div></div>
+            <div><div class="toc-text">أنظمة الجسم</div><div class="toc-desc">كيف تعمل ١١ نظاماً مترابطاً للحفاظ على حياتك وكيف تحميها</div></div>
         </a>
         <a href="#longevity" class="toc-item">
             <span class="toc-icon">&#9203;</span>
-            <div><div class="toc-text">Longevity Science</div><div class="toc-desc">Blue Zones, autophagy, telomeres, and the secrets of centenarians</div></div>
+            <div><div class="toc-text">علم طول العمر</div><div class="toc-desc">المناطق الزرقاء، الالتهام الذاتي، التيلوميرات، وأسرار المعمّرين</div></div>
         </a>
         <a href="#habits" class="toc-item">
             <span class="toc-icon">&#128736;</span>
-            <div><div class="toc-text">Habits & Lifestyle</div><div class="toc-desc">Morning routines, cold exposure, sunlight, toxin avoidance</div></div>
+            <div><div class="toc-text">العادات ونمط الحياة</div><div class="toc-desc">الروتين الصباحي، التعرض للبرد، ضوء الشمس، تجنب السموم</div></div>
         </a>
         <a href="#biomarkers" class="toc-item">
             <span class="toc-icon">&#128200;</span>
-            <div><div class="toc-text">Biomarkers & Tracking</div><div class="toc-desc">The numbers that matter and what they should be</div></div>
+            <div><div class="toc-text">المؤشرات الحيوية والمتابعة</div><div class="toc-desc">الأرقام المهمة وما يجب أن تكون عليه</div></div>
         </a>
     </div>
 </div>
@@ -776,584 +778,583 @@
 <div class="separator"></div>
 
 <!-- ============================================
-     SECTION 1: YOUR BRAIN
+     SECTION 1: الدماغ
      ============================================ -->
 <section class="section fade-in" id="brain">
     <div class="section-header">
-        <span class="section-number blue">Section 01</span>
-        <h2>Your Brain: The Control Center</h2>
-        <p class="section-subtitle">Understanding the 3-pound organ that orchestrates every thought, emotion, and bodily function</p>
+        <span class="section-number blue">القسم ٠١</span>
+        <h2>الدماغ: مركز التحكم</h2>
+        <p class="section-subtitle">فهم العضو الذي يزن ١.٤ كجم والذي ينظّم كل فكرة وعاطفة ووظيفة جسدية</p>
     </div>
 
-    <h3>The Neurotransmitter Orchestra</h3>
-    <p>Your brain communicates through chemical messengers called neurotransmitters. Understanding them is the foundation of understanding your mood, motivation, sleep, and overall mental health.</p>
+    <h3>أوركسترا الناقلات العصبية</h3>
+    <p>يتواصل دماغك من خلال رسائل كيميائية تُسمى الناقلات العصبية. فهمها هو أساس فهم مزاجك ودافعيتك ونومك وصحتك النفسية بشكل عام.</p>
 
     <div class="stat-grid">
         <div class="stat-card">
-            <div class="stat-value blue">Serotonin</div>
-            <div class="stat-label">Mood & Calm</div>
+            <div class="stat-value blue">السيروتونين</div>
+            <div class="stat-label">المزاج والهدوء</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value purple">Dopamine</div>
-            <div class="stat-label">Motivation & Reward</div>
+            <div class="stat-value purple">الدوبامين</div>
+            <div class="stat-label">الدافعية والمكافأة</div>
         </div>
         <div class="stat-card">
             <div class="stat-value green">GABA</div>
-            <div class="stat-label">Relaxation & Sleep</div>
+            <div class="stat-label">الاسترخاء والنوم</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value orange">Norepinephrine</div>
-            <div class="stat-label">Focus & Alertness</div>
+            <div class="stat-value orange">النورإبينفرين</div>
+            <div class="stat-label">التركيز واليقظة</div>
         </div>
     </div>
 
-    <h4>Serotonin - The Stability Chemical</h4>
-    <p><strong>95% of serotonin is produced in the gut</strong>, not the brain. This is why gut health directly impacts mood. Serotonin regulates mood, sleep-wake cycles, appetite, and social behavior. Low serotonin is associated with depression, anxiety, and obsessive thinking.</p>
+    <h4>السيروتونين - مادة الاستقرار الكيميائية</h4>
+    <p><strong>95% من السيروتونين يُنتَج في الأمعاء</strong>، وليس في الدماغ. لهذا السبب تؤثر صحة الأمعاء مباشرة على المزاج. ينظّم السيروتونين المزاج ودورات النوم والاستيقاظ والشهية والسلوك الاجتماعي. انخفاض السيروتونين مرتبط بالاكتئاب والقلق والتفكير الوسواسي.</p>
     <ul>
-        <li><strong>Boosters:</strong> Sunlight exposure, exercise, tryptophan-rich foods (turkey, eggs, cheese, salmon), gut health (probiotics, fiber)</li>
-        <li><strong>Depleted by:</strong> Chronic stress, poor diet, alcohol, lack of sunlight, poor gut health</li>
+        <li><strong>المعززات:</strong> التعرض لأشعة الشمس، التمارين الرياضية، الأطعمة الغنية بالتريبتوفان (الديك الرومي، البيض، الجبن، السلمون)، صحة الأمعاء (البروبيوتيك، الألياف)</li>
+        <li><strong>يُستنزَف بسبب:</strong> الإجهاد المزمن، سوء التغذية، الكحول، قلة أشعة الشمس، سوء صحة الأمعاء</li>
     </ul>
 
-    <h4>Dopamine - The Drive Chemical</h4>
-    <p>Dopamine drives <strong>motivation, anticipation, and goal-seeking behavior</strong>. It's not the "pleasure" chemical - it's the "wanting" chemical. It spikes in anticipation of reward, not after receiving it. Modern environments hijack dopamine through social media, junk food, and endless scrolling.</p>
+    <h4>الدوبامين - مادة الدافع الكيميائية</h4>
+    <p>يحرّك الدوبامين <strong>الدافعية والترقب والسعي نحو الأهداف</strong>. إنه ليس مادة "المتعة" الكيميائية - بل هو مادة "الرغبة" الكيميائية. يرتفع عند ترقّب المكافأة، وليس بعد تلقّيها. تخطف البيئات الحديثة الدوبامين من خلال وسائل التواصل الاجتماعي والوجبات السريعة والتصفّح اللانهائي.</p>
     <ul>
-        <li><strong>Boosters:</strong> Cold exposure (+250% increase), exercise, completing challenging tasks, tyrosine-rich foods (meat, fish, eggs)</li>
-        <li><strong>Depleted by:</strong> Social media overuse, excessive sugar, porn, gambling, lack of sleep</li>
+        <li><strong>المعززات:</strong> التعرض للبرد (زيادة +250%)، التمارين الرياضية، إنجاز المهام الصعبة، الأطعمة الغنية بالتيروسين (اللحوم، الأسماك، البيض)</li>
+        <li><strong>يُستنزَف بسبب:</strong> الإفراط في استخدام وسائل التواصل الاجتماعي، السكر المفرط، الإباحية، القمار، قلة النوم</li>
     </ul>
 
     <div class="callout warning">
-        <div class="callout-title">Dopamine Trap</div>
-        <p>Every "easy" dopamine hit (scrolling, snacking, binge-watching) raises your baseline threshold. Over time, you need more stimulation for the same effect. This is why the same activities feel less satisfying over time. Deliberate dopamine fasting (reducing easy rewards for 24-48 hours) helps reset sensitivity.</p>
+        <div class="callout-title">فخ الدوبامين</div>
+        <p>كل جرعة "سهلة" من الدوبامين (التصفح، تناول الوجبات الخفيفة، مشاهدة المسلسلات بنهم) ترفع عتبة خط الأساس لديك. مع الوقت، تحتاج إلى مزيد من التحفيز للحصول على نفس التأثير. لهذا السبب تصبح نفس الأنشطة أقل إرضاءً مع مرور الوقت. صيام الدوبامين المتعمّد (تقليل المكافآت السهلة لمدة ٢٤-٤٨ ساعة) يساعد في إعادة ضبط الحساسية.</p>
     </div>
 
-    <h4>GABA - The Brake Pedal</h4>
-    <p>GABA (gamma-aminobutyric acid) is the brain's primary inhibitory neurotransmitter. It <strong>slows neural activity</strong>, creating calm, reducing anxiety, and enabling sleep. Without sufficient GABA, your brain stays in an overexcited state.</p>
+    <h4>GABA - دواسة الفرامل</h4>
+    <p>حمض غاما-أمينوبيوتيريك (GABA) هو الناقل العصبي المثبط الأساسي في الدماغ. إنه <strong>يبطئ النشاط العصبي</strong>، مما يخلق الهدوء ويقلل القلق ويمكّن النوم. بدون مستويات كافية من GABA، يبقى دماغك في حالة إثارة مفرطة.</p>
     <ul>
-        <li><strong>Boosters:</strong> Meditation, yoga, magnesium, fermented foods, L-theanine (green tea), valerian root</li>
-        <li><strong>Depleted by:</strong> Chronic stress, alcohol withdrawal, excessive caffeine</li>
+        <li><strong>المعززات:</strong> التأمل، اليوغا، المغنيسيوم، الأطعمة المخمّرة، إل-ثيانين (الشاي الأخضر)، جذر الناردين</li>
+        <li><strong>يُستنزَف بسبب:</strong> الإجهاد المزمن، انسحاب الكحول، الإفراط في الكافيين</li>
     </ul>
 
-    <h4>Norepinephrine - The Alert Chemical</h4>
-    <p>Works closely with dopamine to regulate <strong>attention, focus, and the fight-or-flight response</strong>. The prefrontal cortex (executive function center) requires optimal norepinephrine for proper functioning. ADHD involves insufficient norepinephrine and dopamine in the prefrontal cortex.</p>
+    <h4>النورإبينفرين - مادة اليقظة الكيميائية</h4>
+    <p>يعمل بشكل وثيق مع الدوبامين لتنظيم <strong>الانتباه والتركيز واستجابة الكرّ والفرّ</strong>. يحتاج القشرة الأمامية الجبهية (مركز الوظيفة التنفيذية) إلى مستويات مثالية من النورإبينفرين للعمل بشكل صحيح. يتضمن اضطراب فرط الحركة ونقص الانتباه (ADHD) نقصاً في النورإبينفرين والدوبامين في القشرة الأمامية الجبهية.</p>
 
-    <h3>Neuroplasticity: Your Brain Can Change at Any Age</h3>
-    <p>Neuroplasticity is the brain's ability to <strong>reorganize itself by forming new neural connections throughout life</strong>. Once thought to stop after childhood, we now know the brain remains plastic into old age.</p>
+    <h3>المرونة العصبية: دماغك يمكن أن يتغيّر في أي عمر</h3>
+    <p>المرونة العصبية هي قدرة الدماغ على <strong>إعادة تنظيم نفسه من خلال تكوين اتصالات عصبية جديدة طوال الحياة</strong>. كان يُعتقد أنها تتوقف بعد الطفولة، لكننا نعلم الآن أن الدماغ يبقى مرناً حتى الشيخوخة.</p>
 
     <div class="card">
-        <div class="card-title">How Neural Pathways Form</div>
-        <p>When you repeat a behavior, the associated neurons fire together, strengthening their connection (<strong>"neurons that fire together wire together"</strong> - Hebb's Rule). Over time, oligodendrocytes wrap the active pathway in <strong>myelin sheath</strong>, insulating it and increasing signal speed by up to 100x. This is why habits become automatic - the neural highway gets faster with each repetition.</p>
+        <div class="card-title">كيف تتكوّن المسارات العصبية</div>
+        <p>عندما تكرر سلوكاً ما، تنشط الخلايا العصبية المرتبطة به معاً، مما يعزز اتصالها (<strong>"الخلايا العصبية التي تنشط معاً تترابط معاً"</strong> - قاعدة هيب). مع الوقت، تغلّف الخلايا القليلة التغصّن المسار النشط بـ<strong>غمد الميالين</strong>، مما يعزله ويزيد سرعة الإشارة بما يصل إلى ١٠٠ ضعف. لهذا السبب تصبح العادات تلقائية - الطريق السريع العصبي يصبح أسرع مع كل تكرار.</p>
     </div>
 
-    <p>A Harvard study found that just <strong>8 weeks of mindfulness meditation</strong> increased gray matter density in the hippocampus (learning/memory) and decreased gray matter in the amygdala (fear/stress). Your brain physically changes based on how you use it.</p>
+    <p>وجدت دراسة في جامعة هارفارد أن <strong>٨ أسابيع فقط من تأمل اليقظة الذهنية</strong> زادت كثافة المادة الرمادية في الحُصين (التعلم/الذاكرة) وقلّلت المادة الرمادية في اللوزة الدماغية (الخوف/الإجهاد). دماغك يتغيّر جسدياً بناءً على كيفية استخدامه.</p>
 
-    <h3>The Gut-Brain Axis</h3>
-    <p>The gut and brain are connected by the <strong>vagus nerve</strong> - the longest cranial nerve in the body. The gut contains 500 million neurons (its own nervous system, called the enteric nervous system). This bidirectional communication means:</p>
+    <h3>محور الأمعاء-الدماغ</h3>
+    <p>ترتبط الأمعاء والدماغ عبر <strong>العصب المبهم</strong> - أطول عصب قحفي في الجسم. تحتوي الأمعاء على ٥٠٠ مليون خلية عصبية (جهازها العصبي الخاص، يُسمى الجهاز العصبي المعوي). هذا التواصل ثنائي الاتجاه يعني:</p>
     <ul>
-        <li>An unhealthy gut microbiome increases systemic inflammation that crosses the blood-brain barrier, contributing to depression and anxiety</li>
-        <li>A healthy microbiome produces neurotransmitter precursors, short-chain fatty acids, and anti-inflammatory compounds</li>
-        <li>The SMILES trial showed a Mediterranean diet improved depression scores significantly - 32% achieved remission vs. 8% with social support alone</li>
+        <li>الميكروبيوم المعوي غير الصحي يزيد الالتهاب الجهازي الذي يعبر الحاجز الدموي الدماغي، مما يساهم في الاكتئاب والقلق</li>
+        <li>الميكروبيوم الصحي ينتج سلائف الناقلات العصبية والأحماض الدهنية قصيرة السلسلة والمركبات المضادة للالتهابات</li>
+        <li>أظهرت تجربة SMILES أن حمية البحر الأبيض المتوسط حسّنت درجات الاكتئاب بشكل ملحوظ - ٣٢% حققوا الشفاء مقابل ٨% مع الدعم الاجتماعي وحده</li>
     </ul>
 </section>
 
 <div class="separator"></div>
 
 <!-- ============================================
-     SECTION 2: MENTAL HEALTH
+     SECTION 2: الصحة النفسية
      ============================================ -->
 <section class="section fade-in" id="mental">
     <div class="section-header">
-        <span class="section-number purple">Section 02</span>
-        <h2>Mental Health: The Foundation of Everything</h2>
-        <p class="section-subtitle">Evidence-based strategies for anxiety, depression, stress, and emotional resilience</p>
+        <span class="section-number purple">القسم ٠٢</span>
+        <h2>الصحة النفسية: أساس كل شيء</h2>
+        <p class="section-subtitle">استراتيجيات مبنية على الأدلة للقلق والاكتئاب والإجهاد والمرونة العاطفية</p>
     </div>
 
-    <h3>Understanding Common Conditions</h3>
+    <h3>فهم الحالات الشائعة</h3>
 
-    <h4>Anxiety</h4>
-    <p>Anxiety is an <strong>overactivation of the amygdala</strong> (threat detection center) and the sympathetic nervous system. The body enters fight-or-flight when no real threat exists. Chronic anxiety keeps cortisol elevated, impairing the hippocampus, immune system, and digestive system.</p>
+    <h4>القلق</h4>
+    <p>القلق هو <strong>إفراط في تنشيط اللوزة الدماغية</strong> (مركز كشف التهديدات) والجهاز العصبي الودّي. يدخل الجسم في حالة الكرّ والفرّ عندما لا يوجد تهديد حقيقي. القلق المزمن يُبقي الكورتيزول مرتفعاً، مما يضر بالحُصين والجهاز المناعي والجهاز الهضمي.</p>
     <ul>
-        <li><strong>Physical symptoms:</strong> Racing heart, shallow breathing, muscle tension, stomach issues, insomnia</li>
-        <li><strong>Key insight:</strong> Anxiety is a body state first, a mind state second. Physical interventions (breathing, cold exposure, exercise) often work faster than cognitive ones</li>
+        <li><strong>الأعراض الجسدية:</strong> تسارع القلب، التنفس السطحي، توتر العضلات، مشاكل المعدة، الأرق</li>
+        <li><strong>الرؤية الأساسية:</strong> القلق حالة جسدية أولاً، وحالة ذهنية ثانياً. التدخلات الجسدية (التنفس، التعرض للبرد، التمارين) غالباً تعمل أسرع من التدخلات المعرفية</li>
     </ul>
 
-    <h4>Depression</h4>
-    <p>Depression involves dysregulation of multiple neurotransmitters (serotonin, dopamine, norepinephrine), chronic inflammation, HPA axis dysfunction, and reduced neuroplasticity. It's <strong>not simply "low serotonin"</strong> - the outdated chemical imbalance model is now understood to be a vast oversimplification.</p>
+    <h4>الاكتئاب</h4>
+    <p>يتضمن الاكتئاب اضطراباً في عدة ناقلات عصبية (السيروتونين، الدوبامين، النورإبينفرين)، والتهاباً مزمناً، وخللاً في محور HPA، وانخفاضاً في المرونة العصبية. <strong>ليس ببساطة "انخفاض السيروتونين"</strong> - نموذج عدم التوازن الكيميائي القديم يُفهم الآن أنه تبسيط مفرط.</p>
     <ul>
-        <li><strong>Exercise as treatment:</strong> A meta-analysis found exercise is as effective as antidepressants for mild-to-moderate depression, with effects comparable to SSRIs</li>
-        <li><strong>Inflammation link:</strong> People with chronic inflammation are 2-3x more likely to develop depression</li>
+        <li><strong>التمارين كعلاج:</strong> وجد تحليل تلوي أن التمارين فعّالة بقدر مضادات الاكتئاب للاكتئاب الخفيف إلى المتوسط، بتأثيرات مماثلة لمثبطات استرداد السيروتونين الانتقائية (SSRIs)</li>
+        <li><strong>رابط الالتهاب:</strong> الأشخاص الذين يعانون من التهاب مزمن أكثر عرضة بمرتين إلى ثلاث مرات للإصابة بالاكتئاب</li>
     </ul>
 
-    <h4>Burnout & Chronic Stress</h4>
-    <p>Chronic stress activates the <strong>HPA axis</strong> (hypothalamus-pituitary-adrenal) continuously, flooding the body with cortisol. Sustained high cortisol causes hippocampal atrophy, immune suppression, increased visceral fat, insulin resistance, and accelerated telomere shortening.</p>
+    <h4>الاحتراق الوظيفي والإجهاد المزمن</h4>
+    <p>الإجهاد المزمن ينشّط <strong>محور HPA</strong> (تحت المهاد-الغدة النخامية-الكظرية) بشكل مستمر، مما يغمر الجسم بالكورتيزول. ارتفاع الكورتيزول المستمر يسبب ضمور الحُصين، وقمع المناعة، وزيادة الدهون الحشوية، ومقاومة الأنسولين، وتسريع تقصير التيلوميرات.</p>
 
-    <h3>Evidence-Based Therapy Types</h3>
+    <h3>أنواع العلاج المبنية على الأدلة</h3>
 
     <div class="table-wrapper">
         <table>
             <thead>
                 <tr>
-                    <th>Therapy</th>
-                    <th>Best For</th>
-                    <th>Effectiveness</th>
-                    <th>Timeline</th>
+                    <th>العلاج</th>
+                    <th>الأفضل لـ</th>
+                    <th>الفعالية</th>
+                    <th>المدة الزمنية</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>CBT</strong></td>
-                    <td>Anxiety, depression, OCD</td>
-                    <td>80-90% for anxiety</td>
-                    <td>12-20 sessions (6-12 weeks)</td>
+                    <td><strong>العلاج المعرفي السلوكي (CBT)</strong></td>
+                    <td>القلق، الاكتئاب، الوسواس القهري</td>
+                    <td>80-90% للقلق</td>
+                    <td>12-20 جلسة (6-12 أسبوعاً)</td>
                 </tr>
                 <tr>
-                    <td><strong>DBT</strong></td>
-                    <td>Emotional regulation, BPD, self-harm</td>
-                    <td>Highly effective for BPD</td>
-                    <td>3-6 months</td>
+                    <td><strong>العلاج الجدلي السلوكي (DBT)</strong></td>
+                    <td>تنظيم العواطف، اضطراب الشخصية الحدية، إيذاء النفس</td>
+                    <td>فعّال جداً لاضطراب الشخصية الحدية</td>
+                    <td>3-6 أشهر</td>
                 </tr>
                 <tr>
-                    <td><strong>EMDR</strong></td>
-                    <td>Trauma, PTSD</td>
-                    <td>77-90% for PTSD</td>
-                    <td>6-12 sessions (3-6 weeks)</td>
+                    <td><strong>إزالة الحساسية وإعادة المعالجة بحركة العين (EMDR)</strong></td>
+                    <td>الصدمات النفسية، اضطراب ما بعد الصدمة</td>
+                    <td>77-90% لاضطراب ما بعد الصدمة</td>
+                    <td>6-12 جلسة (3-6 أسابيع)</td>
                 </tr>
                 <tr>
-                    <td><strong>Psychodynamic</strong></td>
-                    <td>Deep-rooted patterns, childhood trauma</td>
-                    <td>Long-lasting changes</td>
-                    <td>6-12+ months</td>
+                    <td><strong>التحليل النفسي الديناميكي</strong></td>
+                    <td>الأنماط المتجذّرة، صدمات الطفولة</td>
+                    <td>تغييرات طويلة الأمد</td>
+                    <td>6-12+ شهراً</td>
                 </tr>
                 <tr>
-                    <td><strong>ACT</strong></td>
-                    <td>Chronic pain, anxiety, values work</td>
-                    <td>Strong for acceptance</td>
-                    <td>8-16 weeks</td>
+                    <td><strong>علاج القبول والالتزام (ACT)</strong></td>
+                    <td>الألم المزمن، القلق، العمل على القيم</td>
+                    <td>قوي للقبول</td>
+                    <td>8-16 أسبوعاً</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <h3>Meditation & Mindfulness</h3>
-    <p>After 8 weeks of Mindfulness-Based Stress Reduction (MBSR), with just 27 minutes/day of practice:</p>
+    <h3>التأمل واليقظة الذهنية</h3>
+    <p>بعد ٨ أسابيع من برنامج الحد من الإجهاد القائم على اليقظة الذهنية (MBSR)، بممارسة ٢٧ دقيقة/يوم فقط:</p>
     <ul>
-        <li>Increased gray matter in the hippocampus (memory, learning)</li>
-        <li>Decreased gray matter in the amygdala (stress, fear)</li>
-        <li>Improved attention, emotional regulation, and self-awareness</li>
-        <li>Reduced cortisol levels and inflammatory markers</li>
+        <li>زيادة المادة الرمادية في الحُصين (الذاكرة، التعلم)</li>
+        <li>انخفاض المادة الرمادية في اللوزة الدماغية (الإجهاد، الخوف)</li>
+        <li>تحسّن الانتباه والتنظيم العاطفي والوعي الذاتي</li>
+        <li>انخفاض مستويات الكورتيزول ومؤشرات الالتهاب</li>
     </ul>
 
-    <h3>Breathing Techniques</h3>
+    <h3>تقنيات التنفس</h3>
 
     <div class="card">
-        <div class="card-title">Box Breathing (4-4-4-4)</div>
-        <p>Inhale 4 seconds, hold 4, exhale 4, hold 4. Used by Navy SEALs for stress management. Regulates the autonomic nervous system, reduces blood pressure, and induces calm within 2-3 cycles.</p>
+        <div class="card-title">التنفس المربّع (4-4-4-4)</div>
+        <p>استنشق ٤ ثوانٍ، احبس ٤، أخرج الزفير ٤، احبس ٤. يستخدمه فريق البحرية الأمريكية (Navy SEALs) لإدارة الإجهاد. ينظّم الجهاز العصبي اللاإرادي، ويخفض ضغط الدم، ويحدث الهدوء خلال ٢-٣ دورات.</p>
     </div>
 
     <div class="card">
-        <div class="card-title">4-7-8 Breathing</div>
-        <p>Inhale 4 seconds, hold 7, exhale 8. The extended exhale activates the parasympathetic nervous system (rest-and-digest). Particularly effective for falling asleep and acute anxiety.</p>
+        <div class="card-title">تنفس 4-7-8</div>
+        <p>استنشق ٤ ثوانٍ، احبس ٧، أخرج الزفير ٨. الزفير الممتد ينشّط الجهاز العصبي نظير الودّي (الراحة والهضم). فعّال بشكل خاص للنوم والقلق الحاد.</p>
     </div>
 
     <div class="card">
-        <div class="card-title">Physiological Sigh</div>
-        <p>Two quick inhales through the nose, one long exhale through the mouth. The fastest known real-time stress reduction technique (Huberman Lab, Stanford). The double inhale reinflates collapsed alveoli in the lungs, maximizing CO2 offload on the exhale.</p>
+        <div class="card-title">التنهيدة الفسيولوجية</div>
+        <p>شهيقان سريعان من الأنف، ثم زفير طويل واحد من الفم. أسرع تقنية معروفة لتقليل الإجهاد في الوقت الفعلي (مختبر هوبرمان، ستانفورد). الشهيق المزدوج يعيد نفخ الحويصلات الهوائية المنهارة في الرئتين، مما يزيد طرح ثاني أكسيد الكربون في الزفير إلى أقصى حد.</p>
     </div>
 
-    <h3>Journaling: The Underrated Tool</h3>
-    <p>James Pennebaker's research (400+ studies) shows expressive writing about emotional experiences:</p>
+    <h3>كتابة اليوميات: الأداة المُقلَّل من قيمتها</h3>
+    <p>أظهرت أبحاث جيمس بينبيكر (أكثر من ٤٠٠ دراسة) أن الكتابة التعبيرية عن التجارب العاطفية:</p>
     <ul>
-        <li>Reduces cortisol levels by up to <strong>23%</strong></li>
-        <li>Improves immune function (boosted lymphocyte activity)</li>
-        <li>Reduces depression scores by <strong>30% over 8 weeks</strong></li>
-        <li>Activates the prefrontal cortex while dampening amygdala activity</li>
+        <li>تخفض مستويات الكورتيزول بنسبة تصل إلى <strong>23%</strong></li>
+        <li>تحسّن وظائف المناعة (تعزيز نشاط الخلايا اللمفاوية)</li>
+        <li>تقلل درجات الاكتئاب بنسبة <strong>30% خلال ٨ أسابيع</strong></li>
+        <li>تنشّط القشرة الأمامية الجبهية بينما تخمد نشاط اللوزة الدماغية</li>
     </ul>
 
-    <h3>Gratitude Practice</h3>
-    <p>Gratitude practice leverages neuroplasticity - consistently focusing on positive experiences strengthens neural pathways for positive emotions while weakening negative ones. A study found daily gratitude journaling for 3 months <strong>increased gray matter in the prefrontal cortex</strong>, improving emotional regulation and decision-making. Gratitude activates the ventral striatum and medial prefrontal cortex, boosting both serotonin and dopamine.</p>
+    <h3>ممارسة الامتنان</h3>
+    <p>تستفيد ممارسة الامتنان من المرونة العصبية - التركيز المستمر على التجارب الإيجابية يعزز المسارات العصبية للعواطف الإيجابية بينما يُضعف السلبية منها. وجدت دراسة أن كتابة يوميات الامتنان لمدة ٣ أشهر <strong>زادت المادة الرمادية في القشرة الأمامية الجبهية</strong>، مما حسّن التنظيم العاطفي واتخاذ القرارات. ينشّط الامتنان الجسم المخطط البطني والقشرة الأمامية الجبهية الوسطى، مما يعزز كلاً من السيروتونين والدوبامين.</p>
 </section>
 
 <div class="separator"></div>
 
 <!-- ============================================
-     SECTION 3: NUTRITION & FOOD
+     SECTION 3: التغذية
      ============================================ -->
 <section class="section fade-in" id="nutrition">
     <div class="section-header">
-        <span class="section-number green">Section 03</span>
-        <h2>Nutrition: Fuel for the Machine</h2>
-        <p class="section-subtitle">Everything you eat becomes part of you. Choose wisely.</p>
+        <span class="section-number green">القسم ٠٣</span>
+        <h2>التغذية: وقود الآلة</h2>
+        <p class="section-subtitle">كل ما تأكله يصبح جزءاً منك. اختر بحكمة.</p>
     </div>
 
-    <h3>Macronutrients</h3>
+    <h3>المغذيات الكبرى</h3>
 
-    <h4>Protein - The Builder</h4>
-    <p>Proteins are chains of amino acids. Of 20 amino acids, <strong>9 are essential</strong> (must come from food). Protein builds and repairs muscle, makes enzymes and hormones, and supports immune function.</p>
+    <h4>البروتين - البنّاء</h4>
+    <p>البروتينات هي سلاسل من الأحماض الأمينية. من بين ٢٠ حمضاً أمينياً، <strong>٩ أساسية</strong> (يجب الحصول عليها من الغذاء). يبني البروتين ويصلح العضلات، ويصنع الإنزيمات والهرمونات، ويدعم وظائف المناعة.</p>
 
     <div class="table-wrapper">
         <table>
             <thead>
-                <tr><th>Activity Level</th><th>Protein Need</th><th>For 70kg Person</th></tr>
+                <tr><th>مستوى النشاط</th><th>الحاجة من البروتين</th><th>لشخص وزنه ٧٠ كجم</th></tr>
             </thead>
             <tbody>
-                <tr><td>Sedentary (RDA minimum)</td><td>0.8 g/kg/day</td><td>56 g/day</td></tr>
-                <tr><td>Moderate activity</td><td>1.0-1.3 g/kg/day</td><td>70-91 g/day</td></tr>
-                <tr><td>Muscle building / intense</td><td>1.6-2.0 g/kg/day</td><td>112-140 g/day</td></tr>
-                <tr><td>Safe upper limit</td><td>2.0-3.5 g/kg/day</td><td>140-245 g/day</td></tr>
+                <tr><td>خامل (الحد الأدنى الموصى به)</td><td>0.8 جم/كجم/يوم</td><td>56 جم/يوم</td></tr>
+                <tr><td>نشاط معتدل</td><td>1.0-1.3 جم/كجم/يوم</td><td>70-91 جم/يوم</td></tr>
+                <tr><td>بناء العضلات / مكثّف</td><td>1.6-2.0 جم/كجم/يوم</td><td>112-140 جم/يوم</td></tr>
+                <tr><td>الحد الأقصى الآمن</td><td>2.0-3.5 جم/كجم/يوم</td><td>140-245 جم/يوم</td></tr>
             </tbody>
         </table>
     </div>
 
-    <p><strong>Complete proteins</strong> (all 9 essential amino acids): meat, fish, eggs, dairy, soy, quinoa. <strong>Incomplete proteins</strong> (missing some): most plant foods. You don't need to combine at every meal - varied daily intake is sufficient.</p>
+    <p><strong>البروتينات الكاملة</strong> (تحتوي على جميع الأحماض الأمينية الأساسية التسعة): اللحوم، الأسماك، البيض، منتجات الألبان، الصويا، الكينوا. <strong>البروتينات غير الكاملة</strong> (تفتقر لبعضها): معظم الأطعمة النباتية. لا تحتاج للجمع بينها في كل وجبة - التنوع اليومي كافٍ.</p>
 
-    <h4>Carbohydrates - The Energy Source</h4>
-    <p>Not all carbs are equal. The <strong>Glycemic Index (GI)</strong> measures how fast food raises blood sugar:</p>
+    <h4>الكربوهيدرات - مصدر الطاقة</h4>
+    <p>ليست كل الكربوهيدرات متساوية. <strong>مؤشر نسبة السكر في الدم (GI)</strong> يقيس مدى سرعة رفع الطعام لسكر الدم:</p>
     <ul>
-        <li><strong>Low GI (55 or below):</strong> Lentils (~32), oats (~55), most fruits, legumes. Slow, steady energy</li>
-        <li><strong>Medium GI (56-69):</strong> Brown rice (~68), whole wheat bread (~69)</li>
-        <li><strong>High GI (70+):</strong> White bread (~75), white rice (~73), potatoes (~78). Rapid spike and crash</li>
+        <li><strong>مؤشر سكري منخفض (٥٥ أو أقل):</strong> العدس (~٣٢)، الشوفان (~٥٥)، معظم الفواكه، البقوليات. طاقة بطيئة ومستقرة</li>
+        <li><strong>مؤشر سكري متوسط (٥٦-٦٩):</strong> الأرز البني (~٦٨)، خبز القمح الكامل (~٦٩)</li>
+        <li><strong>مؤشر سكري مرتفع (٧٠+):</strong> الخبز الأبيض (~٧٥)، الأرز الأبيض (~٧٣)، البطاطس (~٧٨). ارتفاع سريع ثم هبوط</li>
     </ul>
 
-    <p><strong>Fiber</strong> is critical: 25g/day women, 38g/day men. Most people get only 15g. Soluble fiber (oats, beans) lowers cholesterol and slows glucose absorption. Insoluble fiber (wheat bran, vegetables) promotes gut regularity.</p>
+    <p><strong>الألياف</strong> ضرورية: ٢٥ جم/يوم للنساء، ٣٨ جم/يوم للرجال. معظم الناس يحصلون على ١٥ جم فقط. الألياف القابلة للذوبان (الشوفان، الفاصوليا) تخفض الكوليسترول وتبطئ امتصاص الجلوكوز. الألياف غير القابلة للذوبان (نخالة القمح، الخضروات) تعزز انتظام الأمعاء.</p>
 
-    <h4>Fats - The Essential Nutrient</h4>
+    <h4>الدهون - المغذّي الأساسي</h4>
     <ul>
-        <li><strong>Omega-3</strong> (anti-inflammatory): Fatty fish, flaxseed, chia, walnuts. Target: 250-500mg EPA+DHA daily</li>
-        <li><strong>Omega-6</strong>: Vegetable oils, nuts. Essential but overconsumed. Ideal omega-6:omega-3 ratio is 4:1 (modern diet is 15-20:1)</li>
-        <li><strong>Monounsaturated:</strong> Olive oil, avocados, almonds. Heart-protective</li>
-        <li><strong>Trans fats:</strong> Artificial, dangerous. A nurse's heart disease risk doubled for each 2% increase in trans fat calories. Largely banned in the US</li>
+        <li><strong>أوميغا-3</strong> (مضاد للالتهابات): الأسماك الدهنية، بذور الكتان، الشيا، الجوز. الهدف: 250-500 مجم EPA+DHA يومياً</li>
+        <li><strong>أوميغا-6</strong>: الزيوت النباتية، المكسرات. أساسية لكن يُفرَط في استهلاكها. النسبة المثالية أوميغا-6:أوميغا-3 هي 4:1 (النظام الغذائي الحديث 15-20:1)</li>
+        <li><strong>أحادية عدم التشبع:</strong> زيت الزيتون، الأفوكادو، اللوز. واقية للقلب</li>
+        <li><strong>الدهون المتحولة:</strong> اصطناعية وخطيرة. خطر إصابة الممرضات بأمراض القلب تضاعف لكل زيادة 2% في سعرات الدهون المتحولة. محظورة إلى حد كبير في الولايات المتحدة</li>
     </ul>
 
-    <h3>Essential Vitamins</h3>
+    <h3>الفيتامينات الأساسية</h3>
 
     <div class="table-wrapper">
         <table>
             <thead>
-                <tr><th>Vitamin</th><th>RDA</th><th>Key Function</th><th>Top Sources</th></tr>
+                <tr><th>الفيتامين</th><th>الجرعة اليومية الموصى بها</th><th>الوظيفة الرئيسية</th><th>أهم المصادر</th></tr>
             </thead>
             <tbody>
-                <tr><td>A</td><td>700-900 mcg</td><td>Vision, immune, skin</td><td>Liver, carrots, sweet potato, spinach</td></tr>
-                <tr><td>B12</td><td>2.4 mcg</td><td>Nerve function, red blood cells</td><td>Meat, fish, dairy (vegans must supplement)</td></tr>
-                <tr><td>C</td><td>75-90 mg</td><td>Collagen, antioxidant, iron absorption</td><td>Bell peppers, citrus, strawberries, broccoli</td></tr>
-                <tr><td>D</td><td>600-2000 IU</td><td>Calcium absorption, immune, mood</td><td>Sunlight, fatty fish, fortified milk</td></tr>
-                <tr><td>E</td><td>15 mg</td><td>Antioxidant, cell protection</td><td>Sunflower seeds, almonds, avocado</td></tr>
-                <tr><td>K</td><td>90-120 mcg</td><td>Blood clotting, bone metabolism</td><td>Kale, spinach, broccoli, natto</td></tr>
+                <tr><td>فيتامين أ</td><td>700-900 ميكروجرام</td><td>البصر، المناعة، الجلد</td><td>الكبد، الجزر، البطاطا الحلوة، السبانخ</td></tr>
+                <tr><td>فيتامين ب12</td><td>2.4 ميكروجرام</td><td>وظائف الأعصاب، كريات الدم الحمراء</td><td>اللحوم، الأسماك، الألبان (النباتيون يجب أن يتناولوا مكملات)</td></tr>
+                <tr><td>فيتامين سي</td><td>75-90 مجم</td><td>الكولاجين، مضاد أكسدة، امتصاص الحديد</td><td>الفلفل الملون، الحمضيات، الفراولة، البروكلي</td></tr>
+                <tr><td>فيتامين د</td><td>600-2000 وحدة دولية</td><td>امتصاص الكالسيوم، المناعة، المزاج</td><td>أشعة الشمس، الأسماك الدهنية، الحليب المدعّم</td></tr>
+                <tr><td>فيتامين هـ</td><td>15 مجم</td><td>مضاد أكسدة، حماية الخلايا</td><td>بذور عباد الشمس، اللوز، الأفوكادو</td></tr>
+                <tr><td>فيتامين ك</td><td>90-120 ميكروجرام</td><td>تخثر الدم، أيض العظام</td><td>الكرنب الأجعد، السبانخ، البروكلي، الناتو</td></tr>
             </tbody>
         </table>
     </div>
 
-    <h3>Essential Minerals</h3>
+    <h3>المعادن الأساسية</h3>
 
     <div class="table-wrapper">
         <table>
             <thead>
-                <tr><th>Mineral</th><th>RDA</th><th>Function</th><th>Signs of Deficiency</th></tr>
+                <tr><th>المعدن</th><th>الجرعة اليومية الموصى بها</th><th>الوظيفة</th><th>علامات النقص</th></tr>
             </thead>
             <tbody>
-                <tr><td>Magnesium</td><td>310-420 mg</td><td>300+ enzyme reactions, sleep, muscle</td><td>Cramps, anxiety, insomnia, irregular heartbeat</td></tr>
-                <tr><td>Iron</td><td>8-18 mg</td><td>Oxygen transport (hemoglobin)</td><td>Fatigue, weakness, pale skin, anemia</td></tr>
-                <tr><td>Zinc</td><td>8-11 mg</td><td>Immune function, wound healing</td><td>Impaired immunity, hair loss</td></tr>
-                <tr><td>Calcium</td><td>1000-1200 mg</td><td>Bones, muscle contraction</td><td>Osteoporosis, muscle cramps</td></tr>
-                <tr><td>Potassium</td><td>2600-3400 mg</td><td>Blood pressure, nerve function</td><td>Weakness, cramps, irregular heartbeat</td></tr>
-                <tr><td>Selenium</td><td>55 mcg</td><td>Thyroid, antioxidant defense</td><td>Thyroid dysfunction (1 Brazil nut = 174% DV)</td></tr>
+                <tr><td>المغنيسيوم</td><td>310-420 مجم</td><td>أكثر من 300 تفاعل إنزيمي، النوم، العضلات</td><td>تشنجات، قلق، أرق، عدم انتظام ضربات القلب</td></tr>
+                <tr><td>الحديد</td><td>8-18 مجم</td><td>نقل الأكسجين (الهيموجلوبين)</td><td>إرهاق، ضعف، شحوب الجلد، فقر الدم</td></tr>
+                <tr><td>الزنك</td><td>8-11 مجم</td><td>وظائف المناعة، التئام الجروح</td><td>ضعف المناعة، تساقط الشعر</td></tr>
+                <tr><td>الكالسيوم</td><td>1000-1200 مجم</td><td>العظام، تقلّص العضلات</td><td>هشاشة العظام، تشنجات عضلية</td></tr>
+                <tr><td>البوتاسيوم</td><td>2600-3400 مجم</td><td>ضغط الدم، وظائف الأعصاب</td><td>ضعف، تشنجات، عدم انتظام ضربات القلب</td></tr>
+                <tr><td>السيلينيوم</td><td>55 ميكروجرام</td><td>الغدة الدرقية، دفاع مضاد الأكسدة</td><td>خلل الغدة الدرقية (حبة جوز برازيلية واحدة = 174% من القيمة اليومية)</td></tr>
             </tbody>
         </table>
     </div>
 
-    <h3>Gut Microbiome</h3>
-    <p>Your gut houses <strong>~100 trillion microorganisms</strong> weighing about 2 kg. This ecosystem profoundly influences digestion, immunity, mood, and chronic disease risk.</p>
+    <h3>الميكروبيوم المعوي</h3>
+    <p>تستضيف أمعاؤك <strong>حوالي ١٠٠ تريليون كائن حي دقيق</strong> يزن حوالي ٢ كجم. هذا النظام البيئي يؤثر بعمق على الهضم والمناعة والمزاج وخطر الأمراض المزمنة.</p>
     <ul>
-        <li><strong>Probiotics:</strong> Live beneficial bacteria. Best from fermented whole foods (yogurt, kefir, kimchi, sauerkraut, kombucha). Stanford found 6 servings/day of fermented foods increased microbiome diversity and reduced 19 markers of inflammation</li>
-        <li><strong>Prebiotics:</strong> Food for good bacteria. Sources: garlic, onions, asparagus, bananas, oats, flaxseed. Gut bacteria ferment these into short-chain fatty acids (butyrate, acetate, propionate) that nourish gut lining</li>
-        <li><strong>Fiber is #1:</strong> The single most important dietary factor for microbiome health. Low-fiber diets cause the microbiome to "eat" the intestinal mucus layer, potentially causing leaky gut</li>
+        <li><strong>البروبيوتيك:</strong> بكتيريا حية مفيدة. الأفضل من الأطعمة المخمّرة الكاملة (الزبادي، الكفير، الكيمتشي، مخلل الملفوف، الكمبوتشا). وجدت ستانفورد أن ٦ حصص/يوم من الأطعمة المخمّرة زادت تنوع الميكروبيوم وقلّلت ١٩ مؤشراً للالتهاب</li>
+        <li><strong>البريبيوتيك:</strong> غذاء للبكتيريا النافعة. المصادر: الثوم، البصل، الهليون، الموز، الشوفان، بذور الكتان. تخمّر بكتيريا الأمعاء هذه إلى أحماض دهنية قصيرة السلسلة (البوتيرات، الأسيتات، البروبيونات) التي تغذّي بطانة الأمعاء</li>
+        <li><strong>الألياف هي رقم ١:</strong> العامل الغذائي الأهم لصحة الميكروبيوم. الأنظمة الغذائية منخفضة الألياف تجعل الميكروبيوم "يأكل" طبقة المخاط المعوي، مما قد يسبب تسرّب الأمعاء</li>
     </ul>
 
-    <h3>Anti-Inflammatory vs. Inflammatory Foods</h3>
+    <h3>الأطعمة المضادة للالتهابات مقابل المسببة للالتهابات</h3>
 
     <div class="callout success">
-        <div class="callout-title">Eat More (Anti-Inflammatory)</div>
-        <p>Fatty fish (salmon, sardines), extra virgin olive oil, berries (blueberries, strawberries), leafy greens, nuts (walnuts, almonds), turmeric + black pepper, green tea, dark chocolate (70%+), tomatoes, cherries</p>
+        <div class="callout-title">تناول المزيد (مضادة للالتهابات)</div>
+        <p>الأسماك الدهنية (السلمون، السردين)، زيت الزيتون البكر الممتاز، التوت (العنب البري، الفراولة)، الخضروات الورقية، المكسرات (الجوز، اللوز)، الكركم + الفلفل الأسود، الشاي الأخضر، الشوكولاتة الداكنة (70%+)، الطماطم، الكرز</p>
     </div>
 
     <div class="callout danger">
-        <div class="callout-title">Eat Less (Inflammatory)</div>
-        <p>Sugar-sweetened beverages, refined carbohydrates (white bread, pastries), processed meats (hot dogs, deli meats), trans fats, deep-fried foods, excessive alcohol, excessive omega-6 vegetable oils</p>
+        <div class="callout-title">قلّل من (مسببة للالتهابات)</div>
+        <p>المشروبات المحلّاة بالسكر، الكربوهيدرات المكرّرة (الخبز الأبيض، المعجنات)، اللحوم المصنّعة (النقانق، لحوم الديلي)، الدهون المتحولة، الأطعمة المقلية بعمق، الإفراط في الكحول، الإفراط في زيوت أوميغا-6 النباتية</p>
     </div>
 
-    <h3>Ultra-Processed Foods: The Modern Threat</h3>
-    <p>A 2024 umbrella review of 45 meta-analyses (~10 million participants) found UPF consumption increases risk of cardiovascular death, type 2 diabetes, anxiety, cancer (especially colorectal), obesity, and metabolic syndrome. <strong>UPFs now constitute 50-60% of total energy intake in the US, UK, and Canada.</strong></p>
-    <p><strong>The rule:</strong> If the ingredient list contains things you wouldn't find in a home kitchen (emulsifiers, artificial flavors, high-fructose corn syrup), minimize it. Aim for 80%+ of diet from whole or minimally processed foods.</p>
+    <h3>الأطعمة فائقة التصنيع: التهديد الحديث</h3>
+    <p>وجدت مراجعة شاملة عام 2024 لـ ٤٥ تحليلاً تلوياً (حوالي ١٠ ملايين مشارك) أن استهلاك الأطعمة فائقة التصنيع يزيد خطر الوفاة القلبية الوعائية، وداء السكري من النوع ٢، والقلق، والسرطان (خاصة القولون والمستقيم)، والسمنة، ومتلازمة التمثيل الغذائي. <strong>تشكّل الأطعمة فائقة التصنيع الآن 50-60% من إجمالي استهلاك الطاقة في الولايات المتحدة والمملكة المتحدة وكندا.</strong></p>
+    <p><strong>القاعدة:</strong> إذا احتوت قائمة المكونات على أشياء لن تجدها في مطبخ منزلي (مستحلبات، نكهات اصطناعية، شراب الذرة عالي الفركتوز)، قلّل منها. استهدف أن يكون 80%+ من نظامك الغذائي من أطعمة كاملة أو قليلة التصنيع.</p>
 
-    <h3>Blood Sugar Management</h3>
-    <p>Insulin resistance precedes type 2 diabetes by <strong>10-15 years</strong> and is linked to heart disease, fatty liver, and Alzheimer's ("type 3 diabetes").</p>
+    <h3>إدارة سكر الدم</h3>
+    <p>مقاومة الأنسولين تسبق داء السكري من النوع ٢ بمدة <strong>10-15 سنة</strong> وهي مرتبطة بأمراض القلب والكبد الدهني وألزهايمر ("السكري من النوع ٣").</p>
     <ol>
-        <li><strong>Choose low-GI carbs:</strong> Legumes, whole oats, barley over white bread/rice</li>
-        <li><strong>Eat protein and fat before carbs:</strong> Reduces post-meal glucose spikes by 30-40%</li>
-        <li><strong>Walk after meals:</strong> 10-15 minutes reduces blood sugar spikes by 20-30%</li>
-        <li><strong>Add vinegar:</strong> 1-2 tablespoons before a carb-rich meal reduces glucose spike by ~20-30%</li>
-        <li><strong>Increase fiber dramatically:</strong> Target 30-40 g/day</li>
+        <li><strong>اختر كربوهيدرات منخفضة المؤشر السكري:</strong> البقوليات، الشوفان الكامل، الشعير بدلاً من الخبز/الأرز الأبيض</li>
+        <li><strong>تناول البروتين والدهون قبل الكربوهيدرات:</strong> يقلل ارتفاعات الجلوكوز بعد الوجبة بنسبة 30-40%</li>
+        <li><strong>امشِ بعد الوجبات:</strong> 10-15 دقيقة يقلل ارتفاعات سكر الدم بنسبة 20-30%</li>
+        <li><strong>أضف الخل:</strong> 1-2 ملعقة كبيرة قبل وجبة غنية بالكربوهيدرات يقلل ارتفاع الجلوكوز بحوالي 20-30%</li>
+        <li><strong>زِد الألياف بشكل كبير:</strong> استهدف 30-40 جم/يوم</li>
     </ol>
 
-    <h3>Supplements That Actually Work</h3>
+    <h3>المكملات التي تعمل فعلاً</h3>
 
     <div class="table-wrapper">
         <table>
             <thead>
-                <tr><th>Supplement</th><th>Evidence</th><th>Dose</th><th>Who Needs It</th></tr>
+                <tr><th>المكمّل</th><th>الأدلة</th><th>الجرعة</th><th>من يحتاجه</th></tr>
             </thead>
             <tbody>
-                <tr><td><span class="tag green">Strong</span> Vitamin D</td><td>Bone health, immune, mood</td><td>1,000-2,000 IU/day</td><td>42% of US adults deficient</td></tr>
-                <tr><td><span class="tag green">Strong</span> Omega-3</td><td>Heart, brain, inflammation</td><td>1-2g EPA+DHA/day</td><td>Anyone eating &lt;2 fish servings/week</td></tr>
-                <tr><td><span class="tag green">Strong</span> Creatine</td><td>Muscle, strength, cognitive</td><td>3-5g/day</td><td>Athletes, older adults</td></tr>
-                <tr><td><span class="tag green">Strong</span> Magnesium</td><td>Sleep, anxiety, muscles</td><td>200-400mg/day</td><td>50%+ adults below RDA</td></tr>
-                <tr><td><span class="tag yellow">Moderate</span> Zinc</td><td>Immune, cold duration</td><td>8-11mg from diet</td><td>If deficient or sick</td></tr>
-                <tr><td><span class="tag red">Weak</span> Multivitamins</td><td>No longevity/cancer benefit</td><td>-</td><td>Only if restricted diet</td></tr>
+                <tr><td><span class="tag green">قوي</span> فيتامين د</td><td>صحة العظام، المناعة، المزاج</td><td>1,000-2,000 وحدة دولية/يوم</td><td>42% من البالغين الأمريكيين يعانون من نقص</td></tr>
+                <tr><td><span class="tag green">قوي</span> أوميغا-3</td><td>القلب، الدماغ، الالتهاب</td><td>1-2 جم EPA+DHA/يوم</td><td>أي شخص يتناول أقل من حصتي سمك/أسبوع</td></tr>
+                <tr><td><span class="tag green">قوي</span> الكرياتين</td><td>العضلات، القوة، الإدراك</td><td>3-5 جم/يوم</td><td>الرياضيون، كبار السن</td></tr>
+                <tr><td><span class="tag green">قوي</span> المغنيسيوم</td><td>النوم، القلق، العضلات</td><td>200-400 مجم/يوم</td><td>أكثر من 50% من البالغين دون الجرعة الموصى بها</td></tr>
+                <tr><td><span class="tag yellow">متوسط</span> الزنك</td><td>المناعة، مدة الزكام</td><td>8-11 مجم من الغذاء</td><td>في حالة النقص أو المرض</td></tr>
+                <tr><td><span class="tag red">ضعيف</span> الفيتامينات المتعددة</td><td>لا فائدة لطول العمر/السرطان</td><td>-</td><td>فقط في حالة النظام الغذائي المقيّد</td></tr>
             </tbody>
         </table>
     </div>
 </section>
 
 <div class="separator"></div>
-
 <!-- ============================================
-     SECTION 4: EXERCISE & MOVEMENT
+     القسم ٤: الرياضة والحركة
      ============================================ -->
-<section class="section fade-in" id="exercise">
+<section class="section fade-in" id="exercise" dir="rtl">
     <div class="section-header">
-        <span class="section-number orange">Section 04</span>
-        <h2>Exercise: Movement is Medicine</h2>
-        <p class="section-subtitle">The single most powerful intervention for nearly every aspect of health</p>
+        <span class="section-number orange">القسم ٠٤</span>
+        <h2>الرياضة: الحركة هي الدواء</h2>
+        <p class="section-subtitle">أقوى تدخل منفرد لكل جانب من جوانب الصحة تقريباً</p>
     </div>
 
-    <h3>Types of Exercise</h3>
+    <h3>أنواع التمارين الرياضية</h3>
 
     <div class="stat-grid">
         <div class="stat-card">
-            <div class="stat-value blue">Aerobic</div>
-            <div class="stat-label">Heart & Endurance</div>
+            <div class="stat-value blue">هوائي</div>
+            <div class="stat-label">القلب والتحمل</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value purple">Resistance</div>
-            <div class="stat-label">Muscle & Bone</div>
+            <div class="stat-value purple">مقاومة</div>
+            <div class="stat-label">العضلات والعظام</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value green">Flexibility</div>
-            <div class="stat-label">Mobility & Recovery</div>
+            <div class="stat-value green">مرونة</div>
+            <div class="stat-label">الحركة والتعافي</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value orange">HIIT</div>
-            <div class="stat-label">Efficiency & Power</div>
+            <div class="stat-value orange">تدريب متقطع</div>
+            <div class="stat-label">الكفاءة والقوة</div>
         </div>
     </div>
 
-    <h4>Aerobic Exercise</h4>
-    <p>Running, swimming, cycling, walking. Strengthens the heart, improves VO2 max (the gold standard measure of cardiovascular fitness), lowers resting heart rate, and increases capillary density for better oxygen delivery to tissues.</p>
+    <h4>التمارين الهوائية</h4>
+    <p>الجري، السباحة، ركوب الدراجة، المشي. تُقوّي القلب، وتُحسّن الحد الأقصى لاستهلاك الأكسجين VO2 max (المعيار الذهبي لقياس اللياقة القلبية الوعائية)، وتُخفّض معدل نبض القلب أثناء الراحة، وتزيد كثافة الشعيرات الدموية لتحسين إيصال الأكسجين إلى الأنسجة.</p>
 
-    <h4>Resistance Training</h4>
-    <p>Weightlifting, bodyweight exercises, bands. Builds muscle (which is metabolically active tissue), increases bone density (preventing osteoporosis), improves insulin sensitivity, and boosts resting metabolism.</p>
+    <h4>تمارين المقاومة</h4>
+    <p>رفع الأثقال، تمارين وزن الجسم، الأشرطة المطاطية. تبني العضلات (وهي أنسجة نشطة أيضياً)، وتزيد كثافة العظام (مما يقي من هشاشة العظام)، وتُحسّن حساسية الإنسولين، وتُعزّز معدل الأيض أثناء الراحة.</p>
 
-    <h4>Flexibility & Mobility</h4>
-    <p>Yoga, stretching, foam rolling. Maintains joint range of motion, reduces injury risk, improves posture, and enhances recovery. <strong>Dynamic stretching</strong> before exercise (leg swings, arm circles), <strong>static stretching</strong> after.</p>
+    <h4>المرونة والحركة</h4>
+    <p>اليوغا، تمارين الإطالة، التدليك بالأسطوانة الرغوية. تحافظ على مدى حركة المفاصل، وتُقلّل خطر الإصابة، وتُحسّن وضعية الجسم، وتُعزّز التعافي. <strong>الإطالة الديناميكية</strong> قبل التمرين (تأرجح الساقين، دوران الذراعين)، و<strong>الإطالة الثابتة</strong> بعده.</p>
 
-    <h3>How Muscles Work</h3>
-    <p>You have two main muscle fiber types:</p>
+    <h3>كيف تعمل العضلات</h3>
+    <p>لديك نوعان رئيسيان من الألياف العضلية:</p>
     <ul>
-        <li><strong>Type I (Slow-Twitch):</strong> Endurance-oriented. Resistant to fatigue. Used for walking, jogging, maintaining posture. Powered primarily by aerobic metabolism (oxygen)</li>
-        <li><strong>Type II (Fast-Twitch):</strong> Power-oriented. Fatigue quickly. Used for sprinting, heavy lifting, explosive movements. Powered by anaerobic metabolism (glycogen). Further split into Type IIa (moderate endurance) and Type IIx (pure power)</li>
+        <li><strong>النوع الأول (بطيئة الانقباض):</strong> موجّهة للتحمل. مقاومة للتعب. تُستخدم في المشي والركض الخفيف والحفاظ على وضعية الجسم. تُغذّى بشكل أساسي عبر الأيض الهوائي (الأكسجين)</li>
+        <li><strong>النوع الثاني (سريعة الانقباض):</strong> موجّهة للقوة. تتعب بسرعة. تُستخدم في العَدْو السريع والرفع الثقيل والحركات الانفجارية. تُغذّى عبر الأيض اللاهوائي (الغلايكوجين). تنقسم إلى النوع IIa (تحمل معتدل) والنوع IIx (قوة صرفة)</li>
     </ul>
 
-    <p><strong>Muscle hypertrophy</strong> (growth) occurs through mechanical tension, metabolic stress, and muscle damage. The muscle protein synthesis window lasts 24-72 hours after training, peaking at 24 hours. This is why adequate protein (0.4g/kg per meal, 3-4 meals) and training each muscle group 2x/week is optimal.</p>
+    <p><strong>تضخم العضلات</strong> (النمو) يحدث من خلال التوتر الميكانيكي والإجهاد الأيضي وتلف الألياف العضلية. نافذة تخليق البروتين العضلي تستمر 24-72 ساعة بعد التدريب، وتبلغ ذروتها عند 24 ساعة. لهذا فإن تناول كمية كافية من البروتين (0.4 غرام/كغم لكل وجبة، 3-4 وجبات) وتدريب كل مجموعة عضلية مرتين أسبوعياً هو الأمثل.</p>
 
-    <h3>Strength Training Fundamentals</h3>
+    <h3>أساسيات تدريب القوة</h3>
 
     <div class="table-wrapper">
         <table>
             <thead>
-                <tr><th>Goal</th><th>Rep Range</th><th>Sets</th><th>Rest</th><th>Load</th></tr>
+                <tr><th>الهدف</th><th>نطاق التكرارات</th><th>المجموعات</th><th>الراحة</th><th>الحمل</th></tr>
             </thead>
             <tbody>
-                <tr><td><strong>Strength</strong></td><td>1-5 reps</td><td>3-6</td><td>3-5 min</td><td>85-100% 1RM</td></tr>
-                <tr><td><strong>Hypertrophy</strong></td><td>8-12 reps</td><td>3-4</td><td>60-90 sec</td><td>65-80% 1RM</td></tr>
-                <tr><td><strong>Endurance</strong></td><td>15-25+ reps</td><td>2-3</td><td>30-60 sec</td><td>40-60% 1RM</td></tr>
+                <tr><td><strong>القوة</strong></td><td>1-5 تكرارات</td><td>3-6</td><td>3-5 دقائق</td><td>85-100% من الحد الأقصى</td></tr>
+                <tr><td><strong>تضخم العضلات</strong></td><td>8-12 تكرار</td><td>3-4</td><td>60-90 ثانية</td><td>65-80% من الحد الأقصى</td></tr>
+                <tr><td><strong>التحمل</strong></td><td>+15-25 تكرار</td><td>2-3</td><td>30-60 ثانية</td><td>40-60% من الحد الأقصى</td></tr>
             </tbody>
         </table>
     </div>
 
-    <p><strong>Progressive overload</strong> is the #1 principle: gradually increase weight, reps, or volume over time. Without progressive overload, adaptation stalls.</p>
+    <p><strong>التحميل التدريجي</strong> هو المبدأ الأول: زيادة الوزن أو التكرارات أو حجم التدريب تدريجياً بمرور الوقت. بدون التحميل التدريجي، يتوقف التكيّف.</p>
 
-    <p><strong>Compound movements</strong> (squat, deadlift, bench press, overhead press, rows, pull-ups) should form 80% of your program. They recruit multiple muscle groups, burn more calories, and trigger greater hormonal response than isolation exercises.</p>
+    <p><strong>التمارين المركّبة</strong> (القرفصاء، الرفعة الميتة، ضغط البنش، الضغط العلوي، التجديف، السحب للأعلى) يجب أن تُشكّل 80% من برنامجك. فهي تُشرك مجموعات عضلية متعددة، وتحرق سعرات حرارية أكثر، وتُحفّز استجابة هرمونية أكبر من تمارين العزل.</p>
 
-    <h3>Cardio Science: Heart Rate Zones</h3>
+    <h3>علم القلب: مناطق معدل نبض القلب</h3>
 
     <div class="table-wrapper">
         <table>
             <thead>
-                <tr><th>Zone</th><th>% Max HR</th><th>Feel</th><th>Benefits</th></tr>
+                <tr><th>المنطقة</th><th>% من الحد الأقصى لمعدل النبض</th><th>الشعور</th><th>الفوائد</th></tr>
             </thead>
             <tbody>
-                <tr><td><strong>Zone 1</strong></td><td>50-60%</td><td>Very easy (walk)</td><td>Recovery, warm-up</td></tr>
-                <tr><td><strong>Zone 2</strong> <span class="tag blue">KEY</span></td><td>60-70%</td><td>Comfortable (can talk)</td><td>Fat burning, mitochondrial density, aerobic base</td></tr>
-                <tr><td><strong>Zone 3</strong></td><td>70-80%</td><td>Moderate</td><td>Aerobic capacity</td></tr>
-                <tr><td><strong>Zone 4</strong></td><td>80-90%</td><td>Hard (can't talk)</td><td>Lactate threshold, VO2 max</td></tr>
-                <tr><td><strong>Zone 5</strong></td><td>90-100%</td><td>Maximum effort</td><td>Sprint capacity, anaerobic power</td></tr>
+                <tr><td><strong>المنطقة ١</strong></td><td>50-60%</td><td>سهل جداً (مشي)</td><td>التعافي، الإحماء</td></tr>
+                <tr><td><strong>المنطقة ٢</strong> <span class="tag blue">أساسي</span></td><td>60-70%</td><td>مريح (يمكنك التحدث)</td><td>حرق الدهون، كثافة الميتوكوندريا، القاعدة الهوائية</td></tr>
+                <tr><td><strong>المنطقة ٣</strong></td><td>70-80%</td><td>معتدل</td><td>السعة الهوائية</td></tr>
+                <tr><td><strong>المنطقة ٤</strong></td><td>80-90%</td><td>شاق (لا يمكنك التحدث)</td><td>عتبة اللاكتات، الحد الأقصى لاستهلاك الأكسجين</td></tr>
+                <tr><td><strong>المنطقة ٥</strong></td><td>90-100%</td><td>أقصى جهد</td><td>قدرة العَدْو السريع، القوة اللاهوائية</td></tr>
             </tbody>
         </table>
     </div>
 
     <div class="callout info">
-        <div class="callout-title">Zone 2 Training: The Longevity Zone</div>
-        <p>Peter Attia and other longevity researchers emphasize Zone 2 training as the foundation of cardiovascular fitness. It builds mitochondrial density, improves fat oxidation, enhances metabolic flexibility, and can be sustained for long periods without excess stress. Target: <strong>3-4 hours per week</strong> of Zone 2 cardio (brisk walking, easy cycling, light jogging where you can hold a conversation).</p>
+        <div class="callout-title">تدريب المنطقة ٢: منطقة طول العمر</div>
+        <p>يُؤكد بيتر أتيا وباحثون آخرون في مجال طول العمر على أن تدريب المنطقة ٢ هو أساس اللياقة القلبية الوعائية. فهو يبني كثافة الميتوكوندريا، ويُحسّن أكسدة الدهون، ويُعزّز المرونة الأيضية، ويمكن الحفاظ عليه لفترات طويلة دون إجهاد مفرط. الهدف: <strong>3-4 ساعات أسبوعياً</strong> من تمارين المنطقة ٢ الهوائية (المشي السريع، ركوب الدراجة الخفيف، الركض الخفيف حيث يمكنك إجراء محادثة).</p>
     </div>
 
-    <h3>Exercise and the Brain</h3>
-    <p>Exercise is the <strong>single most powerful known neuroplasticity trigger</strong>:</p>
+    <h3>الرياضة والدماغ</h3>
+    <p>التمرين هو <strong>أقوى محفّز معروف للمرونة العصبية</strong>:</p>
     <ul>
-        <li><strong>BDNF</strong> (brain-derived neurotrophic factor): Exercise increases BDNF, which promotes new neuron growth (neurogenesis) in the hippocampus. Called "Miracle-Gro for the brain"</li>
-        <li><strong>Antidepressant effect:</strong> Meta-analyses show exercise is as effective as SSRIs for mild-to-moderate depression</li>
-        <li><strong>Cognitive protection:</strong> Regular exercisers have 30-40% lower risk of dementia</li>
-        <li><strong>Immediate effects:</strong> A single bout of exercise improves attention, mood, and executive function for 2-3 hours</li>
+        <li><strong>عامل التغذية العصبية المشتق من الدماغ (BDNF):</strong> يزيد التمرين من BDNF الذي يُعزّز نمو الخلايا العصبية الجديدة (تكوّن الخلايا العصبية) في الحُصين. يُسمّى "سماد المعجزات للدماغ"</li>
+        <li><strong>تأثير مضاد للاكتئاب:</strong> تُظهر التحليلات التجميعية أن التمرين فعّال كمثبطات استرداد السيروتونين الانتقائية (SSRIs) للاكتئاب الخفيف إلى المعتدل</li>
+        <li><strong>الحماية المعرفية:</strong> الممارسون المنتظمون للرياضة لديهم خطر أقل بنسبة 30-40% للإصابة بالخرف</li>
+        <li><strong>التأثيرات الفورية:</strong> جلسة تمرين واحدة تُحسّن الانتباه والمزاج والوظائف التنفيذية لمدة 2-3 ساعات</li>
     </ul>
 
-    <h3>Exercise and Hormones</h3>
+    <h3>الرياضة والهرمونات</h3>
     <ul>
-        <li><strong>Testosterone:</strong> Compound lifts (squats, deadlifts) acutely increase testosterone. Chronic endurance overtraining can decrease it</li>
-        <li><strong>Growth Hormone:</strong> Peaks during intense exercise and deep sleep. HIIT and heavy lifting are the strongest triggers</li>
-        <li><strong>Cortisol:</strong> Acute rise during exercise is beneficial (mobilizes energy). Chronic overtraining keeps it elevated (harmful)</li>
-        <li><strong>Endorphins:</strong> The "runner's high." Released during sustained moderate-to-intense exercise. Natural pain reliever and mood enhancer</li>
+        <li><strong>التستوستيرون:</strong> التمارين المركّبة (القرفصاء، الرفعة الميتة) ترفع التستوستيرون بشكل حاد. الإفراط في تدريبات التحمل المزمن قد يُخفّضه</li>
+        <li><strong>هرمون النمو:</strong> يبلغ ذروته أثناء التمرين المكثف والنوم العميق. التدريب المتقطع عالي الشدة والرفع الثقيل هما أقوى المحفّزات</li>
+        <li><strong>الكورتيزول:</strong> الارتفاع الحاد أثناء التمرين مفيد (يُحرّك الطاقة). الإفراط المزمن في التدريب يُبقيه مرتفعاً (ضار)</li>
+        <li><strong>الإندورفينات:</strong> "نشوة العَدّاء." تُفرَز أثناء التمرين المتوسط إلى المكثف والمستمر. مسكن طبيعي للألم ومُحسّن للمزاج</li>
     </ul>
 
-    <h3>Recovery: The Other Half of Fitness</h3>
+    <h3>التعافي: النصف الآخر من اللياقة</h3>
     <ul>
-        <li><strong>Sleep:</strong> The #1 recovery tool. Growth hormone peaks during deep sleep. Athletes sleeping &lt;7 hours have 1.7x higher injury risk</li>
-        <li><strong>Rest days:</strong> Muscles grow during rest, not during training. 1-2 rest days per week minimum</li>
-        <li><strong>Active recovery:</strong> Light walking, swimming, or yoga on rest days promotes blood flow without taxing the system</li>
-        <li><strong>Deload weeks:</strong> Every 4-6 weeks, reduce volume/intensity by 40-50% to allow full recovery</li>
+        <li><strong>النوم:</strong> أداة التعافي الأولى. هرمون النمو يبلغ ذروته أثناء النوم العميق. الرياضيون الذين ينامون أقل من 7 ساعات لديهم خطر إصابة أعلى بـ 1.7 مرة</li>
+        <li><strong>أيام الراحة:</strong> العضلات تنمو أثناء الراحة وليس أثناء التدريب. يوم إلى يومين راحة أسبوعياً كحد أدنى</li>
+        <li><strong>التعافي النشط:</strong> المشي الخفيف أو السباحة أو اليوغا في أيام الراحة تُعزّز تدفق الدم دون إرهاق الجسم</li>
+        <li><strong>أسابيع التخفيف:</strong> كل 4-6 أسابيع، خفّض الحجم/الشدة بنسبة 40-50% للسماح بالتعافي الكامل</li>
     </ul>
 
-    <h3>WHO Minimum Guidelines</h3>
+    <h3>الحد الأدنى من إرشادات منظمة الصحة العالمية</h3>
     <div class="callout success">
-        <div class="callout-title">Minimum Effective Dose</div>
-        <p><strong>150-300 minutes/week</strong> of moderate aerobic activity OR <strong>75-150 minutes/week</strong> vigorous activity, PLUS <strong>2+ sessions/week</strong> of resistance training (all major muscle groups). This alone reduces all-cause mortality by 30-40%.</p>
+        <div class="callout-title">الجرعة الفعّالة الدنيا</div>
+        <p><strong>150-300 دقيقة أسبوعياً</strong> من النشاط الهوائي المعتدل أو <strong>75-150 دقيقة أسبوعياً</strong> من النشاط المكثف، بالإضافة إلى <strong>جلستين أو أكثر أسبوعياً</strong> من تدريبات المقاومة (جميع المجموعات العضلية الرئيسية). هذا وحده يُقلّل معدل الوفيات لجميع الأسباب بنسبة 30-40%.</p>
     </div>
 
-    <h3>Body Composition</h3>
-    <p><strong>BMR</strong> (Basal Metabolic Rate): Calories burned at complete rest. Determined primarily by lean mass, age, sex, and height. <strong>TDEE</strong> (Total Daily Energy Expenditure) = BMR x activity multiplier. To lose fat: eat below TDEE by 300-500 calories. To build muscle: eat above TDEE by 200-300 calories with adequate protein.</p>
-    <p>A pound of muscle burns ~6 calories/day at rest vs. ~2 for fat. More importantly, muscle improves insulin sensitivity, protects joints, and is the strongest predictor of healthy aging.</p>
+    <h3>تكوين الجسم</h3>
+    <p><strong>معدل الأيض الأساسي (BMR):</strong> السعرات الحرارية المحروقة في الراحة التامة. يتحدد بشكل أساسي بالكتلة العضلية والعمر والجنس والطول. <strong>إجمالي الإنفاق اليومي للطاقة (TDEE)</strong> = معدل الأيض الأساسي &times; معامل النشاط. لخسارة الدهون: تناول أقل من TDEE بـ 300-500 سعرة حرارية. لبناء العضلات: تناول أعلى من TDEE بـ 200-300 سعرة حرارية مع بروتين كافٍ.</p>
+    <p>رطل واحد من العضلات يحرق ~6 سعرات حرارية يومياً أثناء الراحة مقابل ~2 للدهون. والأهم من ذلك، العضلات تُحسّن حساسية الإنسولين، وتحمي المفاصل، وهي أقوى مؤشر على الشيخوخة الصحية.</p>
 </section>
 
 <div class="separator"></div>
 
 <!-- ============================================
-     SECTION 5: SLEEP SCIENCE
+     القسم ٥: علم النوم
      ============================================ -->
-<section class="section fade-in" id="sleep">
+<section class="section fade-in" id="sleep" dir="rtl">
     <div class="section-header">
-        <span class="section-number cyan">Section 05</span>
-        <h2>Sleep: The Non-Negotiable Foundation</h2>
-        <p class="section-subtitle">One-third of your life spent sleeping determines the quality of the other two-thirds</p>
+        <span class="section-number cyan">القسم ٠٥</span>
+        <h2>النوم: الأساس غير القابل للتفاوض</h2>
+        <p class="section-subtitle">ثلث حياتك الذي تقضيه نائماً يُحدّد جودة الثلثين الآخرين</p>
     </div>
 
-    <h3>Sleep Architecture</h3>
-    <p>Sleep isn't a uniform state. You cycle through distinct stages every <strong>~90 minutes</strong>, completing 4-6 cycles per night:</p>
+    <h3>هندسة النوم</h3>
+    <p>النوم ليس حالة موحّدة. أنت تمر بمراحل متميزة كل <strong>~90 دقيقة تقريباً</strong>، مكملاً 4-6 دورات في الليلة:</p>
 
     <div class="flow">
         <div class="flow-step">
-            <div class="flow-step-title">NREM Stage 1 (Light Sleep) - 5%</div>
-            <div class="flow-step-desc">Transition from wakefulness. Lasts 1-7 minutes. Easily awakened. Hypnic jerks may occur.</div>
+            <div class="flow-step-title">المرحلة ١ NREM (النوم الخفيف) - 5%</div>
+            <div class="flow-step-desc">الانتقال من اليقظة. تستمر 1-7 دقائق. يسهل الاستيقاظ منها. قد تحدث الارتعاشات النومية.</div>
         </div>
         <div class="flow-arrow">&darr;</div>
         <div class="flow-step">
-            <div class="flow-step-title">NREM Stage 2 (True Sleep) - 45%</div>
-            <div class="flow-step-desc">Heart rate and temperature drop. Sleep spindles (bursts of neural activity) consolidate motor learning and memory.</div>
+            <div class="flow-step-title">المرحلة ٢ NREM (النوم الحقيقي) - 45%</div>
+            <div class="flow-step-desc">ينخفض معدل نبض القلب ودرجة الحرارة. مغازل النوم (رشقات من النشاط العصبي) تُرسّخ التعلم الحركي والذاكرة.</div>
         </div>
         <div class="flow-arrow">&darr;</div>
         <div class="flow-step">
-            <div class="flow-step-title">NREM Stage 3 (Deep Sleep) - 25%</div>
-            <div class="flow-step-desc">The most restorative stage. Growth hormone peaks. Immune system repairs. Glymphatic system clears brain waste (beta-amyloid). Dominant in first half of night.</div>
+            <div class="flow-step-title">المرحلة ٣ NREM (النوم العميق) - 25%</div>
+            <div class="flow-step-desc">المرحلة الأكثر تجديداً. هرمون النمو يبلغ ذروته. الجهاز المناعي يُصلح نفسه. الجهاز الغلمفاوي ينظّف فضلات الدماغ (بيتا أميلويد). تسود في النصف الأول من الليل.</div>
         </div>
         <div class="flow-arrow">&darr;</div>
         <div class="flow-step">
-            <div class="flow-step-title">REM Sleep (Dream Sleep) - 25%</div>
-            <div class="flow-step-desc">Brain is highly active. Emotional processing and creative problem-solving. Memory consolidation (especially procedural). Dominant in second half of night.</div>
+            <div class="flow-step-title">نوم حركة العين السريعة REM (نوم الأحلام) - 25%</div>
+            <div class="flow-step-desc">الدماغ نشط للغاية. المعالجة العاطفية وحل المشكلات الإبداعي. ترسيخ الذاكرة (خاصة الإجرائية). تسود في النصف الثاني من الليل.</div>
         </div>
     </div>
 
     <div class="callout warning">
-        <div class="callout-title">Critical Insight</div>
-        <p>Deep sleep dominates early cycles, REM dominates later cycles. If you sleep 6 hours instead of 8, you don't lose 25% of sleep - you lose <strong>60-90% of your REM sleep</strong>, which occurs primarily in the last 2 hours. This devastates emotional regulation, creativity, and memory.</p>
+        <div class="callout-title">رؤية حاسمة</div>
+        <p>النوم العميق يسود في الدورات الأولى، ونوم حركة العين السريعة يسود في الدورات الأخيرة. إذا نمت 6 ساعات بدلاً من 8، فأنت لا تفقد 25% من نومك - بل تفقد <strong>60-90% من نوم حركة العين السريعة REM</strong> الذي يحدث بشكل أساسي في آخر ساعتين. هذا يُدمّر التنظيم العاطفي والإبداع والذاكرة.</p>
     </div>
 
-    <h3>Circadian Rhythm</h3>
-    <p>Your body runs on a ~24-hour internal clock controlled by the <strong>suprachiasmatic nucleus (SCN)</strong> in the hypothalamus. Two key hormones:</p>
+    <h3>الإيقاع اليوماوي</h3>
+    <p>جسمك يعمل بساعة داخلية مدتها ~24 ساعة تُتحكّم بها <strong>النواة فوق التصالبية (SCN)</strong> في منطقة ما تحت المهاد. هرمونان أساسيان:</p>
     <ul>
-        <li><strong>Cortisol:</strong> Peaks 30-45 minutes after waking (Cortisol Awakening Response). Gives you morning energy and alertness. Should decline throughout the day</li>
-        <li><strong>Melatonin:</strong> Rises as darkness falls (signaling sleep). Suppressed by blue light from screens. Even dim light (8-10 lux) can suppress melatonin by 50%</li>
+        <li><strong>الكورتيزول:</strong> يبلغ ذروته بعد 30-45 دقيقة من الاستيقاظ (استجابة الكورتيزول الصباحية). يمنحك طاقة ويقظة في الصباح. يجب أن ينخفض على مدار اليوم</li>
+        <li><strong>الميلاتونين:</strong> يرتفع مع حلول الظلام (إشارة إلى النوم). يُثبَّط بالضوء الأزرق من الشاشات. حتى الضوء الخافت (8-10 لوكس) يمكن أن يُثبّط الميلاتونين بنسبة 50%</li>
     </ul>
 
-    <p><strong>Morning sunlight</strong> within 30-60 minutes of waking is the single most powerful circadian rhythm setter. It anchors your clock, leading to earlier melatonin onset at night and better sleep quality.</p>
+    <p><strong>ضوء الشمس الصباحي</strong> خلال 30-60 دقيقة من الاستيقاظ هو أقوى ضابط للإيقاع اليوماوي. يُثبّت ساعتك الداخلية، مما يؤدي إلى بدء إفراز الميلاتونين مبكراً في الليل وتحسين جودة النوم.</p>
 
-    <h3>Why Sleep Matters</h3>
+    <h3>لماذا يهم النوم</h3>
 
     <div class="stat-grid">
         <div class="stat-card">
-            <div class="stat-value cyan">Glymphatic</div>
-            <div class="stat-label">Brain waste clearance 10x more active during sleep</div>
+            <div class="stat-value cyan">الغلمفاوي</div>
+            <div class="stat-label">تنظيف فضلات الدماغ أنشط 10 أضعاف أثناء النوم</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value green">Immune</div>
-            <div class="stat-label">T-cell effectiveness drops 70% with poor sleep</div>
+            <div class="stat-value green">المناعة</div>
+            <div class="stat-label">فعالية الخلايا التائية تنخفض 70% مع النوم السيئ</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value purple">Memory</div>
-            <div class="stat-label">Sleep consolidates learning from the day</div>
+            <div class="stat-value purple">الذاكرة</div>
+            <div class="stat-label">النوم يُرسّخ ما تعلمته خلال اليوم</div>
         </div>
         <div class="stat-card">
-            <div class="stat-value orange">Hormones</div>
-            <div class="stat-label">Growth hormone peaks in deep sleep</div>
+            <div class="stat-value orange">الهرمونات</div>
+            <div class="stat-label">هرمون النمو يبلغ ذروته في النوم العميق</div>
         </div>
     </div>
 
-    <h3>Sleep Deprivation: The Consequences</h3>
+    <h3>الحرمان من النوم: العواقب</h3>
     <ul>
-        <li><strong>Cognitive:</strong> After 24 hours without sleep, cognitive impairment equals a blood alcohol level of 0.10% (legally drunk)</li>
-        <li><strong>Weight gain:</strong> Sleep deprivation increases ghrelin (hunger hormone) by 28% and decreases leptin (satiety) by 18%. You eat ~300-400 extra calories/day</li>
-        <li><strong>Cardiovascular:</strong> Sleeping &lt;6 hours/night increases heart attack risk by 20%. Daylight saving time (losing 1 hour) causes a 24% spike in heart attacks the next day</li>
-        <li><strong>Cancer:</strong> The WHO classifies night shift work as a "probable carcinogen." Natural killer cell activity drops 70% with a single night of 4-hour sleep</li>
-        <li><strong>Emotional:</strong> The amygdala becomes 60% more reactive with sleep deprivation, while prefrontal cortex control decreases. This creates emotional volatility</li>
+        <li><strong>معرفياً:</strong> بعد 24 ساعة بدون نوم، يُعادل الضعف المعرفي مستوى كحول في الدم بنسبة 0.10% (مستوى السكر القانوني)</li>
+        <li><strong>زيادة الوزن:</strong> الحرمان من النوم يزيد هرمون الجريلين (هرمون الجوع) بنسبة 28% ويُنقص اللبتين (الشبع) بنسبة 18%. تأكل ~300-400 سعرة حرارية إضافية يومياً</li>
+        <li><strong>القلب والأوعية الدموية:</strong> النوم أقل من 6 ساعات ليلاً يزيد خطر النوبة القلبية بنسبة 20%. التوقيت الصيفي (فقدان ساعة واحدة) يُسبّب ارتفاعاً بنسبة 24% في النوبات القلبية في اليوم التالي</li>
+        <li><strong>السرطان:</strong> تُصنّف منظمة الصحة العالمية العمل في النوبات الليلية كـ "مادة مسرطنة محتملة". نشاط الخلايا القاتلة الطبيعية ينخفض 70% مع ليلة واحدة من 4 ساعات نوم</li>
+        <li><strong>عاطفياً:</strong> اللوزة الدماغية تصبح أكثر تفاعلاً بنسبة 60% مع الحرمان من النوم، بينما ينخفض تحكم قشرة الفص الجبهي. هذا يخلق تقلبات عاطفية</li>
     </ul>
 
-    <h3>Sleep Hygiene: The Protocol</h3>
+    <h3>نظافة النوم: البروتوكول</h3>
     <ol>
-        <li><strong>Temperature:</strong> Cool room, 65-68&deg;F (18-20&deg;C). Core body temperature must drop 2-3&deg;F to initiate sleep</li>
-        <li><strong>Darkness:</strong> Complete darkness. Even dim light through closed eyelids disrupts melatonin. Use blackout curtains</li>
-        <li><strong>Consistency:</strong> Same bedtime and wake time every day (even weekends). The most important sleep hygiene habit</li>
-        <li><strong>No screens 1 hour before bed:</strong> Blue light suppresses melatonin. If screens are unavoidable, use night mode/warm lighting</li>
-        <li><strong>No caffeine after 2 PM:</strong> Caffeine has a half-life of 5-6 hours. A coffee at 3 PM still has 50% caffeine in your system at 9 PM</li>
-        <li><strong>No alcohol:</strong> Alcohol is not a sleep aid. It's a sedative that blocks REM sleep, causes frequent awakenings, and fragments sleep architecture</li>
-        <li><strong>Wind-down routine:</strong> 30-60 minutes of reading, stretching, journaling, or meditation before bed</li>
+        <li><strong>درجة الحرارة:</strong> غرفة باردة، 18-20 درجة مئوية (65-68 فهرنهايت). يجب أن تنخفض درجة حرارة الجسم الأساسية 1-2 درجة مئوية لبدء النوم</li>
+        <li><strong>الظلام:</strong> ظلام تام. حتى الضوء الخافت عبر الجفون المغلقة يُعطّل الميلاتونين. استخدم ستائر حاجبة للضوء</li>
+        <li><strong>الانتظام:</strong> نفس وقت النوم والاستيقاظ كل يوم (حتى في عطلة نهاية الأسبوع). أهم عادة في نظافة النوم</li>
+        <li><strong>لا شاشات قبل النوم بساعة:</strong> الضوء الأزرق يُثبّط الميلاتونين. إذا كانت الشاشات حتمية، استخدم الوضع الليلي/الإضاءة الدافئة</li>
+        <li><strong>لا كافيين بعد الثانية ظهراً:</strong> نصف عمر الكافيين 5-6 ساعات. قهوة الثالثة عصراً لا يزال 50% من كافيينها في جسمك عند التاسعة مساءً</li>
+        <li><strong>لا كحول:</strong> الكحول ليس مساعداً على النوم. إنه مهدئ يحجب نوم حركة العين السريعة، ويُسبّب استيقاظاً متكرراً، ويُفتّت بنية النوم</li>
+        <li><strong>روتين الاسترخاء:</strong> 30-60 دقيقة من القراءة أو الإطالة أو كتابة اليوميات أو التأمل قبل النوم</li>
     </ol>
 
-    <h3>Napping Science</h3>
+    <h3>علم القيلولة</h3>
     <ul>
-        <li><strong>Power nap (10-20 min):</strong> Boosts alertness and performance. Stays in light sleep. No grogginess on waking. NASA found a 26-minute nap improved pilot performance by 34% and alertness by 54%</li>
-        <li><strong>Full cycle nap (90 min):</strong> Completes one full sleep cycle including REM. Boosts creativity and emotional processing. Best if you're sleep-deprived</li>
-        <li><strong>Danger zone (30-60 min):</strong> Waking from deep sleep causes sleep inertia (grogginess, confusion). Avoid this range</li>
+        <li><strong>قيلولة القوة (10-20 دقيقة):</strong> تُعزّز اليقظة والأداء. تبقى في النوم الخفيف. لا خمول عند الاستيقاظ. وجدت ناسا أن قيلولة 26 دقيقة حسّنت أداء الطيارين بنسبة 34% واليقظة بنسبة 54%</li>
+        <li><strong>قيلولة الدورة الكاملة (90 دقيقة):</strong> تُكمل دورة نوم كاملة بما في ذلك نوم حركة العين السريعة. تُعزّز الإبداع والمعالجة العاطفية. الأفضل إذا كنت محروماً من النوم</li>
+        <li><strong>منطقة الخطر (30-60 دقيقة):</strong> الاستيقاظ من النوم العميق يُسبّب خمول النوم (إرهاق وارتباك). تجنّب هذا النطاق</li>
     </ul>
 
-    <h3>Sleep by Age</h3>
+    <h3>النوم حسب العمر</h3>
     <div class="table-wrapper">
         <table>
             <thead>
-                <tr><th>Age</th><th>Recommended Hours</th></tr>
+                <tr><th>العمر</th><th>الساعات الموصى بها</th></tr>
             </thead>
             <tbody>
-                <tr><td>Newborn (0-3 months)</td><td>14-17 hours</td></tr>
-                <tr><td>Infant (4-11 months)</td><td>12-15 hours</td></tr>
-                <tr><td>Toddler (1-2 years)</td><td>11-14 hours</td></tr>
-                <tr><td>Preschool (3-5)</td><td>10-13 hours</td></tr>
-                <tr><td>School age (6-13)</td><td>9-11 hours</td></tr>
-                <tr><td>Teenager (14-17)</td><td>8-10 hours</td></tr>
-                <tr><td>Adult (18-64)</td><td>7-9 hours</td></tr>
-                <tr><td>Older adult (65+)</td><td>7-8 hours</td></tr>
+                <tr><td>حديثو الولادة (0-3 أشهر)</td><td>14-17 ساعة</td></tr>
+                <tr><td>الرُّضّع (4-11 شهراً)</td><td>12-15 ساعة</td></tr>
+                <tr><td>الأطفال الصغار (1-2 سنة)</td><td>11-14 ساعة</td></tr>
+                <tr><td>ما قبل المدرسة (3-5 سنوات)</td><td>10-13 ساعة</td></tr>
+                <tr><td>سن المدرسة (6-13 سنة)</td><td>9-11 ساعة</td></tr>
+                <tr><td>المراهقون (14-17 سنة)</td><td>8-10 ساعات</td></tr>
+                <tr><td>البالغون (18-64 سنة)</td><td>7-9 ساعات</td></tr>
+                <tr><td>كبار السن (+65 سنة)</td><td>7-8 ساعات</td></tr>
             </tbody>
         </table>
     </div>
@@ -1362,227 +1363,225 @@
 <div class="separator"></div>
 
 <!-- ============================================
-     SECTION 6: BODY SYSTEMS
+     القسم ٦: أجهزة الجسم البشري
      ============================================ -->
-<section class="section fade-in" id="body">
+<section class="section fade-in" id="body" dir="rtl">
     <div class="section-header">
-        <span class="section-number red">Section 06</span>
-        <h2>The Human Body: Interconnected Systems</h2>
-        <p class="section-subtitle">11 systems working in concert. Damage to one cascades to all others.</p>
+        <span class="section-number red">القسم ٠٦</span>
+        <h2>جسم الإنسان: أنظمة مترابطة</h2>
+        <p class="section-subtitle">11 نظاماً يعمل بتناغم. الضرر في أحدها يتسلسل إلى جميع الأنظمة الأخرى.</p>
     </div>
 
-    <h3>Cardiovascular System</h3>
-    <p>Your heart beats ~100,000 times/day, pumping ~2,000 gallons of blood through 60,000+ miles of blood vessels. Atherosclerosis (plaque buildup) is a <strong>lifestyle disease</strong> that begins in childhood and is the #1 killer worldwide.</p>
+    <h3>الجهاز القلبي الوعائي</h3>
+    <p>قلبك ينبض ~100,000 مرة يومياً، ويضخ ~7,500 لتر من الدم عبر أكثر من 96,000 كيلومتر من الأوعية الدموية. تصلّب الشرايين (تراكم اللويحات) هو <strong>مرض نمط حياة</strong> يبدأ في الطفولة وهو القاتل الأول عالمياً.</p>
     <ul>
-        <li><strong>Blood pressure:</strong> Optimal &lt;120/80 mmHg. The #1 modifiable risk factor for heart disease and stroke</li>
-        <li><strong>Exercise effect:</strong> Regular aerobic exercise reduces resting heart rate by 10-20 bpm, increases stroke volume, and improves endothelial function</li>
-        <li><strong>Protection:</strong> Mediterranean diet, Zone 2 cardio, stress management, not smoking, omega-3 fatty acids</li>
+        <li><strong>ضغط الدم:</strong> المثالي أقل من 120/80 ملم زئبق. عامل الخطر الأول القابل للتعديل لأمراض القلب والسكتة الدماغية</li>
+        <li><strong>تأثير التمرين:</strong> التمارين الهوائية المنتظمة تُخفّض معدل نبض القلب أثناء الراحة بمقدار 10-20 نبضة في الدقيقة، وتزيد حجم الضربة، وتُحسّن وظيفة البطانة الداخلية</li>
+        <li><strong>الحماية:</strong> حمية البحر الأبيض المتوسط، تمارين المنطقة ٢، إدارة التوتر، عدم التدخين، أحماض أوميغا-3 الدهنية</li>
     </ul>
 
-    <h3>Immune System</h3>
-    <p>Two branches work together:</p>
+    <h3>الجهاز المناعي</h3>
+    <p>فرعان يعملان معاً:</p>
     <ul>
-        <li><strong>Innate immunity:</strong> First line of defense. Non-specific. Skin, mucous membranes, neutrophils, natural killer cells. Responds within minutes</li>
-        <li><strong>Adaptive immunity:</strong> Specific, learned response. T-cells and B-cells. Creates memory (why vaccines work). Takes days to develop but is precisely targeted</li>
+        <li><strong>المناعة الفطرية:</strong> خط الدفاع الأول. غير متخصصة. الجلد، الأغشية المخاطية، العَدِلات، الخلايا القاتلة الطبيعية. تستجيب في دقائق</li>
+        <li><strong>المناعة التكيفية:</strong> استجابة محددة ومكتسبة. الخلايا التائية والخلايا البائية. تُكوّن ذاكرة (لهذا تعمل اللقاحات). تستغرق أياماً للتطور لكنها موجّهة بدقة</li>
     </ul>
-    <p><strong>Chronic inflammation</strong> is the bridge between lifestyle and disease. When the immune system is chronically activated (by poor diet, stress, obesity, toxins), it damages healthy tissue, driving heart disease, cancer, diabetes, Alzheimer's, and autoimmune conditions.</p>
+    <p><strong>الالتهاب المزمن</strong> هو الجسر بين نمط الحياة والمرض. عندما يكون الجهاز المناعي نشطاً بشكل مزمن (بسبب النظام الغذائي السيئ والتوتر والسمنة والسموم)، فإنه يُتلف الأنسجة السليمة، مما يُحرّك أمراض القلب والسرطان والسكري والزهايمر وأمراض المناعة الذاتية.</p>
 
-    <h3>Endocrine System</h3>
-    <p>Hormones are chemical messengers that regulate nearly every bodily function:</p>
+    <h3>جهاز الغدد الصماء</h3>
+    <p>الهرمونات هي رسائل كيميائية تُنظّم تقريباً كل وظيفة في الجسم:</p>
     <ul>
-        <li><strong>Insulin:</strong> Regulates blood sugar. Resistance develops from chronic overconsumption of refined carbs and sedentary behavior</li>
-        <li><strong>Cortisol:</strong> Stress hormone. Should peak in morning, decline at night. Chronic elevation destroys the body</li>
-        <li><strong>Thyroid (T3/T4):</strong> Master metabolic regulator. Affects energy, weight, mood, temperature</li>
-        <li><strong>Testosterone/Estrogen:</strong> Decline with age. Affected by sleep, exercise, stress, body fat, nutrition</li>
-        <li><strong>Growth Hormone:</strong> Peaks during deep sleep and intense exercise. Crucial for tissue repair and muscle maintenance</li>
-    </ul>
-
-    <h3>Nervous System</h3>
-    <ul>
-        <li><strong>Sympathetic (Fight-or-Flight):</strong> Accelerator. Increases heart rate, dilates pupils, diverts blood to muscles. Activated by stress, caffeine, danger</li>
-        <li><strong>Parasympathetic (Rest-and-Digest):</strong> Brake. Lowers heart rate, promotes digestion, enables recovery. Activated by deep breathing, meditation, vagus nerve stimulation</li>
-        <li><strong>Vagus nerve:</strong> The longest cranial nerve. Higher vagal tone = better stress recovery, lower inflammation, better heart rate variability (HRV). Improved by cold exposure, humming, slow breathing, social connection</li>
+        <li><strong>الإنسولين:</strong> يُنظّم سكر الدم. مقاومة الإنسولين تتطور من الاستهلاك المزمن للكربوهيدرات المكررة ونمط الحياة الخامل</li>
+        <li><strong>الكورتيزول:</strong> هرمون التوتر. يجب أن يبلغ ذروته صباحاً وينخفض ليلاً. الارتفاع المزمن يُدمّر الجسم</li>
+        <li><strong>الغدة الدرقية (T3/T4):</strong> المنظم الأيضي الرئيسي. يؤثر على الطاقة والوزن والمزاج ودرجة الحرارة</li>
+        <li><strong>التستوستيرون/الإستروجين:</strong> ينخفضان مع التقدم في العمر. يتأثران بالنوم والتمرين والتوتر ونسبة الدهون والتغذية</li>
+        <li><strong>هرمون النمو:</strong> يبلغ ذروته أثناء النوم العميق والتمرين المكثف. حاسم لإصلاح الأنسجة وصيانة العضلات</li>
     </ul>
 
-    <h3>Digestive System</h3>
-    <p>Food is broken down by stomach acid (pH 1.5-3.5), enzymes, and bile. Nutrients are absorbed primarily in the small intestine (surface area of a tennis court). The gut lining replaces itself every 3-5 days, making it highly responsive to dietary changes.</p>
-
-    <h3>Musculoskeletal System</h3>
+    <h3>الجهاز العصبي</h3>
     <ul>
-        <li><strong>Bones:</strong> Living tissue that remodels constantly. Peak bone density reached by age 30. After that, prevention is key. Weight-bearing exercise and calcium/vitamin D are essential</li>
-        <li><strong>Joints:</strong> Cartilage has no blood supply - it depends on movement to receive nutrients (synovial fluid). Sedentary lifestyles starve cartilage</li>
-        <li><strong>Posture:</strong> Prolonged sitting causes hip flexor tightening, chest caving, weakened glutes, and forward head posture. The "sitting is the new smoking" analogy exists because sitting 8+ hours/day with no activity has mortality risk comparable to smoking</li>
+        <li><strong>الجهاز الودّي (القتال أو الهروب):</strong> المُسرّع. يزيد معدل نبض القلب، يُوسّع حدقة العين، يُحوّل الدم إلى العضلات. يُنشَّط بالتوتر والكافيين والخطر</li>
+        <li><strong>الجهاز نظير الودّي (الراحة والهضم):</strong> المكبح. يُخفّض معدل نبض القلب، يُعزّز الهضم، يُمكّن التعافي. يُنشَّط بالتنفس العميق والتأمل وتحفيز العصب الحائر</li>
+        <li><strong>العصب الحائر:</strong> أطول عصب قحفي. النغمة الحائرية العالية = تعافٍ أفضل من التوتر، التهاب أقل، تغيّر أفضل في معدل نبض القلب (HRV). يتحسّن بالتعرض للبرد، والطنين، والتنفس البطيء، والتواصل الاجتماعي</li>
     </ul>
 
-    <h3>The Master Connection: How Everything Links</h3>
+    <h3>الجهاز الهضمي</h3>
+    <p>يُحلَّل الطعام بواسطة حمض المعدة (درجة حموضة 1.5-3.5) والإنزيمات والصفراء. تُمتص العناصر الغذائية بشكل أساسي في الأمعاء الدقيقة (مساحة سطحها بحجم ملعب تنس). بطانة الأمعاء تُجدّد نفسها كل 3-5 أيام، مما يجعلها شديدة الاستجابة للتغييرات الغذائية.</p>
+
+    <h3>الجهاز العضلي الهيكلي</h3>
+    <ul>
+        <li><strong>العظام:</strong> نسيج حي يُعاد تشكيله باستمرار. ذروة كثافة العظام تُبلغ في سن الثلاثين. بعد ذلك، الوقاية هي المفتاح. التمارين بتحميل الوزن والكالسيوم وفيتامين د ضرورية</li>
+        <li><strong>المفاصل:</strong> الغضاريف لا تمتلك إمداداً دموياً - تعتمد على الحركة لتلقّي العناصر الغذائية (السائل الزلالي). نمط الحياة الخامل يُجوّع الغضاريف</li>
+        <li><strong>وضعية الجسم:</strong> الجلوس المطوّل يُسبّب شد عضلات ثني الورك، وانطواء الصدر، وضعف عضلات الألوية، ووضعية الرأس الأمامية. تشبيه "الجلوس هو التدخين الجديد" موجود لأن الجلوس 8+ ساعات يومياً بدون نشاط له خطر وفاة مماثل للتدخين</li>
+    </ul>
+
+    <h3>الترابط الشامل: كيف يرتبط كل شيء</h3>
     <div class="callout info">
-        <div class="callout-title">The Cascade Effect</div>
-        <p><strong>Stress</strong> elevates cortisol &rarr; impairs gut lining &rarr; allows bacteria/toxins to enter bloodstream &rarr; triggers <strong>immune response</strong> (inflammation) &rarr; inflammation damages blood vessels &rarr; increases <strong>cardiovascular</strong> risk &rarr; reaches the brain via <strong>blood-brain barrier</strong> &rarr; impairs serotonin/dopamine &rarr; causes <strong>depression/anxiety</strong> &rarr; disrupts <strong>sleep</strong> &rarr; reduces growth hormone &rarr; impairs <strong>muscle recovery</strong> &rarr; increases insulin resistance &rarr; stores more <strong>visceral fat</strong> &rarr; fat tissue produces more inflammatory cytokines &rarr; cycle amplifies.</p>
-        <p>The same chain works in reverse: exercise reduces inflammation, improves gut health, boosts neurotransmitters, improves sleep, reduces cortisol, improves insulin sensitivity. <strong>Every positive change creates a cascade of positive effects.</strong></p>
+        <div class="callout-title">تأثير التسلسل</div>
+        <p><strong>التوتر</strong> يرفع الكورتيزول &larr; يُضعف بطانة الأمعاء &larr; يسمح للبكتيريا/السموم بدخول مجرى الدم &larr; يُحفّز <strong>استجابة مناعية</strong> (التهاب) &larr; الالتهاب يُتلف الأوعية الدموية &larr; يزيد خطر <strong>أمراض القلب</strong> &larr; يصل إلى الدماغ عبر <strong>الحاجز الدموي الدماغي</strong> &larr; يُضعف السيروتونين/الدوبامين &larr; يُسبّب <strong>الاكتئاب/القلق</strong> &larr; يُعطّل <strong>النوم</strong> &larr; يُقلّل هرمون النمو &larr; يُضعف <strong>تعافي العضلات</strong> &larr; يزيد مقاومة الإنسولين &larr; يُخزّن المزيد من <strong>الدهون الحشوية</strong> &larr; الأنسجة الدهنية تُنتج المزيد من السيتوكينات الالتهابية &larr; تتضخم الدورة.</p>
+        <p>نفس السلسلة تعمل بالعكس: التمرين يُقلّل الالتهاب، ويُحسّن صحة الأمعاء، ويُعزّز الناقلات العصبية، ويُحسّن النوم، ويُقلّل الكورتيزول، ويُحسّن حساسية الإنسولين. <strong>كل تغيير إيجابي يُحدث سلسلة من التأثيرات الإيجابية.</strong></p>
     </div>
 
-    <h3>Mitochondria: Your Cellular Power Plants</h3>
-    <p>Every cell contains hundreds to thousands of mitochondria that produce <strong>ATP</strong> (the energy currency of life). Mitochondrial health declines with age, contributing to fatigue, reduced exercise capacity, and cellular aging.</p>
-    <p><strong>Mitochondrial boosters:</strong> Zone 2 cardio (increases mitochondrial density), cold exposure, fasting (triggers mitochondrial biogenesis), CoQ10, adequate sleep, avoiding excessive oxidative stress.</p>
+    <h3>الميتوكوندريا: محطات الطاقة الخلوية</h3>
+    <p>كل خلية تحتوي على مئات إلى آلاف الميتوكوندريا التي تُنتج <strong>ATP</strong> (عملة الطاقة في الحياة). صحة الميتوكوندريا تتراجع مع التقدم في العمر، مما يُساهم في التعب وانخفاض القدرة على التمرين والشيخوخة الخلوية.</p>
+    <p><strong>مُعزّزات الميتوكوندريا:</strong> تمارين المنطقة ٢ الهوائية (تزيد كثافة الميتوكوندريا)، التعرض للبرد، الصيام (يُحفّز تكوّن الميتوكوندريا الحيوي)، إنزيم CoQ10 المساعد، النوم الكافي، تجنّب الإجهاد التأكسدي المفرط.</p>
 </section>
 
 <div class="separator"></div>
 
 <!-- ============================================
-     SECTION 7: LONGEVITY
+     القسم ٧: طول العمر
      ============================================ -->
-<section class="section fade-in" id="longevity">
+<section class="section fade-in" id="longevity" dir="rtl">
     <div class="section-header">
-        <span class="section-number pink">Section 07</span>
-        <h2>Longevity: The Science of Living Longer and Better</h2>
-        <p class="section-subtitle">Lessons from the world's longest-lived populations and cutting-edge aging research</p>
+        <span class="section-number pink">القسم ٠٧</span>
+        <h2>طول العمر: علم العيش لفترة أطول وأفضل</h2>
+        <p class="section-subtitle">دروس من أطول الشعوب عمراً في العالم وأحدث أبحاث الشيخوخة</p>
     </div>
 
-    <h3>Blue Zones: Where People Live to 100</h3>
-    <p>Five regions identified by National Geographic where people reach 100 at 10x the average rate:</p>
+    <h3>المناطق الزرقاء: حيث يعيش الناس حتى المئة</h3>
+    <p>خمس مناطق حدّدتها ناشيونال جيوغرافيك حيث يبلغ الناس سن المئة بمعدل 10 أضعاف المتوسط:</p>
 
     <div class="table-wrapper">
         <table>
             <thead>
-                <tr><th>Blue Zone</th><th>Key Practice</th><th>Notable Diet</th></tr>
+                <tr><th>المنطقة الزرقاء</th><th>الممارسة الرئيسية</th><th>النظام الغذائي المميز</th></tr>
             </thead>
             <tbody>
-                <tr><td><strong>Okinawa, Japan</strong></td><td>Hara hachi bu (eat until 80% full), moais (social groups)</td><td>Sweet potatoes, tofu, bitter melon</td></tr>
-                <tr><td><strong>Sardinia, Italy</strong></td><td>Shepherding (daily mountain walking), family-first</td><td>Whole grains, beans, Cannonau wine</td></tr>
-                <tr><td><strong>Nicoya, Costa Rica</strong></td><td>Plan de vida (sense of purpose)</td><td>Beans, corn, squash (Three Sisters)</td></tr>
-                <tr><td><strong>Ikaria, Greece</strong></td><td>Daily napping, community meals, herbal teas</td><td>Mediterranean diet, wild greens, olive oil</td></tr>
-                <tr><td><strong>Loma Linda, California</strong></td><td>Sabbath rest, faith community, no alcohol/tobacco</td><td>Plant-based. Live 10 years longer than average</td></tr>
+                <tr><td><strong>أوكيناوا، اليابان</strong></td><td>هارا هاتشي بو (كُل حتى تمتلئ 80%)، موآي (مجموعات اجتماعية)</td><td>البطاطا الحلوة، التوفو، القرع المر</td></tr>
+                <tr><td><strong>سردينيا، إيطاليا</strong></td><td>رعي الأغنام (مشي جبلي يومي)، العائلة أولاً</td><td>الحبوب الكاملة، البقوليات، نبيذ كانوناو</td></tr>
+                <tr><td><strong>نيكويا، كوستاريكا</strong></td><td>خطة الحياة (الإحساس بالهدف)</td><td>الفاصوليا، الذرة، القرع (الأخوات الثلاث)</td></tr>
+                <tr><td><strong>إيكاريا، اليونان</strong></td><td>القيلولة اليومية، الوجبات الجماعية، شاي الأعشاب</td><td>حمية البحر الأبيض المتوسط، الخضراوات البرية، زيت الزيتون</td></tr>
+                <tr><td><strong>لوما ليندا، كاليفورنيا</strong></td><td>راحة السبت، المجتمع الديني، بدون كحول/تبغ</td><td>نباتي. يعيشون 10 سنوات أطول من المتوسط</td></tr>
             </tbody>
         </table>
     </div>
 
-    <h4>The Power 9 - Shared Habits</h4>
+    <h4>القوة التسع - العادات المشتركة</h4>
     <ol>
-        <li><strong>Move Naturally:</strong> Gardens, walking, manual labor - not gym memberships</li>
-        <li><strong>Purpose (Ikigai):</strong> Worth up to 7 extra years of life. Having a reason to wake up</li>
-        <li><strong>Down Shift:</strong> Daily stress-reduction rituals (prayer, napping, happy hour)</li>
-        <li><strong>80% Rule:</strong> Stop eating when 80% full. Smallest meal in late afternoon/evening</li>
-        <li><strong>Plant Slant:</strong> 95% plant-based. Beans are the cornerstone (~1 cup/day). Meat ~5 times/month</li>
-        <li><strong>Wine at 5:</strong> 1-2 glasses/day with food and friends (moderate drinkers outlive non-drinkers)</li>
-        <li><strong>Belong:</strong> Faith-based community 4x/month adds 4-14 years of life expectancy</li>
-        <li><strong>Loved Ones First:</strong> Keep aging parents nearby, commit to a partner, invest in children</li>
-        <li><strong>Right Tribe:</strong> Your social circle shapes your behavior. Healthy friends = healthy you</li>
+        <li><strong>تحرّك طبيعياً:</strong> الحدائق، المشي، العمل اليدوي - وليس عضويات الصالات الرياضية</li>
+        <li><strong>الهدف (إيكيغاي):</strong> يساوي حتى 7 سنوات إضافية من العمر. امتلاك سبب للاستيقاظ</li>
+        <li><strong>التهدئة:</strong> طقوس يومية لتخفيف التوتر (الصلاة، القيلولة، اللقاءات الاجتماعية)</li>
+        <li><strong>قاعدة الـ 80%:</strong> توقّف عن الأكل عندما تمتلئ 80%. أصغر وجبة في وقت متأخر من بعد الظهر/المساء</li>
+        <li><strong>الميل النباتي:</strong> 95% نباتي. البقوليات هي حجر الأساس (~كوب واحد يومياً). اللحوم ~5 مرات شهرياً</li>
+        <li><strong>النبيذ عند الخامسة:</strong> 1-2 كأس يومياً مع الطعام والأصدقاء (الشاربون المعتدلون يعيشون أطول من غير الشاربين)</li>
+        <li><strong>الانتماء:</strong> مجتمع ديني 4 مرات شهرياً يُضيف 4-14 سنة من العمر المتوقع</li>
+        <li><strong>الأحباء أولاً:</strong> إبقاء الوالدين المسنين قريبين، الالتزام بشريك الحياة، الاستثمار في الأبناء</li>
+        <li><strong>القبيلة المناسبة:</strong> دائرتك الاجتماعية تُشكّل سلوكك. أصدقاء أصحاء = أنت صحي</li>
     </ol>
 
-    <h3>Cellular Aging Pathways</h3>
+    <h3>مسارات الشيخوخة الخلوية</h3>
 
-    <h4>Autophagy - Cellular Self-Cleaning</h4>
-    <p>Yoshinori Ohsumi won the 2016 Nobel Prize for elucidating autophagy - the cell's process of degrading and recycling damaged components. Autophagy clears misfolded proteins, damaged mitochondria, and intracellular pathogens. Activated by <strong>fasting, exercise, and caloric restriction</strong>. Inhibited by constant eating and high insulin.</p>
+    <h4>الالتهام الذاتي - التنظيف الذاتي للخلايا</h4>
+    <p>فاز يوشينوري أوسومي بجائزة نوبل عام 2016 لتوضيحه آلية الالتهام الذاتي (الأوتوفاجي) - عملية تحلّل الخلية للمكونات التالفة وإعادة تدويرها. الالتهام الذاتي يُزيل البروتينات المشوّهة والميتوكوندريا التالفة والممرضات داخل الخلوية. يُنشَّط بـ<strong>الصيام والتمرين وتقييد السعرات الحرارية</strong>. يُثبَّط بالأكل المستمر وارتفاع الإنسولين.</p>
 
-    <h4>mTOR - The Growth/Longevity Switch</h4>
-    <p>mTOR (mechanistic Target of Rapamycin) is the master regulator of cell growth. When activated, it increases protein synthesis and cell proliferation but <strong>inhibits autophagy</strong>. The key insight: you need to <strong>cycle between mTOR activation</strong> (after exercise, with protein, for building) <strong>and mTOR suppression</strong> (fasting periods, for cellular maintenance).</p>
+    <h4>mTOR - مفتاح النمو وطول العمر</h4>
+    <p>mTOR (الهدف الآلي للرابامايسين) هو المنظم الرئيسي لنمو الخلايا. عند تنشيطه، يزيد تخليق البروتين وتكاثر الخلايا لكنه <strong>يُثبّط الالتهام الذاتي</strong>. الرؤية الأساسية: تحتاج إلى <strong>التناوب بين تنشيط mTOR</strong> (بعد التمرين، مع البروتين، للبناء) <strong>وتثبيط mTOR</strong> (فترات الصيام، للصيانة الخلوية).</p>
 
-    <h4>Telomeres - Chromosomal Clocks</h4>
-    <p>Telomeres are protective caps on chromosome ends that shorten with each cell division. When they become critically short, the cell enters senescence (stops dividing) or dies. Telomere shortening is accelerated by chronic stress, poor sleep, smoking, obesity, and inflammation. Slowed by exercise, Mediterranean diet, meditation, and social connection.</p>
+    <h4>التيلوميرات - الساعات الكروموسومية</h4>
+    <p>التيلوميرات هي أغطية حماية على أطراف الكروموسومات تقصر مع كل انقسام خلوي. عندما تصبح قصيرة بشكل حرج، تدخل الخلية في الشيخوخة (تتوقف عن الانقسام) أو تموت. يتسارع قِصَر التيلوميرات بسبب التوتر المزمن والنوم السيئ والتدخين والسمنة والالتهاب. ويتباطأ بالتمرين وحمية البحر الأبيض المتوسط والتأمل والتواصل الاجتماعي.</p>
 
-    <h4>Sirtuins - The Longevity Genes</h4>
-    <p>Seven proteins (SIRT1-SIRT7) that regulate cellular health. They depend on <strong>NAD+</strong> as a cofactor, and NAD+ levels decline with age. Caloric restriction, exercise, fasting, and cold exposure naturally boost NAD+ levels and sirtuin activity.</p>
+    <h4>السيرتوينات - جينات طول العمر</h4>
+    <p>سبعة بروتينات (SIRT1-SIRT7) تُنظّم صحة الخلايا. تعتمد على <strong>NAD+</strong> كعامل مساعد، ومستويات NAD+ تنخفض مع التقدم في العمر. تقييد السعرات الحرارية والتمرين والصيام والتعرض للبرد تُعزّز طبيعياً مستويات NAD+ ونشاط السيرتوينات.</p>
 
-    <h3>Social Connection: The Most Powerful Longevity Factor</h3>
-    <p>The <strong>Harvard Study of Adult Development</strong> (85+ years, the longest-running study on happiness) found: "Good relationships keep us happier and healthier. Period." People who are more socially connected live longer and healthier lives.</p>
+    <h3>التواصل الاجتماعي: أقوى عامل لطول العمر</h3>
+    <p><strong>دراسة هارفارد لتطور البالغين</strong> (أكثر من 85 عاماً، أطول دراسة جارية عن السعادة) وجدت: "العلاقات الجيدة تُبقينا أكثر سعادة وصحة. نقطة." الأشخاص الأكثر ارتباطاً اجتماعياً يعيشون أطول وأكثر صحة.</p>
     <ul>
-        <li>People in satisfying relationships at age 50 were the healthiest at age 80</li>
-        <li>Loneliness increases mortality risk by <strong>26-32%</strong> (meta-analysis of 300,000+ individuals)</li>
-        <li>Loneliness is equivalent to smoking <strong>15 cigarettes per day</strong> in mortality risk - more harmful than obesity or physical inactivity</li>
+        <li>الأشخاص الذين كانوا في علاقات مُرضية في سن الخمسين كانوا الأكثر صحة في سن الثمانين</li>
+        <li>الوحدة تزيد خطر الوفاة بنسبة <strong>26-32%</strong> (تحليل تجميعي لأكثر من 300,000 فرد)</li>
+        <li>الوحدة تُعادل تدخين <strong>15 سيجارة يومياً</strong> في خطر الوفاة - أكثر ضرراً من السمنة أو الخمول البدني</li>
     </ul>
 </section>
 
-<div class="separator"></div>
-
-<!-- ============================================
+<div class="separator"></div><!-- ============================================
      SECTION 8: HABITS & LIFESTYLE
      ============================================ -->
 <section class="section fade-in" id="habits">
     <div class="section-header">
-        <span class="section-number yellow">Section 08</span>
-        <h2>Habits & Lifestyle: The Daily Practices</h2>
-        <p class="section-subtitle">Small, consistent actions compound into extraordinary results over time</p>
+        <span class="section-number yellow">القسم ٠٨</span>
+        <h2>العادات ونمط الحياة: الممارسات اليومية</h2>
+        <p class="section-subtitle">الإجراءات الصغيرة والمتسقة تتراكم لتحقق نتائج استثنائية بمرور الوقت</p>
     </div>
 
-    <h3>The Compound Effect</h3>
-    <p>Improving by just <strong>1% per day</strong> compounds to being <strong>37.78x better over one year</strong> (1.01^365). Declining by 1% leads to near-zero (0.99^365 = 0.03). This mathematical reality explains why small, consistent habits dramatically outperform sporadic large efforts.</p>
+    <h3>التأثير التراكمي</h3>
+    <p>التحسن بنسبة <strong>١٪ فقط يومياً</strong> يتراكم ليصبح <strong>٣٧.٧٨ ضعفاً خلال عام واحد</strong> (١.٠١^٣٦٥). أما التراجع بنسبة ١٪ فيؤدي إلى ما يقارب الصفر (٠.٩٩^٣٦٥ = ٠.٠٣). هذه الحقيقة الرياضية تفسر لماذا تتفوق العادات الصغيرة المتسقة بشكل كبير على الجهود المتقطعة الكبيرة.</p>
 
     <div class="card">
-        <div class="card-title">Habit Stacking (James Clear)</div>
-        <p>Formula: "After [CURRENT HABIT], I will [NEW HABIT]." Anchor new behaviors to existing routines. Examples: After pouring morning coffee, meditate 60 seconds. After sitting at desk, write 3 priorities. After brushing teeth, journal one sentence.</p>
+        <div class="card-title">تراكم العادات (جيمس كلير)</div>
+        <p>الصيغة: "بعد [العادة الحالية]، سأفعل [العادة الجديدة]." اربط السلوكيات الجديدة بالروتين الحالي. أمثلة: بعد صب قهوة الصباح، تأمل لمدة ٦٠ ثانية. بعد الجلوس على المكتب، اكتب ٣ أولويات. بعد تنظيف الأسنان، دوّن جملة واحدة في دفتر يومياتك.</p>
     </div>
 
-    <h3>Morning Routine Science</h3>
-    <p>Cortisol naturally peaks 30-45 minutes after waking, making mornings optimal for establishing discipline:</p>
+    <h3>علم الروتين الصباحي</h3>
+    <p>يصل الكورتيزول طبيعياً إلى ذروته بعد ٣٠-٤٥ دقيقة من الاستيقاظ، مما يجعل الصباح الوقت الأمثل لترسيخ الانضباط:</p>
     <ol>
-        <li><strong>Morning sunlight</strong> within 30-60 minutes (sets circadian clock, boosts serotonin)</li>
-        <li><strong>Hydrate</strong> (body is dehydrated after 7-8 hours of sleep)</li>
-        <li><strong>Move</strong> for 5-10 minutes (increases BDNF and alertness)</li>
-        <li><strong>Delay caffeine 90-120 minutes</strong> after waking (allows natural cortisol to clear adenosine first)</li>
+        <li><strong>ضوء الشمس صباحاً</strong> خلال ٣٠-٦٠ دقيقة (يضبط الساعة البيولوجية، يعزز السيروتونين)</li>
+        <li><strong>الترطيب</strong> (الجسم يكون مجففاً بعد ٧-٨ ساعات من النوم)</li>
+        <li><strong>الحركة</strong> لمدة ٥-١٠ دقائق (تزيد BDNF واليقظة)</li>
+        <li><strong>تأخير الكافيين ٩٠-١٢٠ دقيقة</strong> بعد الاستيقاظ (يسمح للكورتيزول الطبيعي بتصفية الأدينوسين أولاً)</li>
     </ol>
 
-    <h3>Cold & Heat Exposure</h3>
+    <h3>التعرض للبرد والحرارة</h3>
 
     <div class="card">
-        <div class="card-title">Cold Exposure Benefits</div>
+        <div class="card-title">فوائد التعرض للبرد</div>
         <ul>
-            <li><strong>Norepinephrine:</strong> +200-530% increase (dose-dependent). Focus, attention, mood</li>
-            <li><strong>Dopamine:</strong> +250% increase (14&deg;C water for 1 hour). Comparable to cocaine without the crash</li>
-            <li><strong>Brown fat activation:</strong> Burns calories to generate heat, improving metabolic health</li>
-            <li><strong>Reduced inflammation:</strong> Decreases pro-inflammatory cytokines</li>
+            <li><strong>النورإبينفرين:</strong> زيادة +٢٠٠-٥٣٠٪ (تعتمد على الجرعة). التركيز والانتباه والمزاج</li>
+            <li><strong>الدوبامين:</strong> زيادة +٢٥٠٪ (ماء بدرجة ١٤ مئوية لمدة ساعة). مماثل للكوكايين دون الانهيار</li>
+            <li><strong>تنشيط الدهون البنية:</strong> تحرق السعرات لتوليد الحرارة، مما يحسن الصحة الأيضية</li>
+            <li><strong>تقليل الالتهاب:</strong> يخفض السيتوكينات المسببة للالتهاب</li>
         </ul>
-        <p><strong>Protocol:</strong> Start with 30-second cold finishes to showers. Build to 2-5 minutes at 10-15&deg;C (50-59&deg;F), 2-4x per week.</p>
+        <p><strong>البروتوكول:</strong> ابدأ بـ ٣٠ ثانية من الماء البارد في نهاية الاستحمام. تدرج إلى ٢-٥ دقائق عند ١٠-١٥ درجة مئوية (٥٠-٥٩ فهرنهايت)، ٢-٤ مرات في الأسبوع.</p>
     </div>
 
     <div class="card">
-        <div class="card-title">Sauna Benefits (Finnish Study, 20 Years, 2,315 Men)</div>
+        <div class="card-title">فوائد الساونا (دراسة فنلندية، ٢٠ عاماً، ٢,٣١٥ رجل)</div>
         <ul>
-            <li>4-7 sessions/week: <strong>63% lower risk</strong> of sudden cardiac death vs. 1x/week</li>
-            <li><strong>50% lower risk</strong> of fatal cardiovascular disease</li>
-            <li><strong>40% lower risk</strong> of all-cause mortality</li>
-            <li>Growth hormone increase 2-5x during a session</li>
+            <li>٤-٧ جلسات/أسبوع: <strong>انخفاض ٦٣٪</strong> في خطر الموت القلبي المفاجئ مقارنة بمرة/أسبوع</li>
+            <li><strong>انخفاض ٥٠٪</strong> في خطر أمراض القلب والأوعية الدموية المميتة</li>
+            <li><strong>انخفاض ٤٠٪</strong> في خطر الوفاة لجميع الأسباب</li>
+            <li>زيادة هرمون النمو ٢-٥ أضعاف خلال الجلسة</li>
         </ul>
-        <p><strong>Protocol:</strong> 80-100&deg;C (176-212&deg;F) for 15-20 minutes, 4-7x per week. Hydrate adequately.</p>
+        <p><strong>البروتوكول:</strong> ٨٠-١٠٠ درجة مئوية (١٧٦-٢١٢ فهرنهايت) لمدة ١٥-٢٠ دقيقة، ٤-٧ مرات في الأسبوع. اشرب سوائل كافية.</p>
     </div>
 
-    <h3>Sunlight: The Underappreciated Drug</h3>
+    <h3>ضوء الشمس: الدواء الذي لا يُقدَّر</h3>
     <ul>
-        <li><strong>Vitamin D:</strong> 40-80% of the global population has insufficient levels. Optimal: 40-60 ng/mL</li>
-        <li><strong>Circadian rhythm:</strong> Morning sunlight sets the master clock for better nighttime sleep</li>
-        <li><strong>Nitric oxide:</strong> UV radiation releases nitric oxide, reducing blood pressure</li>
-        <li><strong>Serotonin:</strong> Sunlight directly boosts serotonin production</li>
-        <li><strong>Myopia prevention:</strong> 2+ hours outdoor light daily significantly reduces nearsightedness risk in children</li>
+        <li><strong>فيتامين د:</strong> ٤٠-٨٠٪ من سكان العالم لديهم مستويات غير كافية. المثالي: ٤٠-٦٠ نانوغرام/مل</li>
+        <li><strong>الإيقاع اليومي:</strong> ضوء الشمس الصباحي يضبط الساعة الرئيسية لنوم أفضل ليلاً</li>
+        <li><strong>أكسيد النيتريك:</strong> الأشعة فوق البنفسجية تطلق أكسيد النيتريك، مما يخفض ضغط الدم</li>
+        <li><strong>السيروتونين:</strong> ضوء الشمس يعزز مباشرة إنتاج السيروتونين</li>
+        <li><strong>الوقاية من قصر النظر:</strong> ساعتان+ من الضوء الخارجي يومياً تقلل بشكل كبير من خطر قصر النظر عند الأطفال</li>
     </ul>
-    <p><strong>Protocol:</strong> 10-30 minutes of midday sun on arms/legs 2-3x per week (varies by skin tone). Never burn. Supplement with 1,000-4,000 IU vitamin D3 if levels are low.</p>
+    <p><strong>البروتوكول:</strong> ١٠-٣٠ دقيقة من شمس الظهيرة على الذراعين/الساقين ٢-٣ مرات في الأسبوع (يختلف حسب لون البشرة). لا تتعرض للحروق أبداً. أضف مكمل ١,٠٠٠-٤,٠٠٠ وحدة دولية من فيتامين D3 إذا كانت المستويات منخفضة.</p>
 
-    <h3>Breathing: Nasal vs. Mouth</h3>
-    <p>Nasal breathing provides air filtration (98% of pathogens), humidification, <strong>nitric oxide production</strong> (increases oxygen absorption by 10-15%), and optimal CO2 retention (improves oxygen delivery via the Bohr effect). Chronic mouth breathing is associated with sleep apnea, dental problems, increased stress response, and reduced athletic performance.</p>
+    <h3>التنفس: الأنفي مقابل الفموي</h3>
+    <p>يوفر التنفس الأنفي ترشيح الهواء (٩٨٪ من مسببات الأمراض)، والترطيب، <strong>وإنتاج أكسيد النيتريك</strong> (يزيد امتصاص الأكسجين بنسبة ١٠-١٥٪)، والاحتفاظ الأمثل بثاني أكسيد الكربون (يحسن توصيل الأكسجين عبر تأثير بوهر). يرتبط التنفس الفموي المزمن بانقطاع النفس أثناء النوم، ومشاكل الأسنان، وزيادة الاستجابة للضغط، وانخفاض الأداء الرياضي.</p>
 
     <div class="callout info">
-        <div class="callout-title">BOLT Score (CO2 Tolerance)</div>
-        <p>After a normal exhale, time how long until you feel the first urge to breathe. Under 20 seconds suggests chronic hyperventilation. 40+ seconds indicates excellent CO2 tolerance. Improve with nasal breathing practice and Buteyko method exercises.</p>
+        <div class="callout-title">درجة BOLT (تحمل ثاني أكسيد الكربون)</div>
+        <p>بعد زفير طبيعي، قِس المدة حتى تشعر بأول رغبة في التنفس. أقل من ٢٠ ثانية تشير إلى فرط التنفس المزمن. ٤٠ ثانية أو أكثر تشير إلى تحمل ممتاز لثاني أكسيد الكربون. حسّنه بممارسة التنفس الأنفي وتمارين طريقة بوتيكو.</p>
     </div>
 
-    <h3>Toxin Avoidance</h3>
+    <h3>تجنب السموم</h3>
     <ul>
-        <li><strong>BPA:</strong> Endocrine disruptor in plastics. Use glass/stainless steel containers. Never heat food in plastic</li>
-        <li><strong>Pesticides:</strong> Buy organic for the "Dirty Dozen" (strawberries, spinach, kale, peaches, pears, etc.)</li>
-        <li><strong>Heavy metals:</strong> Filter drinking water, choose small fish (sardines > tuna), vary rice sources</li>
-        <li><strong>Air pollution:</strong> Use HEPA air purifiers indoors. PM2.5 causes 4.2 million premature deaths annually (WHO)</li>
-        <li><strong>Microplastics:</strong> Humans ingest ~5 grams/week (a credit card). Filter water, avoid plastic containers, reduce synthetic clothing</li>
+        <li><strong>BPA:</strong> مُختل للغدد الصماء في البلاستيك. استخدم حاويات زجاجية/ستانلس ستيل. لا تسخن الطعام في البلاستيك أبداً</li>
+        <li><strong>المبيدات الحشرية:</strong> اشترِ عضوياً لقائمة "الاثني عشر الملوثة" (الفراولة، السبانخ، الكرنب، الخوخ، الإجاص، إلخ)</li>
+        <li><strong>المعادن الثقيلة:</strong> صفِّ مياه الشرب، اختر الأسماك الصغيرة (السردين أفضل من التونة)، نوّع مصادر الأرز</li>
+        <li><strong>تلوث الهواء:</strong> استخدم أجهزة تنقية هواء HEPA داخلياً. الجسيمات الدقيقة PM2.5 تسبب ٤.٢ مليون وفاة مبكرة سنوياً (منظمة الصحة العالمية)</li>
+        <li><strong>البلاستيك الدقيق:</strong> يبتلع البشر نحو ٥ غرامات أسبوعياً (بطاقة ائتمان). صفِّ الماء، تجنب الحاويات البلاستيكية، قلل الملابس الصناعية</li>
     </ul>
 
-    <h3>Posture & Movement</h3>
-    <p>The <strong>20-8-2 Rule</strong> (Cornell University): 20 minutes sitting, 8 minutes standing, 2 minutes moving. Sitting 8+ hours/day without activity has mortality risk comparable to smoking.</p>
+    <h3>القوام والحركة</h3>
+    <p>قاعدة <strong>٢٠-٨-٢</strong> (جامعة كورنيل): ٢٠ دقيقة جلوس، ٨ دقائق وقوف، ٢ دقيقة حركة. الجلوس ٨ ساعات يومياً أو أكثر دون نشاط ينطوي على خطر وفاة مماثل للتدخين.</p>
 
-    <h3>NEAT: Non-Exercise Activity Thermogenesis</h3>
-    <p>NEAT varies by up to <strong>2,000 calories/day</strong> between individuals. It includes walking, standing, fidgeting, household chores, gardening, and stairs. Walk <strong>7,000-10,000 steps daily</strong> (associated with 50-70% lower mortality). Take a 10-15 minute walk after each meal to dramatically improve blood sugar.</p>
+    <h3>NEAT: التوليد الحراري بالنشاط غير الرياضي</h3>
+    <p>يختلف NEAT بما يصل إلى <strong>٢,٠٠٠ سعرة حرارية/يوم</strong> بين الأفراد. يشمل المشي والوقوف والتململ والأعمال المنزلية والبستنة والسلالم. امشِ <strong>٧,٠٠٠-١٠,٠٠٠ خطوة يومياً</strong> (مرتبط بانخفاض ٥٠-٧٠٪ في معدل الوفيات). تمشَّ ١٠-١٥ دقيقة بعد كل وجبة لتحسين سكر الدم بشكل كبير.</p>
 
-    <h3>Dental Health = Heart Health</h3>
-    <p>Periodontal disease allows pathogenic bacteria to enter the bloodstream, producing TMAO (linked to atherosclerosis) and triggering systemic inflammation. Brush 2x daily, floss daily, get cleanings every 6 months. Bleeding gums = active inflammation.</p>
+    <h3>صحة الأسنان = صحة القلب</h3>
+    <p>تسمح أمراض اللثة للبكتيريا الممرضة بدخول مجرى الدم، مما ينتج TMAO (مرتبط بتصلب الشرايين) ويحفز الالتهاب الجهازي. نظّف أسنانك مرتين يومياً، استخدم خيط الأسنان يومياً، احصل على تنظيف كل ٦ أشهر. نزيف اللثة = التهاب نشط.</p>
 
-    <h3>Eye Health</h3>
-    <p>The <strong>20-20-2 Rule:</strong> Every 20 minutes of close work, look 20 feet away for 20 seconds, and spend 2 hours outdoors daily. Blink consciously during screen use (blink rate drops from 15-20/min to 3-4 during screen time). Blue light blocking glasses are not evidence-based for eye protection (AAO), but night mode helps sleep.</p>
+    <h3>صحة العيون</h3>
+    <p>قاعدة <strong>٢٠-٢٠-٢:</strong> كل ٢٠ دقيقة من العمل القريب، انظر إلى مسافة ٢٠ قدماً لمدة ٢٠ ثانية، واقضِ ساعتين في الهواء الطلق يومياً. ارمش بوعي أثناء استخدام الشاشة (معدل الرمش ينخفض من ١٥-٢٠/دقيقة إلى ٣-٤ أثناء استخدام الشاشة). نظارات حجب الضوء الأزرق ليست مبنية على أدلة لحماية العيون (الأكاديمية الأمريكية لطب العيون)، لكن الوضع الليلي يساعد على النوم.</p>
 </section>
 
 <div class="separator"></div>
@@ -1592,101 +1591,101 @@
      ============================================ -->
 <section class="section fade-in" id="biomarkers">
     <div class="section-header">
-        <span class="section-number blue">Section 09</span>
-        <h2>Biomarkers: The Numbers That Matter</h2>
-        <p class="section-subtitle">What to track, what's optimal, and how often to test</p>
+        <span class="section-number blue">القسم ٠٩</span>
+        <h2>المؤشرات الحيوية: الأرقام التي تهم</h2>
+        <p class="section-subtitle">ما يجب تتبعه، وما هو المثالي، وكم مرة يجب الفحص</p>
     </div>
 
-    <h3>Cardiovascular Markers</h3>
+    <h3>مؤشرات القلب والأوعية الدموية</h3>
     <div class="table-wrapper">
         <table>
             <thead>
-                <tr><th>Biomarker</th><th>Optimal</th><th>Concerning</th><th>Why It Matters</th></tr>
+                <tr><th>المؤشر الحيوي</th><th>المثالي</th><th>المقلق</th><th>لماذا يهم</th></tr>
             </thead>
             <tbody>
-                <tr><td><strong>Blood Pressure</strong></td><td>&lt;120/80 mmHg</td><td>&ge;130/80</td><td>#1 modifiable risk factor for heart disease &amp; stroke</td></tr>
-                <tr><td><strong>Resting Heart Rate</strong></td><td>50-65 bpm</td><td>&gt;80 bpm consistently</td><td>Lower = greater cardiovascular fitness &amp; longevity</td></tr>
-                <tr><td><strong>LDL Cholesterol</strong></td><td>&lt;100 mg/dL</td><td>&gt;130 mg/dL</td><td>ApoB is superior marker. Target ApoB &lt;80 mg/dL</td></tr>
-                <tr><td><strong>HDL Cholesterol</strong></td><td>&gt;60 mg/dL</td><td>&lt;40 (men) / &lt;50 (women)</td><td>Protective. Higher is better</td></tr>
-                <tr><td><strong>Triglycerides</strong></td><td>&lt;100 mg/dL</td><td>&gt;150 mg/dL</td><td>TG:HDL ratio &lt;2 = good insulin sensitivity</td></tr>
+                <tr><td><strong>ضغط الدم</strong></td><td>&lt;120/80 ملم زئبق</td><td>&ge;130/80</td><td>عامل الخطر الأول القابل للتعديل لأمراض القلب والسكتة الدماغية</td></tr>
+                <tr><td><strong>معدل ضربات القلب أثناء الراحة</strong></td><td>50-65 نبضة/دقيقة</td><td>&gt;80 نبضة/دقيقة باستمرار</td><td>أقل = لياقة قلبية أكبر وعمر أطول</td></tr>
+                <tr><td><strong>كوليسترول LDL</strong></td><td>&lt;100 ملغ/دل</td><td>&gt;130 ملغ/دل</td><td>ApoB مؤشر أفضل. الهدف ApoB &lt;80 ملغ/دل</td></tr>
+                <tr><td><strong>كوليسترول HDL</strong></td><td>&gt;60 ملغ/دل</td><td>&lt;40 (رجال) / &lt;50 (نساء)</td><td>وقائي. الأعلى أفضل</td></tr>
+                <tr><td><strong>الدهون الثلاثية</strong></td><td>&lt;100 ملغ/دل</td><td>&gt;150 ملغ/دل</td><td>نسبة TG:HDL &lt;2 = حساسية جيدة للأنسولين</td></tr>
             </tbody>
         </table>
     </div>
 
-    <h3>Metabolic Markers</h3>
+    <h3>المؤشرات الأيضية</h3>
     <div class="table-wrapper">
         <table>
             <thead>
-                <tr><th>Biomarker</th><th>Optimal</th><th>Concerning</th><th>Why It Matters</th></tr>
+                <tr><th>المؤشر الحيوي</th><th>المثالي</th><th>المقلق</th><th>لماذا يهم</th></tr>
             </thead>
             <tbody>
-                <tr><td><strong>HbA1c</strong></td><td>4.8-5.2%</td><td>&ge;5.7% (pre-diabetic)</td><td>Average blood sugar over 2-3 months. Best metabolic marker</td></tr>
-                <tr><td><strong>Fasting Insulin</strong></td><td>&lt;5 uIU/mL</td><td>&gt;8 uIU/mL</td><td>Early insulin resistance indicator (years before HbA1c elevates)</td></tr>
-                <tr><td><strong>Fasting Glucose</strong></td><td>70-90 mg/dL</td><td>&ge;100 mg/dL</td><td>Less useful than HbA1c alone</td></tr>
+                <tr><td><strong>HbA1c</strong></td><td>4.8-5.2%</td><td>&ge;5.7% (ما قبل السكري)</td><td>متوسط سكر الدم خلال ٢-٣ أشهر. أفضل مؤشر أيضي</td></tr>
+                <tr><td><strong>الأنسولين الصائم</strong></td><td>&lt;5 uIU/mL</td><td>&gt;8 uIU/mL</td><td>مؤشر مبكر لمقاومة الأنسولين (سنوات قبل ارتفاع HbA1c)</td></tr>
+                <tr><td><strong>الجلوكوز الصائم</strong></td><td>70-90 ملغ/دل</td><td>&ge;100 ملغ/دل</td><td>أقل فائدة من HbA1c وحده</td></tr>
             </tbody>
         </table>
     </div>
 
-    <h3>Inflammation Markers</h3>
+    <h3>مؤشرات الالتهاب</h3>
     <div class="table-wrapper">
         <table>
             <thead>
-                <tr><th>Biomarker</th><th>Optimal</th><th>Concerning</th><th>Why It Matters</th></tr>
+                <tr><th>المؤشر الحيوي</th><th>المثالي</th><th>المقلق</th><th>لماذا يهم</th></tr>
             </thead>
             <tbody>
-                <tr><td><strong>hs-CRP</strong></td><td>&lt;1.0 mg/L</td><td>&gt;3.0 mg/L</td><td>Chronic systemic inflammation. Links to CVD and all-cause mortality</td></tr>
-                <tr><td><strong>Homocysteine</strong></td><td>&lt;8 umol/L</td><td>&gt;15 umol/L</td><td>CVD, stroke, dementia risk. Correctable with B6, B12, folate</td></tr>
+                <tr><td><strong>hs-CRP</strong></td><td>&lt;1.0 ملغ/لتر</td><td>&gt;3.0 ملغ/لتر</td><td>الالتهاب الجهازي المزمن. مرتبط بأمراض القلب والوفاة لجميع الأسباب</td></tr>
+                <tr><td><strong>الهوموسيستين</strong></td><td>&lt;8 umol/L</td><td>&gt;15 umol/L</td><td>خطر أمراض القلب، السكتة الدماغية، الخرف. قابل للتصحيح بفيتامين B6 وB12 وحمض الفوليك</td></tr>
             </tbody>
         </table>
     </div>
 
-    <h3>Nutrient & Hormone Markers</h3>
+    <h3>مؤشرات المغذيات والهرمونات</h3>
     <div class="table-wrapper">
         <table>
             <thead>
-                <tr><th>Biomarker</th><th>Optimal</th><th>Concerning</th><th>Action</th></tr>
+                <tr><th>المؤشر الحيوي</th><th>المثالي</th><th>المقلق</th><th>الإجراء</th></tr>
             </thead>
             <tbody>
-                <tr><td><strong>Vitamin D</strong></td><td>40-60 ng/mL</td><td>&lt;20 ng/mL (deficient)</td><td>Supplement 1,000-4,000 IU D3 with K2 if low</td></tr>
-                <tr><td><strong>Ferritin</strong></td><td>40-100 ng/mL</td><td>&gt;200 or &lt;20</td><td>Iron stores. High = inflammation. Low = anemia</td></tr>
-                <tr><td><strong>Omega-3 Index</strong></td><td>&gt;8%</td><td>&lt;4%</td><td>EPA+DHA in red blood cells. &lt;4% = significantly higher cardiac risk</td></tr>
-                <tr><td><strong>TSH</strong></td><td>0.5-2.5 mIU/L</td><td>&gt;4.0 mIU/L</td><td>Thyroid function. Affects metabolism, energy, weight, mood</td></tr>
+                <tr><td><strong>فيتامين د</strong></td><td>40-60 نانوغرام/مل</td><td>&lt;20 نانوغرام/مل (نقص)</td><td>أضف مكمل ١,٠٠٠-٤,٠٠٠ وحدة دولية D3 مع K2 إذا كان منخفضاً</td></tr>
+                <tr><td><strong>الفيريتين</strong></td><td>40-100 نانوغرام/مل</td><td>&gt;200 أو &lt;20</td><td>مخزون الحديد. مرتفع = التهاب. منخفض = فقر دم</td></tr>
+                <tr><td><strong>مؤشر أوميغا-3</strong></td><td>&gt;8%</td><td>&lt;4%</td><td>EPA+DHA في كريات الدم الحمراء. &lt;4% = خطر قلبي أعلى بشكل كبير</td></tr>
+                <tr><td><strong>TSH</strong></td><td>0.5-2.5 mIU/L</td><td>&gt;4.0 mIU/L</td><td>وظيفة الغدة الدرقية. يؤثر على الأيض والطاقة والوزن والمزاج</td></tr>
             </tbody>
         </table>
     </div>
 
-    <h3>Testing Frequency</h3>
+    <h3>تكرار الفحوصات</h3>
     <ul>
-        <li><strong>Annually:</strong> Comprehensive metabolic panel, lipids, HbA1c, vitamin D, hs-CRP, thyroid, CBC</li>
-        <li><strong>Every 2-3 years:</strong> Homocysteine, ferritin, omega-3 index, Lp(a) (test once if never done)</li>
-        <li><strong>Daily/Weekly tracking:</strong> Blood pressure, resting heart rate, HRV, body weight trends</li>
+        <li><strong>سنوياً:</strong> فحص التمثيل الغذائي الشامل، الدهون، HbA1c، فيتامين د، hs-CRP، الغدة الدرقية، تعداد الدم الكامل</li>
+        <li><strong>كل ٢-٣ سنوات:</strong> الهوموسيستين، الفيريتين، مؤشر أوميغا-3، Lp(a) (افحصه مرة واحدة إذا لم يُفحص من قبل)</li>
+        <li><strong>تتبع يومي/أسبوعي:</strong> ضغط الدم، معدل ضربات القلب أثناء الراحة، تقلب معدل ضربات القلب HRV، اتجاهات وزن الجسم</li>
     </ul>
 
-    <h3>The Daily Protocol: Putting It All Together</h3>
+    <h3>البروتوكول اليومي: تجميع كل شيء</h3>
 
     <div class="table-wrapper">
         <table>
             <thead>
-                <tr><th>Time</th><th>Practice</th><th>Mechanism</th></tr>
+                <tr><th>الوقت</th><th>الممارسة</th><th>الآلية</th></tr>
             </thead>
             <tbody>
-                <tr><td><strong>Morning</strong></td><td>Sunlight within 30-60 min of waking</td><td>Circadian entrainment, cortisol regulation</td></tr>
-                <tr><td><strong>Morning</strong></td><td>Nasal breathing, hydrate, move</td><td>Nitric oxide, rehydration, BDNF</td></tr>
-                <tr><td><strong>Throughout day</strong></td><td>Move every 20-30 min (20-8-2 rule)</td><td>NEAT, metabolic health, posture</td></tr>
-                <tr><td><strong>Meals</strong></td><td>Plant-heavy, protein first, stop at 80% full</td><td>Blood sugar control, micronutrient density</td></tr>
-                <tr><td><strong>After meals</strong></td><td>10-15 min walk</td><td>Glucose management (-20-30% spike)</td></tr>
-                <tr><td><strong>Afternoon</strong></td><td>Zone 2 cardio or strength training</td><td>Cardiovascular health, muscle, hormones</td></tr>
-                <tr><td><strong>Evening</strong></td><td>Cold/heat exposure (2-4x/week)</td><td>Hormesis, cardiovascular adaptation</td></tr>
-                <tr><td><strong>Evening</strong></td><td>Social connection, no caffeine after 2PM</td><td>Vagal tone, stress reduction, sleep quality</td></tr>
-                <tr><td><strong>Night</strong></td><td>Dark room, cool (65-68&deg;F), consistent bedtime</td><td>Sleep architecture, autophagy, recovery</td></tr>
-                <tr><td><strong>Ongoing</strong></td><td>Track key biomarkers annually</td><td>Early detection, course correction</td></tr>
+                <tr><td><strong>الصباح</strong></td><td>ضوء الشمس خلال ٣٠-٦٠ دقيقة من الاستيقاظ</td><td>ضبط الإيقاع اليومي، تنظيم الكورتيزول</td></tr>
+                <tr><td><strong>الصباح</strong></td><td>تنفس أنفي، ترطيب، حركة</td><td>أكسيد النيتريك، إعادة الترطيب، BDNF</td></tr>
+                <tr><td><strong>طوال اليوم</strong></td><td>تحرك كل ٢٠-٣٠ دقيقة (قاعدة ٢٠-٨-٢)</td><td>NEAT، الصحة الأيضية، القوام</td></tr>
+                <tr><td><strong>الوجبات</strong></td><td>غنية بالنباتات، البروتين أولاً، توقف عند ٨٠٪ شبع</td><td>التحكم بسكر الدم، كثافة المغذيات الدقيقة</td></tr>
+                <tr><td><strong>بعد الوجبات</strong></td><td>مشي ١٠-١٥ دقيقة</td><td>إدارة الجلوكوز (تخفيض ٢٠-٣٠٪ من الارتفاع)</td></tr>
+                <tr><td><strong>بعد الظهر</strong></td><td>تمارين كارديو المنطقة ٢ أو تمارين القوة</td><td>صحة القلب والأوعية الدموية، العضلات، الهرمونات</td></tr>
+                <tr><td><strong>المساء</strong></td><td>تعرض للبرد/الحرارة (٢-٤ مرات/أسبوع)</td><td>الهورمسيس، التكيف القلبي الوعائي</td></tr>
+                <tr><td><strong>المساء</strong></td><td>تواصل اجتماعي، لا كافيين بعد الساعة ٢ ظهراً</td><td>التوتر العصبي المبهمي، تقليل الضغط، جودة النوم</td></tr>
+                <tr><td><strong>الليل</strong></td><td>غرفة مظلمة، باردة (١٨-٢٠ درجة مئوية)، موعد نوم ثابت</td><td>بنية النوم، الالتهام الذاتي، التعافي</td></tr>
+                <tr><td><strong>مستمر</strong></td><td>تتبع المؤشرات الحيوية الرئيسية سنوياً</td><td>الكشف المبكر، تصحيح المسار</td></tr>
             </tbody>
         </table>
     </div>
 
     <div class="callout success">
-        <div class="callout-title">The Most Important Takeaway</div>
-        <p>You don't need to do everything at once. Start with the three highest-impact habits: <strong>sleep 7-9 hours consistently, move your body daily, and eat mostly whole foods.</strong> These three alone address 80% of what drives chronic disease. Everything else is optimization on top of these foundations. Small, consistent improvements compound. Your body is remarkably resilient and responsive to positive change at any age.</p>
+        <div class="callout-title">أهم خلاصة</div>
+        <p>لا تحتاج لفعل كل شيء دفعة واحدة. ابدأ بأهم ثلاث عادات ذات التأثير الأعلى: <strong>نم ٧-٩ ساعات باستمرار، حرّك جسمك يومياً، وتناول أطعمة كاملة في الغالب.</strong> هذه الثلاث وحدها تعالج ٨٠٪ مما يسبب الأمراض المزمنة. كل شيء آخر هو تحسين فوق هذه الأسس. التحسينات الصغيرة المتسقة تتراكم. جسمك يتمتع بمرونة ملحوظة ويستجيب للتغيير الإيجابي في أي عمر.</p>
     </div>
 </section>
 
@@ -1694,9 +1693,9 @@
      FOOTER
      ============================================ -->
 <footer class="footer">
-    <p>This guide is for educational purposes only and does not constitute medical advice. Always consult healthcare professionals for personal health decisions.</p>
-    <p style="margin-top: 0.5rem;">Research sourced from PubMed, Harvard Health, WHO, NIH, and peer-reviewed journals. Last updated February 2026.</p>
-    <p style="margin-top: 1rem; color: var(--accent-blue);">Built with science. Designed for humans.</p>
+    <p>هذا الدليل لأغراض تعليمية فقط ولا يشكل نصيحة طبية. استشر دائماً المتخصصين في الرعاية الصحية لاتخاذ القرارات الصحية الشخصية.</p>
+    <p style="margin-top: 0.5rem;">الأبحاث مصدرها PubMed، Harvard Health، منظمة الصحة العالمية، المعاهد الوطنية للصحة، والمجلات العلمية المحكّمة. آخر تحديث فبراير ٢٠٢٦.</p>
+    <p style="margin-top: 1rem; color: var(--accent-blue);">مبني على العلم. مصمم للبشر.</p>
 </footer>
 
 <!-- ============================================
