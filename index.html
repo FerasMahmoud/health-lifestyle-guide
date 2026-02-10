@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Complete Health & Lifestyle Guide</title>
+    <style>
+        /* ============================================
+           CSS VARIABLES & RESET
+           ============================================ */
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a2e;
+            --bg-card-hover: #1e1e35;
+            --text-primary: #e8e8f0;
+            --text-secondary: #a0a0b8;
+            --text-muted: #6a6a82;
+            --accent-blue: #4facfe;
+            --accent-purple: #a855f7;
+            --accent-green: #34d399;
+            --accent-orange: #fb923c;
+            --accent-red: #f87171;
+            --accent-pink: #f472b6;
+            --accent-cyan: #22d3ee;
+            --accent-yellow: #fbbf24;
+            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-blue: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-green: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --gradient-purple: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+            --gradient-orange: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-warm: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.3);
+            --shadow-glow: 0 0 40px rgba(79, 172, 254, 0.15);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --font-main: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+            --max-width: 900px;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.75;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============================================
+           SCROLLBAR
+           ============================================ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--bg-card); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-blue); }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0.75rem 0;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.25rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.75rem;
+            padding: 0.35rem 0.65rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+            background: rgba(79, 172, 254, 0.1);
+        }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(79, 172, 254, 0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 50%, rgba(168, 85, 247, 0.06) 0%, transparent 50%);
+            animation: heroFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes heroFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(1deg); }
+            66% { transform: translate(-20px, 20px) rotate(-1deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background: rgba(79, 172, 254, 0.1);
+            color: var(--accent-blue);
+            border: 1px solid rgba(79, 172, 254, 0.2);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, #a0a0b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ============================================
+           TOC (Table of Contents)
+           ============================================ */
+        .toc {
+            max-width: var(--max-width);
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.25s;
+        }
+
+        .toc-item:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .toc-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .toc-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .toc-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           SECTIONS
+           ============================================ */
+        .section {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .section-number {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 0.3rem 0.8rem;
+            border-radius: 100px;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-number.blue { background: rgba(79, 172, 254, 0.12); color: var(--accent-blue); }
+        .section-number.purple { background: rgba(168, 85, 247, 0.12); color: var(--accent-purple); }
+        .section-number.green { background: rgba(52, 211, 153, 0.12); color: var(--accent-green); }
+        .section-number.orange { background: rgba(251, 146, 60, 0.12); color: var(--accent-orange); }
+        .section-number.red { background: rgba(248, 113, 113, 0.12); color: var(--accent-red); }
+        .section-number.pink { background: rgba(244, 114, 182, 0.12); color: var(--accent-pink); }
+        .section-number.cyan { background: rgba(34, 211, 238, 0.12); color: var(--accent-cyan); }
+        .section-number.yellow { background: rgba(251, 191, 36, 0.12); color: var(--accent-yellow); }
+
+        .section h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .section h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 2.5rem 0 1rem;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+        }
+
+        .section h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--accent-blue);
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .section strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .section ul, .section ol {
+            margin: 0.75rem 0 1.25rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .section li {
+            margin-bottom: 0.4rem;
+            padding-left: 0.25rem;
+        }
+
+        .section li::marker {
+            color: var(--accent-blue);
+        }
+
+        /* ============================================
+           CARDS & CALLOUTS
+           ============================================ */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .callout {
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid;
+        }
+
+        .callout.info {
+            background: rgba(79, 172, 254, 0.06);
+            border-color: var(--accent-blue);
+        }
+
+        .callout.warning {
+            background: rgba(251, 191, 36, 0.06);
+            border-color: var(--accent-yellow);
+        }
+
+        .callout.success {
+            background: rgba(52, 211, 153, 0.06);
+            border-color: var(--accent-green);
+        }
+
+        .callout.danger {
+            background: rgba(248, 113, 113, 0.06);
+            border-color: var(--accent-red);
+        }
+
+        .callout-title {
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .callout.info .callout-title { color: var(--accent-blue); }
+        .callout.warning .callout-title { color: var(--accent-yellow); }
+        .callout.success .callout-title { color: var(--accent-green); }
+        .callout.danger .callout-title { color: var(--accent-red); }
+
+        /* ============================================
+           TABLES
+           ============================================ */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-subtle);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        thead {
+            background: var(--bg-card);
+        }
+
+        th {
+            padding: 0.85rem 1rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tr:hover td {
+            background: rgba(79, 172, 254, 0.03);
+        }
+
+        /* ============================================
+           STATS GRID
+           ============================================ */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            text-align: center;
+            transition: all 0.25s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-value.blue { color: var(--accent-blue); }
+        .stat-value.green { color: var(--accent-green); }
+        .stat-value.purple { color: var(--accent-purple); }
+        .stat-value.orange { color: var(--accent-orange); }
+        .stat-value.red { color: var(--accent-red); }
+        .stat-value.cyan { color: var(--accent-cyan); }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ============================================
+           PROGRESS BARS
+           ============================================ */
+        .progress-item {
+            margin: 0.75rem 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--bg-card);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 1s ease;
+        }
+
+        .progress-fill.blue { background: var(--gradient-blue); }
+        .progress-fill.green { background: var(--gradient-green); }
+        .progress-fill.purple { background: var(--gradient-purple); }
+        .progress-fill.orange { background: var(--gradient-orange); }
+
+        /* ============================================
+           DIAGRAM FLOW
+           ============================================ */
+        .flow {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 2rem 0;
+        }
+
+        .flow-step {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            position: relative;
+        }
+
+        .flow-arrow {
+            text-align: center;
+            padding: 0.5rem;
+            color: var(--accent-blue);
+            font-size: 1.25rem;
+        }
+
+        .flow-step-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .flow-step-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ============================================
+           SEPARATOR
+           ============================================ */
+        .separator {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+            margin: 2rem 0;
+            max-width: var(--max-width);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+
+        .footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        /* ============================================
+           BACK TO TOP
+           ============================================ */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            z-index: 999;
+            box-shadow: 0 4px 20px rgba(79, 172, 254, 0.4);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { min-height: 80vh; padding: 5rem 1.5rem 3rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .section { padding: 3rem 1.25rem; }
+            .section h2 { font-size: 1.7rem; }
+            .stat-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-stats { gap: 1.25rem; }
+            .toc-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Tag / badge inline */
+        .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .tag.blue { background: rgba(79,172,254,0.15); color: var(--accent-blue); }
+        .tag.green { background: rgba(52,211,153,0.15); color: var(--accent-green); }
+        .tag.red { background: rgba(248,113,113,0.15); color: var(--accent-red); }
+        .tag.purple { background: rgba(168,85,247,0.15); color: var(--accent-purple); }
+        .tag.orange { background: rgba(251,146,60,0.15); color: var(--accent-orange); }
+        .tag.yellow { background: rgba(251,191,36,0.15); color: var(--accent-yellow); }
+    </style>
+</head>
+<body>
+
+<!-- ============================================
+     NAVIGATION
+     ============================================ -->
+<nav class="nav">
+    <div class="nav-inner">
+        <div class="nav-logo">HealthGuide</div>
+        <div class="nav-links">
+            <a href="#brain">Brain</a>
+            <a href="#mental">Mental</a>
+            <a href="#nutrition">Nutrition</a>
+            <a href="#exercise">Exercise</a>
+            <a href="#sleep">Sleep</a>
+            <a href="#body">Body</a>
+            <a href="#longevity">Longevity</a>
+            <a href="#habits">Habits</a>
+            <a href="#biomarkers">Biomarkers</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<header class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">Evidence-Based Health Science</div>
+        <h1>The Complete Guide to Human Health & Performance</h1>
+        <p>A deep, comprehensive exploration of how your body works, what it needs, and how to optimize every system for a longer, healthier, more fulfilling life. Backed by research, powered by science.</p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-number">9</div>
+                <div class="hero-stat-label">Major Sections</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">200+</div>
+                <div class="hero-stat-label">Research Facts</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">50+</div>
+                <div class="hero-stat-label">Action Items</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ============================================
+     TABLE OF CONTENTS
+     ============================================ -->
+<div class="toc">
+    <div class="toc-grid">
+        <a href="#brain" class="toc-item">
+            <span class="toc-icon">&#129504;</span>
+            <div><div class="toc-text">Your Brain</div><div class="toc-desc">Neurotransmitters, neuroplasticity, and how your brain shapes everything</div></div>
+        </a>
+        <a href="#mental" class="toc-item">
+            <span class="toc-icon">&#128161;</span>
+            <div><div class="toc-text">Mental Health</div><div class="toc-desc">Anxiety, depression, therapy types, meditation, and breathing</div></div>
+        </a>
+        <a href="#nutrition" class="toc-item">
+            <span class="toc-icon">&#129382;</span>
+            <div><div class="toc-text">Nutrition & Food</div><div class="toc-desc">Macros, micros, gut health, superfoods, and meal timing</div></div>
+        </a>
+        <a href="#exercise" class="toc-item">
+            <span class="toc-icon">&#127947;</span>
+            <div><div class="toc-text">Exercise & Movement</div><div class="toc-desc">Strength, cardio, flexibility, recovery, and body composition</div></div>
+        </a>
+        <a href="#sleep" class="toc-item">
+            <span class="toc-icon">&#128164;</span>
+            <div><div class="toc-text">Sleep Science</div><div class="toc-desc">Cycles, circadian rhythm, hygiene, and why sleep is non-negotiable</div></div>
+        </a>
+        <a href="#body" class="toc-item">
+            <span class="toc-icon">&#129728;</span>
+            <div><div class="toc-text">Body Systems</div><div class="toc-desc">How 11 interconnected systems keep you alive and how to protect them</div></div>
+        </a>
+        <a href="#longevity" class="toc-item">
+            <span class="toc-icon">&#9203;</span>
+            <div><div class="toc-text">Longevity Science</div><div class="toc-desc">Blue Zones, autophagy, telomeres, and the secrets of centenarians</div></div>
+        </a>
+        <a href="#habits" class="toc-item">
+            <span class="toc-icon">&#128736;</span>
+            <div><div class="toc-text">Habits & Lifestyle</div><div class="toc-desc">Morning routines, cold exposure, sunlight, toxin avoidance</div></div>
+        </a>
+        <a href="#biomarkers" class="toc-item">
+            <span class="toc-icon">&#128200;</span>
+            <div><div class="toc-text">Biomarkers & Tracking</div><div class="toc-desc">The numbers that matter and what they should be</div></div>
+        </a>
+    </div>
+</div>
+
+<div class="separator"></div>
+
+<!-- ============================================
+     SECTION 1: YOUR BRAIN
+     ============================================ -->
+<section class="section fade-in" id="brain">
+    <div class="section-header">
+        <span class="section-number blue">Section 01</span>
+        <h2>Your Brain: The Control Center</h2>
+        <p class="section-subtitle">Understanding the 3-pound organ that orchestrates every thought, emotion, and bodily function</p>
+    </div>
+
+    <h3>The Neurotransmitter Orchestra</h3>
+    <p>Your brain communicates through chemical messengers called neurotransmitters. Understanding them is the foundation of understanding your mood, motivation, sleep, and overall mental health.</p>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-value blue">Serotonin</div>
+            <div class="stat-label">Mood & Calm</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value purple">Dopamine</div>
+            <div class="stat-label">Motivation & Reward</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value green">GABA</div>
+            <div class="stat-label">Relaxation & Sleep</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value orange">Norepinephrine</div>
+            <div class="stat-label">Focus & Alertness</div>
+        </div>
+    </div>
+
+    <h4>Serotonin - The Stability Chemical</h4>
+    <p><strong>95% of serotonin is produced in the gut</strong>, not the brain. This is why gut health directly impacts mood. Serotonin regulates mood, sleep-wake cycles, appetite, and social behavior. Low serotonin is associated with depression, anxiety, and obsessive thinking.</p>
+    <ul>
+        <li><strong>Boosters:</strong> Sunlight exposure, exercise, tryptophan-rich foods (turkey, eggs, cheese, salmon), gut health (probiotics, fiber)</li>
+        <li><strong>Depleted by:</strong> Chronic stress, poor diet, alcohol, lack of sunlight, poor gut health</li>
+    </ul>
+
+    <h4>Dopamine - The Drive Chemical</h4>
+    <p>Dopamine drives <strong>motivation, anticipation, and goal-seeking behavior</strong>. It's not the "pleasure" chemical - it's the "wanting" chemical. It spikes in anticipation of reward, not after receiving it. Modern environments hijack dopamine through social media, junk food, and endless scrolling.</p>
+    <ul>
+        <li><strong>Boosters:</strong> Cold exposure (+250% increase), exercise, completing challenging tasks, tyrosine-rich foods (meat, fish, eggs)</li>
+        <li><strong>Depleted by:</strong> Social media overuse, excessive sugar, porn, gambling, lack of sleep</li>
+    </ul>
+
+    <div class="callout warning">
+        <div class="callout-title">Dopamine Trap</div>
+        <p>Every "easy" dopamine hit (scrolling, snacking, binge-watching) raises your baseline threshold. Over time, you need more stimulation for the same effect. This is why the same activities feel less satisfying over time. Deliberate dopamine fasting (reducing easy rewards for 24-48 hours) helps reset sensitivity.</p>
+    </div>
+
+    <h4>GABA - The Brake Pedal</h4>
+    <p>GABA (gamma-aminobutyric acid) is the brain's primary inhibitory neurotransmitter. It <strong>slows neural activity</strong>, creating calm, reducing anxiety, and enabling sleep. Without sufficient GABA, your brain stays in an overexcited state.</p>
+    <ul>
+        <li><strong>Boosters:</strong> Meditation, yoga, magnesium, fermented foods, L-theanine (green tea), valerian root</li>
+        <li><strong>Depleted by:</strong> Chronic stress, alcohol withdrawal, excessive caffeine</li>
+    </ul>
+
+    <h4>Norepinephrine - The Alert Chemical</h4>
+    <p>Works closely with dopamine to regulate <strong>attention, focus, and the fight-or-flight response</strong>. The prefrontal cortex (executive function center) requires optimal norepinephrine for proper functioning. ADHD involves insufficient norepinephrine and dopamine in the prefrontal cortex.</p>
+
+    <h3>Neuroplasticity: Your Brain Can Change at Any Age</h3>
+    <p>Neuroplasticity is the brain's ability to <strong>reorganize itself by forming new neural connections throughout life</strong>. Once thought to stop after childhood, we now know the brain remains plastic into old age.</p>
+
+    <div class="card">
+        <div class="card-title">How Neural Pathways Form</div>
+        <p>When you repeat a behavior, the associated neurons fire together, strengthening their connection (<strong>"neurons that fire together wire together"</strong> - Hebb's Rule). Over time, oligodendrocytes wrap the active pathway in <strong>myelin sheath</strong>, insulating it and increasing signal speed by up to 100x. This is why habits become automatic - the neural highway gets faster with each repetition.</p>
+    </div>
+
+    <p>A Harvard study found that just <strong>8 weeks of mindfulness meditation</strong> increased gray matter density in the hippocampus (learning/memory) and decreased gray matter in the amygdala (fear/stress). Your brain physically changes based on how you use it.</p>
+
+    <h3>The Gut-Brain Axis</h3>
+    <p>The gut and brain are connected by the <strong>vagus nerve</strong> - the longest cranial nerve in the body. The gut contains 500 million neurons (its own nervous system, called the enteric nervous system). This bidirectional communication means:</p>
+    <ul>
+        <li>An unhealthy gut microbiome increases systemic inflammation that crosses the blood-brain barrier, contributing to depression and anxiety</li>
+        <li>A healthy microbiome produces neurotransmitter precursors, short-chain fatty acids, and anti-inflammatory compounds</li>
+        <li>The SMILES trial showed a Mediterranean diet improved depression scores significantly - 32% achieved remission vs. 8% with social support alone</li>
+    </ul>
+</section>
+
+<div class="separator"></div>
+
+<!-- ============================================
+     SECTION 2: MENTAL HEALTH
+     ============================================ -->
+<section class="section fade-in" id="mental">
+    <div class="section-header">
+        <span class="section-number purple">Section 02</span>
+        <h2>Mental Health: The Foundation of Everything</h2>
+        <p class="section-subtitle">Evidence-based strategies for anxiety, depression, stress, and emotional resilience</p>
+    </div>
+
+    <h3>Understanding Common Conditions</h3>
+
+    <h4>Anxiety</h4>
+    <p>Anxiety is an <strong>overactivation of the amygdala</strong> (threat detection center) and the sympathetic nervous system. The body enters fight-or-flight when no real threat exists. Chronic anxiety keeps cortisol elevated, impairing the hippocampus, immune system, and digestive system.</p>
+    <ul>
+        <li><strong>Physical symptoms:</strong> Racing heart, shallow breathing, muscle tension, stomach issues, insomnia</li>
+        <li><strong>Key insight:</strong> Anxiety is a body state first, a mind state second. Physical interventions (breathing, cold exposure, exercise) often work faster than cognitive ones</li>
+    </ul>
+
+    <h4>Depression</h4>
+    <p>Depression involves dysregulation of multiple neurotransmitters (serotonin, dopamine, norepinephrine), chronic inflammation, HPA axis dysfunction, and reduced neuroplasticity. It's <strong>not simply "low serotonin"</strong> - the outdated chemical imbalance model is now understood to be a vast oversimplification.</p>
+    <ul>
+        <li><strong>Exercise as treatment:</strong> A meta-analysis found exercise is as effective as antidepressants for mild-to-moderate depression, with effects comparable to SSRIs</li>
+        <li><strong>Inflammation link:</strong> People with chronic inflammation are 2-3x more likely to develop depression</li>
+    </ul>
+
+    <h4>Burnout & Chronic Stress</h4>
+    <p>Chronic stress activates the <strong>HPA axis</strong> (hypothalamus-pituitary-adrenal) continuously, flooding the body with cortisol. Sustained high cortisol causes hippocampal atrophy, immune suppression, increased visceral fat, insulin resistance, and accelerated telomere shortening.</p>
+
+    <h3>Evidence-Based Therapy Types</h3>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Therapy</th>
+                    <th>Best For</th>
+                    <th>Effectiveness</th>
+                    <th>Timeline</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>CBT</strong></td>
+                    <td>Anxiety, depression, OCD</td>
+                    <td>80-90% for anxiety</td>
+                    <td>12-20 sessions (6-12 weeks)</td>
+                </tr>
+                <tr>
+                    <td><strong>DBT</strong></td>
+                    <td>Emotional regulation, BPD, self-harm</td>
+                    <td>Highly effective for BPD</td>
+                    <td>3-6 months</td>
+                </tr>
+                <tr>
+                    <td><strong>EMDR</strong></td>
+                    <td>Trauma, PTSD</td>
+                    <td>77-90% for PTSD</td>
+                    <td>6-12 sessions (3-6 weeks)</td>
+                </tr>
+                <tr>
+                    <td><strong>Psychodynamic</strong></td>
+                    <td>Deep-rooted patterns, childhood trauma</td>
+                    <td>Long-lasting changes</td>
+                    <td>6-12+ months</td>
+                </tr>
+                <tr>
+                    <td><strong>ACT</strong></td>
+                    <td>Chronic pain, anxiety, values work</td>
+                    <td>Strong for acceptance</td>
+                    <td>8-16 weeks</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>Meditation & Mindfulness</h3>
+    <p>After 8 weeks of Mindfulness-Based Stress Reduction (MBSR), with just 27 minutes/day of practice:</p>
+    <ul>
+        <li>Increased gray matter in the hippocampus (memory, learning)</li>
+        <li>Decreased gray matter in the amygdala (stress, fear)</li>
+        <li>Improved attention, emotional regulation, and self-awareness</li>
+        <li>Reduced cortisol levels and inflammatory markers</li>
+    </ul>
+
+    <h3>Breathing Techniques</h3>
+
+    <div class="card">
+        <div class="card-title">Box Breathing (4-4-4-4)</div>
+        <p>Inhale 4 seconds, hold 4, exhale 4, hold 4. Used by Navy SEALs for stress management. Regulates the autonomic nervous system, reduces blood pressure, and induces calm within 2-3 cycles.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-title">4-7-8 Breathing</div>
+        <p>Inhale 4 seconds, hold 7, exhale 8. The extended exhale activates the parasympathetic nervous system (rest-and-digest). Particularly effective for falling asleep and acute anxiety.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Physiological Sigh</div>
+        <p>Two quick inhales through the nose, one long exhale through the mouth. The fastest known real-time stress reduction technique (Huberman Lab, Stanford). The double inhale reinflates collapsed alveoli in the lungs, maximizing CO2 offload on the exhale.</p>
+    </div>
+
+    <h3>Journaling: The Underrated Tool</h3>
+    <p>James Pennebaker's research (400+ studies) shows expressive writing about emotional experiences:</p>
+    <ul>
+        <li>Reduces cortisol levels by up to <strong>23%</strong></li>
+        <li>Improves immune function (boosted lymphocyte activity)</li>
+        <li>Reduces depression scores by <strong>30% over 8 weeks</strong></li>
+        <li>Activates the prefrontal cortex while dampening amygdala activity</li>
+    </ul>
+
+    <h3>Gratitude Practice</h3>
+    <p>Gratitude practice leverages neuroplasticity - consistently focusing on positive experiences strengthens neural pathways for positive emotions while weakening negative ones. A study found daily gratitude journaling for 3 months <strong>increased gray matter in the prefrontal cortex</strong>, improving emotional regulation and decision-making. Gratitude activates the ventral striatum and medial prefrontal cortex, boosting both serotonin and dopamine.</p>
+</section>
+
+<div class="separator"></div>
+
+<!-- ============================================
+     SECTION 3: NUTRITION & FOOD
+     ============================================ -->
+<section class="section fade-in" id="nutrition">
+    <div class="section-header">
+        <span class="section-number green">Section 03</span>
+        <h2>Nutrition: Fuel for the Machine</h2>
+        <p class="section-subtitle">Everything you eat becomes part of you. Choose wisely.</p>
+    </div>
+
+    <h3>Macronutrients</h3>
+
+    <h4>Protein - The Builder</h4>
+    <p>Proteins are chains of amino acids. Of 20 amino acids, <strong>9 are essential</strong> (must come from food). Protein builds and repairs muscle, makes enzymes and hormones, and supports immune function.</p>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr><th>Activity Level</th><th>Protein Need</th><th>For 70kg Person</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Sedentary (RDA minimum)</td><td>0.8 g/kg/day</td><td>56 g/day</td></tr>
+                <tr><td>Moderate activity</td><td>1.0-1.3 g/kg/day</td><td>70-91 g/day</td></tr>
+                <tr><td>Muscle building / intense</td><td>1.6-2.0 g/kg/day</td><td>112-140 g/day</td></tr>
+                <tr><td>Safe upper limit</td><td>2.0-3.5 g/kg/day</td><td>140-245 g/day</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p><strong>Complete proteins</strong> (all 9 essential amino acids): meat, fish, eggs, dairy, soy, quinoa. <strong>Incomplete proteins</strong> (missing some): most plant foods. You don't need to combine at every meal - varied daily intake is sufficient.</p>
+
+    <h4>Carbohydrates - The Energy Source</h4>
+    <p>Not all carbs are equal. The <strong>Glycemic Index (GI)</strong> measures how fast food raises blood sugar:</p>
+    <ul>
+        <li><strong>Low GI (55 or below):</strong> Lentils (~32), oats (~55), most fruits, legumes. Slow, steady energy</li>
+        <li><strong>Medium GI (56-69):</strong> Brown rice (~68), whole wheat bread (~69)</li>
+        <li><strong>High GI (70+):</strong> White bread (~75), white rice (~73), potatoes (~78). Rapid spike and crash</li>
+    </ul>
+
+    <p><strong>Fiber</strong> is critical: 25g/day women, 38g/day men. Most people get only 15g. Soluble fiber (oats, beans) lowers cholesterol and slows glucose absorption. Insoluble fiber (wheat bran, vegetables) promotes gut regularity.</p>
+
+    <h4>Fats - The Essential Nutrient</h4>
+    <ul>
+        <li><strong>Omega-3</strong> (anti-inflammatory): Fatty fish, flaxseed, chia, walnuts. Target: 250-500mg EPA+DHA daily</li>
+        <li><strong>Omega-6</strong>: Vegetable oils, nuts. Essential but overconsumed. Ideal omega-6:omega-3 ratio is 4:1 (modern diet is 15-20:1)</li>
+        <li><strong>Monounsaturated:</strong> Olive oil, avocados, almonds. Heart-protective</li>
+        <li><strong>Trans fats:</strong> Artificial, dangerous. A nurse's heart disease risk doubled for each 2% increase in trans fat calories. Largely banned in the US</li>
+    </ul>
+
+    <h3>Essential Vitamins</h3>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr><th>Vitamin</th><th>RDA</th><th>Key Function</th><th>Top Sources</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>A</td><td>700-900 mcg</td><td>Vision, immune, skin</td><td>Liver, carrots, sweet potato, spinach</td></tr>
+                <tr><td>B12</td><td>2.4 mcg</td><td>Nerve function, red blood cells</td><td>Meat, fish, dairy (vegans must supplement)</td></tr>
+                <tr><td>C</td><td>75-90 mg</td><td>Collagen, antioxidant, iron absorption</td><td>Bell peppers, citrus, strawberries, broccoli</td></tr>
+                <tr><td>D</td><td>600-2000 IU</td><td>Calcium absorption, immune, mood</td><td>Sunlight, fatty fish, fortified milk</td></tr>
+                <tr><td>E</td><td>15 mg</td><td>Antioxidant, cell protection</td><td>Sunflower seeds, almonds, avocado</td></tr>
+                <tr><td>K</td><td>90-120 mcg</td><td>Blood clotting, bone metabolism</td><td>Kale, spinach, broccoli, natto</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>Essential Minerals</h3>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr><th>Mineral</th><th>RDA</th><th>Function</th><th>Signs of Deficiency</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Magnesium</td><td>310-420 mg</td><td>300+ enzyme reactions, sleep, muscle</td><td>Cramps, anxiety, insomnia, irregular heartbeat</td></tr>
+                <tr><td>Iron</td><td>8-18 mg</td><td>Oxygen transport (hemoglobin)</td><td>Fatigue, weakness, pale skin, anemia</td></tr>
+                <tr><td>Zinc</td><td>8-11 mg</td><td>Immune function, wound healing</td><td>Impaired immunity, hair loss</td></tr>
+                <tr><td>Calcium</td><td>1000-1200 mg</td><td>Bones, muscle contraction</td><td>Osteoporosis, muscle cramps</td></tr>
+                <tr><td>Potassium</td><td>2600-3400 mg</td><td>Blood pressure, nerve function</td><td>Weakness, cramps, irregular heartbeat</td></tr>
+                <tr><td>Selenium</td><td>55 mcg</td><td>Thyroid, antioxidant defense</td><td>Thyroid dysfunction (1 Brazil nut = 174% DV)</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>Gut Microbiome</h3>
+    <p>Your gut houses <strong>~100 trillion microorganisms</strong> weighing about 2 kg. This ecosystem profoundly influences digestion, immunity, mood, and chronic disease risk.</p>
+    <ul>
+        <li><strong>Probiotics:</strong> Live beneficial bacteria. Best from fermented whole foods (yogurt, kefir, kimchi, sauerkraut, kombucha). Stanford found 6 servings/day of fermented foods increased microbiome diversity and reduced 19 markers of inflammation</li>
+        <li><strong>Prebiotics:</strong> Food for good bacteria. Sources: garlic, onions, asparagus, bananas, oats, flaxseed. Gut bacteria ferment these into short-chain fatty acids (butyrate, acetate, propionate) that nourish gut lining</li>
+        <li><strong>Fiber is #1:</strong> The single most important dietary factor for microbiome health. Low-fiber diets cause the microbiome to "eat" the intestinal mucus layer, potentially causing leaky gut</li>
+    </ul>
+
+    <h3>Anti-Inflammatory vs. Inflammatory Foods</h3>
+
+    <div class="callout success">
+        <div class="callout-title">Eat More (Anti-Inflammatory)</div>
+        <p>Fatty fish (salmon, sardines), extra virgin olive oil, berries (blueberries, strawberries), leafy greens, nuts (walnuts, almonds), turmeric + black pepper, green tea, dark chocolate (70%+), tomatoes, cherries</p>
+    </div>
+
+    <div class="callout danger">
+        <div class="callout-title">Eat Less (Inflammatory)</div>
+        <p>Sugar-sweetened beverages, refined carbohydrates (white bread, pastries), processed meats (hot dogs, deli meats), trans fats, deep-fried foods, excessive alcohol, excessive omega-6 vegetable oils</p>
+    </div>
+
+    <h3>Ultra-Processed Foods: The Modern Threat</h3>
+    <p>A 2024 umbrella review of 45 meta-analyses (~10 million participants) found UPF consumption increases risk of cardiovascular death, type 2 diabetes, anxiety, cancer (especially colorectal), obesity, and metabolic syndrome. <strong>UPFs now constitute 50-60% of total energy intake in the US, UK, and Canada.</strong></p>
+    <p><strong>The rule:</strong> If the ingredient list contains things you wouldn't find in a home kitchen (emulsifiers, artificial flavors, high-fructose corn syrup), minimize it. Aim for 80%+ of diet from whole or minimally processed foods.</p>
+
+    <h3>Blood Sugar Management</h3>
+    <p>Insulin resistance precedes type 2 diabetes by <strong>10-15 years</strong> and is linked to heart disease, fatty liver, and Alzheimer's ("type 3 diabetes").</p>
+    <ol>
+        <li><strong>Choose low-GI carbs:</strong> Legumes, whole oats, barley over white bread/rice</li>
+        <li><strong>Eat protein and fat before carbs:</strong> Reduces post-meal glucose spikes by 30-40%</li>
+        <li><strong>Walk after meals:</strong> 10-15 minutes reduces blood sugar spikes by 20-30%</li>
+        <li><strong>Add vinegar:</strong> 1-2 tablespoons before a carb-rich meal reduces glucose spike by ~20-30%</li>
+        <li><strong>Increase fiber dramatically:</strong> Target 30-40 g/day</li>
+    </ol>
+
+    <h3>Supplements That Actually Work</h3>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr><th>Supplement</th><th>Evidence</th><th>Dose</th><th>Who Needs It</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><span class="tag green">Strong</span> Vitamin D</td><td>Bone health, immune, mood</td><td>1,000-2,000 IU/day</td><td>42% of US adults deficient</td></tr>
+                <tr><td><span class="tag green">Strong</span> Omega-3</td><td>Heart, brain, inflammation</td><td>1-2g EPA+DHA/day</td><td>Anyone eating &lt;2 fish servings/week</td></tr>
+                <tr><td><span class="tag green">Strong</span> Creatine</td><td>Muscle, strength, cognitive</td><td>3-5g/day</td><td>Athletes, older adults</td></tr>
+                <tr><td><span class="tag green">Strong</span> Magnesium</td><td>Sleep, anxiety, muscles</td><td>200-400mg/day</td><td>50%+ adults below RDA</td></tr>
+                <tr><td><span class="tag yellow">Moderate</span> Zinc</td><td>Immune, cold duration</td><td>8-11mg from diet</td><td>If deficient or sick</td></tr>
+                <tr><td><span class="tag red">Weak</span> Multivitamins</td><td>No longevity/cancer benefit</td><td>-</td><td>Only if restricted diet</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- ============================================
+     SECTION 4: EXERCISE & MOVEMENT
+     ============================================ -->
+<section class="section fade-in" id="exercise">
+    <div class="section-header">
+        <span class="section-number orange">Section 04</span>
+        <h2>Exercise: Movement is Medicine</h2>
+        <p class="section-subtitle">The single most powerful intervention for nearly every aspect of health</p>
+    </div>
+
+    <h3>Types of Exercise</h3>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-value blue">Aerobic</div>
+            <div class="stat-label">Heart & Endurance</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value purple">Resistance</div>
+            <div class="stat-label">Muscle & Bone</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value green">Flexibility</div>
+            <div class="stat-label">Mobility & Recovery</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value orange">HIIT</div>
+            <div class="stat-label">Efficiency & Power</div>
+        </div>
+    </div>
+
+    <h4>Aerobic Exercise</h4>
+    <p>Running, swimming, cycling, walking. Strengthens the heart, improves VO2 max (the gold standard measure of cardiovascular fitness), lowers resting heart rate, and increases capillary density for better oxygen delivery to tissues.</p>
+
+    <h4>Resistance Training</h4>
+    <p>Weightlifting, bodyweight exercises, bands. Builds muscle (which is metabolically active tissue), increases bone density (preventing osteoporosis), improves insulin sensitivity, and boosts resting metabolism.</p>
+
+    <h4>Flexibility & Mobility</h4>
+    <p>Yoga, stretching, foam rolling. Maintains joint range of motion, reduces injury risk, improves posture, and enhances recovery. <strong>Dynamic stretching</strong> before exercise (leg swings, arm circles), <strong>static stretching</strong> after.</p>
+
+    <h3>How Muscles Work</h3>
+    <p>You have two main muscle fiber types:</p>
+    <ul>
+        <li><strong>Type I (Slow-Twitch):</strong> Endurance-oriented. Resistant to fatigue. Used for walking, jogging, maintaining posture. Powered primarily by aerobic metabolism (oxygen)</li>
+        <li><strong>Type II (Fast-Twitch):</strong> Power-oriented. Fatigue quickly. Used for sprinting, heavy lifting, explosive movements. Powered by anaerobic metabolism (glycogen). Further split into Type IIa (moderate endurance) and Type IIx (pure power)</li>
+    </ul>
+
+    <p><strong>Muscle hypertrophy</strong> (growth) occurs through mechanical tension, metabolic stress, and muscle damage. The muscle protein synthesis window lasts 24-72 hours after training, peaking at 24 hours. This is why adequate protein (0.4g/kg per meal, 3-4 meals) and training each muscle group 2x/week is optimal.</p>
+
+    <h3>Strength Training Fundamentals</h3>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr><th>Goal</th><th>Rep Range</th><th>Sets</th><th>Rest</th><th>Load</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Strength</strong></td><td>1-5 reps</td><td>3-6</td><td>3-5 min</td><td>85-100% 1RM</td></tr>
+                <tr><td><strong>Hypertrophy</strong></td><td>8-12 reps</td><td>3-4</td><td>60-90 sec</td><td>65-80% 1RM</td></tr>
+                <tr><td><strong>Endurance</strong></td><td>15-25+ reps</td><td>2-3</td><td>30-60 sec</td><td>40-60% 1RM</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p><strong>Progressive overload</strong> is the #1 principle: gradually increase weight, reps, or volume over time. Without progressive overload, adaptation stalls.</p>
+
+    <p><strong>Compound movements</strong> (squat, deadlift, bench press, overhead press, rows, pull-ups) should form 80% of your program. They recruit multiple muscle groups, burn more calories, and trigger greater hormonal response than isolation exercises.</p>
+
+    <h3>Cardio Science: Heart Rate Zones</h3>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr><th>Zone</th><th>% Max HR</th><th>Feel</th><th>Benefits</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Zone 1</strong></td><td>50-60%</td><td>Very easy (walk)</td><td>Recovery, warm-up</td></tr>
+                <tr><td><strong>Zone 2</strong> <span class="tag blue">KEY</span></td><td>60-70%</td><td>Comfortable (can talk)</td><td>Fat burning, mitochondrial density, aerobic base</td></tr>
+                <tr><td><strong>Zone 3</strong></td><td>70-80%</td><td>Moderate</td><td>Aerobic capacity</td></tr>
+                <tr><td><strong>Zone 4</strong></td><td>80-90%</td><td>Hard (can't talk)</td><td>Lactate threshold, VO2 max</td></tr>
+                <tr><td><strong>Zone 5</strong></td><td>90-100%</td><td>Maximum effort</td><td>Sprint capacity, anaerobic power</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="callout info">
+        <div class="callout-title">Zone 2 Training: The Longevity Zone</div>
+        <p>Peter Attia and other longevity researchers emphasize Zone 2 training as the foundation of cardiovascular fitness. It builds mitochondrial density, improves fat oxidation, enhances metabolic flexibility, and can be sustained for long periods without excess stress. Target: <strong>3-4 hours per week</strong> of Zone 2 cardio (brisk walking, easy cycling, light jogging where you can hold a conversation).</p>
+    </div>
+
+    <h3>Exercise and the Brain</h3>
+    <p>Exercise is the <strong>single most powerful known neuroplasticity trigger</strong>:</p>
+    <ul>
+        <li><strong>BDNF</strong> (brain-derived neurotrophic factor): Exercise increases BDNF, which promotes new neuron growth (neurogenesis) in the hippocampus. Called "Miracle-Gro for the brain"</li>
+        <li><strong>Antidepressant effect:</strong> Meta-analyses show exercise is as effective as SSRIs for mild-to-moderate depression</li>
+        <li><strong>Cognitive protection:</strong> Regular exercisers have 30-40% lower risk of dementia</li>
+        <li><strong>Immediate effects:</strong> A single bout of exercise improves attention, mood, and executive function for 2-3 hours</li>
+    </ul>
+
+    <h3>Exercise and Hormones</h3>
+    <ul>
+        <li><strong>Testosterone:</strong> Compound lifts (squats, deadlifts) acutely increase testosterone. Chronic endurance overtraining can decrease it</li>
+        <li><strong>Growth Hormone:</strong> Peaks during intense exercise and deep sleep. HIIT and heavy lifting are the strongest triggers</li>
+        <li><strong>Cortisol:</strong> Acute rise during exercise is beneficial (mobilizes energy). Chronic overtraining keeps it elevated (harmful)</li>
+        <li><strong>Endorphins:</strong> The "runner's high." Released during sustained moderate-to-intense exercise. Natural pain reliever and mood enhancer</li>
+    </ul>
+
+    <h3>Recovery: The Other Half of Fitness</h3>
+    <ul>
+        <li><strong>Sleep:</strong> The #1 recovery tool. Growth hormone peaks during deep sleep. Athletes sleeping &lt;7 hours have 1.7x higher injury risk</li>
+        <li><strong>Rest days:</strong> Muscles grow during rest, not during training. 1-2 rest days per week minimum</li>
+        <li><strong>Active recovery:</strong> Light walking, swimming, or yoga on rest days promotes blood flow without taxing the system</li>
+        <li><strong>Deload weeks:</strong> Every 4-6 weeks, reduce volume/intensity by 40-50% to allow full recovery</li>
+    </ul>
+
+    <h3>WHO Minimum Guidelines</h3>
+    <div class="callout success">
+        <div class="callout-title">Minimum Effective Dose</div>
+        <p><strong>150-300 minutes/week</strong> of moderate aerobic activity OR <strong>75-150 minutes/week</strong> vigorous activity, PLUS <strong>2+ sessions/week</strong> of resistance training (all major muscle groups). This alone reduces all-cause mortality by 30-40%.</p>
+    </div>
+
+    <h3>Body Composition</h3>
+    <p><strong>BMR</strong> (Basal Metabolic Rate): Calories burned at complete rest. Determined primarily by lean mass, age, sex, and height. <strong>TDEE</strong> (Total Daily Energy Expenditure) = BMR x activity multiplier. To lose fat: eat below TDEE by 300-500 calories. To build muscle: eat above TDEE by 200-300 calories with adequate protein.</p>
+    <p>A pound of muscle burns ~6 calories/day at rest vs. ~2 for fat. More importantly, muscle improves insulin sensitivity, protects joints, and is the strongest predictor of healthy aging.</p>
+</section>
+
+<div class="separator"></div>
+
+<!-- ============================================
+     SECTION 5: SLEEP SCIENCE
+     ============================================ -->
+<section class="section fade-in" id="sleep">
+    <div class="section-header">
+        <span class="section-number cyan">Section 05</span>
+        <h2>Sleep: The Non-Negotiable Foundation</h2>
+        <p class="section-subtitle">One-third of your life spent sleeping determines the quality of the other two-thirds</p>
+    </div>
+
+    <h3>Sleep Architecture</h3>
+    <p>Sleep isn't a uniform state. You cycle through distinct stages every <strong>~90 minutes</strong>, completing 4-6 cycles per night:</p>
+
+    <div class="flow">
+        <div class="flow-step">
+            <div class="flow-step-title">NREM Stage 1 (Light Sleep) - 5%</div>
+            <div class="flow-step-desc">Transition from wakefulness. Lasts 1-7 minutes. Easily awakened. Hypnic jerks may occur.</div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+        <div class="flow-step">
+            <div class="flow-step-title">NREM Stage 2 (True Sleep) - 45%</div>
+            <div class="flow-step-desc">Heart rate and temperature drop. Sleep spindles (bursts of neural activity) consolidate motor learning and memory.</div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+        <div class="flow-step">
+            <div class="flow-step-title">NREM Stage 3 (Deep Sleep) - 25%</div>
+            <div class="flow-step-desc">The most restorative stage. Growth hormone peaks. Immune system repairs. Glymphatic system clears brain waste (beta-amyloid). Dominant in first half of night.</div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+        <div class="flow-step">
+            <div class="flow-step-title">REM Sleep (Dream Sleep) - 25%</div>
+            <div class="flow-step-desc">Brain is highly active. Emotional processing and creative problem-solving. Memory consolidation (especially procedural). Dominant in second half of night.</div>
+        </div>
+    </div>
+
+    <div class="callout warning">
+        <div class="callout-title">Critical Insight</div>
+        <p>Deep sleep dominates early cycles, REM dominates later cycles. If you sleep 6 hours instead of 8, you don't lose 25% of sleep - you lose <strong>60-90% of your REM sleep</strong>, which occurs primarily in the last 2 hours. This devastates emotional regulation, creativity, and memory.</p>
+    </div>
+
+    <h3>Circadian Rhythm</h3>
+    <p>Your body runs on a ~24-hour internal clock controlled by the <strong>suprachiasmatic nucleus (SCN)</strong> in the hypothalamus. Two key hormones:</p>
+    <ul>
+        <li><strong>Cortisol:</strong> Peaks 30-45 minutes after waking (Cortisol Awakening Response). Gives you morning energy and alertness. Should decline throughout the day</li>
+        <li><strong>Melatonin:</strong> Rises as darkness falls (signaling sleep). Suppressed by blue light from screens. Even dim light (8-10 lux) can suppress melatonin by 50%</li>
+    </ul>
+
+    <p><strong>Morning sunlight</strong> within 30-60 minutes of waking is the single most powerful circadian rhythm setter. It anchors your clock, leading to earlier melatonin onset at night and better sleep quality.</p>
+
+    <h3>Why Sleep Matters</h3>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-value cyan">Glymphatic</div>
+            <div class="stat-label">Brain waste clearance 10x more active during sleep</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value green">Immune</div>
+            <div class="stat-label">T-cell effectiveness drops 70% with poor sleep</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value purple">Memory</div>
+            <div class="stat-label">Sleep consolidates learning from the day</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value orange">Hormones</div>
+            <div class="stat-label">Growth hormone peaks in deep sleep</div>
+        </div>
+    </div>
+
+    <h3>Sleep Deprivation: The Consequences</h3>
+    <ul>
+        <li><strong>Cognitive:</strong> After 24 hours without sleep, cognitive impairment equals a blood alcohol level of 0.10% (legally drunk)</li>
+        <li><strong>Weight gain:</strong> Sleep deprivation increases ghrelin (hunger hormone) by 28% and decreases leptin (satiety) by 18%. You eat ~300-400 extra calories/day</li>
+        <li><strong>Cardiovascular:</strong> Sleeping &lt;6 hours/night increases heart attack risk by 20%. Daylight saving time (losing 1 hour) causes a 24% spike in heart attacks the next day</li>
+        <li><strong>Cancer:</strong> The WHO classifies night shift work as a "probable carcinogen." Natural killer cell activity drops 70% with a single night of 4-hour sleep</li>
+        <li><strong>Emotional:</strong> The amygdala becomes 60% more reactive with sleep deprivation, while prefrontal cortex control decreases. This creates emotional volatility</li>
+    </ul>
+
+    <h3>Sleep Hygiene: The Protocol</h3>
+    <ol>
+        <li><strong>Temperature:</strong> Cool room, 65-68&deg;F (18-20&deg;C). Core body temperature must drop 2-3&deg;F to initiate sleep</li>
+        <li><strong>Darkness:</strong> Complete darkness. Even dim light through closed eyelids disrupts melatonin. Use blackout curtains</li>
+        <li><strong>Consistency:</strong> Same bedtime and wake time every day (even weekends). The most important sleep hygiene habit</li>
+        <li><strong>No screens 1 hour before bed:</strong> Blue light suppresses melatonin. If screens are unavoidable, use night mode/warm lighting</li>
+        <li><strong>No caffeine after 2 PM:</strong> Caffeine has a half-life of 5-6 hours. A coffee at 3 PM still has 50% caffeine in your system at 9 PM</li>
+        <li><strong>No alcohol:</strong> Alcohol is not a sleep aid. It's a sedative that blocks REM sleep, causes frequent awakenings, and fragments sleep architecture</li>
+        <li><strong>Wind-down routine:</strong> 30-60 minutes of reading, stretching, journaling, or meditation before bed</li>
+    </ol>
+
+    <h3>Napping Science</h3>
+    <ul>
+        <li><strong>Power nap (10-20 min):</strong> Boosts alertness and performance. Stays in light sleep. No grogginess on waking. NASA found a 26-minute nap improved pilot performance by 34% and alertness by 54%</li>
+        <li><strong>Full cycle nap (90 min):</strong> Completes one full sleep cycle including REM. Boosts creativity and emotional processing. Best if you're sleep-deprived</li>
+        <li><strong>Danger zone (30-60 min):</strong> Waking from deep sleep causes sleep inertia (grogginess, confusion). Avoid this range</li>
+    </ul>
+
+    <h3>Sleep by Age</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr><th>Age</th><th>Recommended Hours</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Newborn (0-3 months)</td><td>14-17 hours</td></tr>
+                <tr><td>Infant (4-11 months)</td><td>12-15 hours</td></tr>
+                <tr><td>Toddler (1-2 years)</td><td>11-14 hours</td></tr>
+                <tr><td>Preschool (3-5)</td><td>10-13 hours</td></tr>
+                <tr><td>School age (6-13)</td><td>9-11 hours</td></tr>
+                <tr><td>Teenager (14-17)</td><td>8-10 hours</td></tr>
+                <tr><td>Adult (18-64)</td><td>7-9 hours</td></tr>
+                <tr><td>Older adult (65+)</td><td>7-8 hours</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- ============================================
+     SECTION 6: BODY SYSTEMS
+     ============================================ -->
+<section class="section fade-in" id="body">
+    <div class="section-header">
+        <span class="section-number red">Section 06</span>
+        <h2>The Human Body: Interconnected Systems</h2>
+        <p class="section-subtitle">11 systems working in concert. Damage to one cascades to all others.</p>
+    </div>
+
+    <h3>Cardiovascular System</h3>
+    <p>Your heart beats ~100,000 times/day, pumping ~2,000 gallons of blood through 60,000+ miles of blood vessels. Atherosclerosis (plaque buildup) is a <strong>lifestyle disease</strong> that begins in childhood and is the #1 killer worldwide.</p>
+    <ul>
+        <li><strong>Blood pressure:</strong> Optimal &lt;120/80 mmHg. The #1 modifiable risk factor for heart disease and stroke</li>
+        <li><strong>Exercise effect:</strong> Regular aerobic exercise reduces resting heart rate by 10-20 bpm, increases stroke volume, and improves endothelial function</li>
+        <li><strong>Protection:</strong> Mediterranean diet, Zone 2 cardio, stress management, not smoking, omega-3 fatty acids</li>
+    </ul>
+
+    <h3>Immune System</h3>
+    <p>Two branches work together:</p>
+    <ul>
+        <li><strong>Innate immunity:</strong> First line of defense. Non-specific. Skin, mucous membranes, neutrophils, natural killer cells. Responds within minutes</li>
+        <li><strong>Adaptive immunity:</strong> Specific, learned response. T-cells and B-cells. Creates memory (why vaccines work). Takes days to develop but is precisely targeted</li>
+    </ul>
+    <p><strong>Chronic inflammation</strong> is the bridge between lifestyle and disease. When the immune system is chronically activated (by poor diet, stress, obesity, toxins), it damages healthy tissue, driving heart disease, cancer, diabetes, Alzheimer's, and autoimmune conditions.</p>
+
+    <h3>Endocrine System</h3>
+    <p>Hormones are chemical messengers that regulate nearly every bodily function:</p>
+    <ul>
+        <li><strong>Insulin:</strong> Regulates blood sugar. Resistance develops from chronic overconsumption of refined carbs and sedentary behavior</li>
+        <li><strong>Cortisol:</strong> Stress hormone. Should peak in morning, decline at night. Chronic elevation destroys the body</li>
+        <li><strong>Thyroid (T3/T4):</strong> Master metabolic regulator. Affects energy, weight, mood, temperature</li>
+        <li><strong>Testosterone/Estrogen:</strong> Decline with age. Affected by sleep, exercise, stress, body fat, nutrition</li>
+        <li><strong>Growth Hormone:</strong> Peaks during deep sleep and intense exercise. Crucial for tissue repair and muscle maintenance</li>
+    </ul>
+
+    <h3>Nervous System</h3>
+    <ul>
+        <li><strong>Sympathetic (Fight-or-Flight):</strong> Accelerator. Increases heart rate, dilates pupils, diverts blood to muscles. Activated by stress, caffeine, danger</li>
+        <li><strong>Parasympathetic (Rest-and-Digest):</strong> Brake. Lowers heart rate, promotes digestion, enables recovery. Activated by deep breathing, meditation, vagus nerve stimulation</li>
+        <li><strong>Vagus nerve:</strong> The longest cranial nerve. Higher vagal tone = better stress recovery, lower inflammation, better heart rate variability (HRV). Improved by cold exposure, humming, slow breathing, social connection</li>
+    </ul>
+
+    <h3>Digestive System</h3>
+    <p>Food is broken down by stomach acid (pH 1.5-3.5), enzymes, and bile. Nutrients are absorbed primarily in the small intestine (surface area of a tennis court). The gut lining replaces itself every 3-5 days, making it highly responsive to dietary changes.</p>
+
+    <h3>Musculoskeletal System</h3>
+    <ul>
+        <li><strong>Bones:</strong> Living tissue that remodels constantly. Peak bone density reached by age 30. After that, prevention is key. Weight-bearing exercise and calcium/vitamin D are essential</li>
+        <li><strong>Joints:</strong> Cartilage has no blood supply - it depends on movement to receive nutrients (synovial fluid). Sedentary lifestyles starve cartilage</li>
+        <li><strong>Posture:</strong> Prolonged sitting causes hip flexor tightening, chest caving, weakened glutes, and forward head posture. The "sitting is the new smoking" analogy exists because sitting 8+ hours/day with no activity has mortality risk comparable to smoking</li>
+    </ul>
+
+    <h3>The Master Connection: How Everything Links</h3>
+    <div class="callout info">
+        <div class="callout-title">The Cascade Effect</div>
+        <p><strong>Stress</strong> elevates cortisol &rarr; impairs gut lining &rarr; allows bacteria/toxins to enter bloodstream &rarr; triggers <strong>immune response</strong> (inflammation) &rarr; inflammation damages blood vessels &rarr; increases <strong>cardiovascular</strong> risk &rarr; reaches the brain via <strong>blood-brain barrier</strong> &rarr; impairs serotonin/dopamine &rarr; causes <strong>depression/anxiety</strong> &rarr; disrupts <strong>sleep</strong> &rarr; reduces growth hormone &rarr; impairs <strong>muscle recovery</strong> &rarr; increases insulin resistance &rarr; stores more <strong>visceral fat</strong> &rarr; fat tissue produces more inflammatory cytokines &rarr; cycle amplifies.</p>
+        <p>The same chain works in reverse: exercise reduces inflammation, improves gut health, boosts neurotransmitters, improves sleep, reduces cortisol, improves insulin sensitivity. <strong>Every positive change creates a cascade of positive effects.</strong></p>
+    </div>
+
+    <h3>Mitochondria: Your Cellular Power Plants</h3>
+    <p>Every cell contains hundreds to thousands of mitochondria that produce <strong>ATP</strong> (the energy currency of life). Mitochondrial health declines with age, contributing to fatigue, reduced exercise capacity, and cellular aging.</p>
+    <p><strong>Mitochondrial boosters:</strong> Zone 2 cardio (increases mitochondrial density), cold exposure, fasting (triggers mitochondrial biogenesis), CoQ10, adequate sleep, avoiding excessive oxidative stress.</p>
+</section>
+
+<div class="separator"></div>
+
+<!-- ============================================
+     SECTION 7: LONGEVITY
+     ============================================ -->
+<section class="section fade-in" id="longevity">
+    <div class="section-header">
+        <span class="section-number pink">Section 07</span>
+        <h2>Longevity: The Science of Living Longer and Better</h2>
+        <p class="section-subtitle">Lessons from the world's longest-lived populations and cutting-edge aging research</p>
+    </div>
+
+    <h3>Blue Zones: Where People Live to 100</h3>
+    <p>Five regions identified by National Geographic where people reach 100 at 10x the average rate:</p>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr><th>Blue Zone</th><th>Key Practice</th><th>Notable Diet</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Okinawa, Japan</strong></td><td>Hara hachi bu (eat until 80% full), moais (social groups)</td><td>Sweet potatoes, tofu, bitter melon</td></tr>
+                <tr><td><strong>Sardinia, Italy</strong></td><td>Shepherding (daily mountain walking), family-first</td><td>Whole grains, beans, Cannonau wine</td></tr>
+                <tr><td><strong>Nicoya, Costa Rica</strong></td><td>Plan de vida (sense of purpose)</td><td>Beans, corn, squash (Three Sisters)</td></tr>
+                <tr><td><strong>Ikaria, Greece</strong></td><td>Daily napping, community meals, herbal teas</td><td>Mediterranean diet, wild greens, olive oil</td></tr>
+                <tr><td><strong>Loma Linda, California</strong></td><td>Sabbath rest, faith community, no alcohol/tobacco</td><td>Plant-based. Live 10 years longer than average</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h4>The Power 9 - Shared Habits</h4>
+    <ol>
+        <li><strong>Move Naturally:</strong> Gardens, walking, manual labor - not gym memberships</li>
+        <li><strong>Purpose (Ikigai):</strong> Worth up to 7 extra years of life. Having a reason to wake up</li>
+        <li><strong>Down Shift:</strong> Daily stress-reduction rituals (prayer, napping, happy hour)</li>
+        <li><strong>80% Rule:</strong> Stop eating when 80% full. Smallest meal in late afternoon/evening</li>
+        <li><strong>Plant Slant:</strong> 95% plant-based. Beans are the cornerstone (~1 cup/day). Meat ~5 times/month</li>
+        <li><strong>Wine at 5:</strong> 1-2 glasses/day with food and friends (moderate drinkers outlive non-drinkers)</li>
+        <li><strong>Belong:</strong> Faith-based community 4x/month adds 4-14 years of life expectancy</li>
+        <li><strong>Loved Ones First:</strong> Keep aging parents nearby, commit to a partner, invest in children</li>
+        <li><strong>Right Tribe:</strong> Your social circle shapes your behavior. Healthy friends = healthy you</li>
+    </ol>
+
+    <h3>Cellular Aging Pathways</h3>
+
+    <h4>Autophagy - Cellular Self-Cleaning</h4>
+    <p>Yoshinori Ohsumi won the 2016 Nobel Prize for elucidating autophagy - the cell's process of degrading and recycling damaged components. Autophagy clears misfolded proteins, damaged mitochondria, and intracellular pathogens. Activated by <strong>fasting, exercise, and caloric restriction</strong>. Inhibited by constant eating and high insulin.</p>
+
+    <h4>mTOR - The Growth/Longevity Switch</h4>
+    <p>mTOR (mechanistic Target of Rapamycin) is the master regulator of cell growth. When activated, it increases protein synthesis and cell proliferation but <strong>inhibits autophagy</strong>. The key insight: you need to <strong>cycle between mTOR activation</strong> (after exercise, with protein, for building) <strong>and mTOR suppression</strong> (fasting periods, for cellular maintenance).</p>
+
+    <h4>Telomeres - Chromosomal Clocks</h4>
+    <p>Telomeres are protective caps on chromosome ends that shorten with each cell division. When they become critically short, the cell enters senescence (stops dividing) or dies. Telomere shortening is accelerated by chronic stress, poor sleep, smoking, obesity, and inflammation. Slowed by exercise, Mediterranean diet, meditation, and social connection.</p>
+
+    <h4>Sirtuins - The Longevity Genes</h4>
+    <p>Seven proteins (SIRT1-SIRT7) that regulate cellular health. They depend on <strong>NAD+</strong> as a cofactor, and NAD+ levels decline with age. Caloric restriction, exercise, fasting, and cold exposure naturally boost NAD+ levels and sirtuin activity.</p>
+
+    <h3>Social Connection: The Most Powerful Longevity Factor</h3>
+    <p>The <strong>Harvard Study of Adult Development</strong> (85+ years, the longest-running study on happiness) found: "Good relationships keep us happier and healthier. Period." People who are more socially connected live longer and healthier lives.</p>
+    <ul>
+        <li>People in satisfying relationships at age 50 were the healthiest at age 80</li>
+        <li>Loneliness increases mortality risk by <strong>26-32%</strong> (meta-analysis of 300,000+ individuals)</li>
+        <li>Loneliness is equivalent to smoking <strong>15 cigarettes per day</strong> in mortality risk - more harmful than obesity or physical inactivity</li>
+    </ul>
+</section>
+
+<div class="separator"></div>
+
+<!-- ============================================
+     SECTION 8: HABITS & LIFESTYLE
+     ============================================ -->
+<section class="section fade-in" id="habits">
+    <div class="section-header">
+        <span class="section-number yellow">Section 08</span>
+        <h2>Habits & Lifestyle: The Daily Practices</h2>
+        <p class="section-subtitle">Small, consistent actions compound into extraordinary results over time</p>
+    </div>
+
+    <h3>The Compound Effect</h3>
+    <p>Improving by just <strong>1% per day</strong> compounds to being <strong>37.78x better over one year</strong> (1.01^365). Declining by 1% leads to near-zero (0.99^365 = 0.03). This mathematical reality explains why small, consistent habits dramatically outperform sporadic large efforts.</p>
+
+    <div class="card">
+        <div class="card-title">Habit Stacking (James Clear)</div>
+        <p>Formula: "After [CURRENT HABIT], I will [NEW HABIT]." Anchor new behaviors to existing routines. Examples: After pouring morning coffee, meditate 60 seconds. After sitting at desk, write 3 priorities. After brushing teeth, journal one sentence.</p>
+    </div>
+
+    <h3>Morning Routine Science</h3>
+    <p>Cortisol naturally peaks 30-45 minutes after waking, making mornings optimal for establishing discipline:</p>
+    <ol>
+        <li><strong>Morning sunlight</strong> within 30-60 minutes (sets circadian clock, boosts serotonin)</li>
+        <li><strong>Hydrate</strong> (body is dehydrated after 7-8 hours of sleep)</li>
+        <li><strong>Move</strong> for 5-10 minutes (increases BDNF and alertness)</li>
+        <li><strong>Delay caffeine 90-120 minutes</strong> after waking (allows natural cortisol to clear adenosine first)</li>
+    </ol>
+
+    <h3>Cold & Heat Exposure</h3>
+
+    <div class="card">
+        <div class="card-title">Cold Exposure Benefits</div>
+        <ul>
+            <li><strong>Norepinephrine:</strong> +200-530% increase (dose-dependent). Focus, attention, mood</li>
+            <li><strong>Dopamine:</strong> +250% increase (14&deg;C water for 1 hour). Comparable to cocaine without the crash</li>
+            <li><strong>Brown fat activation:</strong> Burns calories to generate heat, improving metabolic health</li>
+            <li><strong>Reduced inflammation:</strong> Decreases pro-inflammatory cytokines</li>
+        </ul>
+        <p><strong>Protocol:</strong> Start with 30-second cold finishes to showers. Build to 2-5 minutes at 10-15&deg;C (50-59&deg;F), 2-4x per week.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Sauna Benefits (Finnish Study, 20 Years, 2,315 Men)</div>
+        <ul>
+            <li>4-7 sessions/week: <strong>63% lower risk</strong> of sudden cardiac death vs. 1x/week</li>
+            <li><strong>50% lower risk</strong> of fatal cardiovascular disease</li>
+            <li><strong>40% lower risk</strong> of all-cause mortality</li>
+            <li>Growth hormone increase 2-5x during a session</li>
+        </ul>
+        <p><strong>Protocol:</strong> 80-100&deg;C (176-212&deg;F) for 15-20 minutes, 4-7x per week. Hydrate adequately.</p>
+    </div>
+
+    <h3>Sunlight: The Underappreciated Drug</h3>
+    <ul>
+        <li><strong>Vitamin D:</strong> 40-80% of the global population has insufficient levels. Optimal: 40-60 ng/mL</li>
+        <li><strong>Circadian rhythm:</strong> Morning sunlight sets the master clock for better nighttime sleep</li>
+        <li><strong>Nitric oxide:</strong> UV radiation releases nitric oxide, reducing blood pressure</li>
+        <li><strong>Serotonin:</strong> Sunlight directly boosts serotonin production</li>
+        <li><strong>Myopia prevention:</strong> 2+ hours outdoor light daily significantly reduces nearsightedness risk in children</li>
+    </ul>
+    <p><strong>Protocol:</strong> 10-30 minutes of midday sun on arms/legs 2-3x per week (varies by skin tone). Never burn. Supplement with 1,000-4,000 IU vitamin D3 if levels are low.</p>
+
+    <h3>Breathing: Nasal vs. Mouth</h3>
+    <p>Nasal breathing provides air filtration (98% of pathogens), humidification, <strong>nitric oxide production</strong> (increases oxygen absorption by 10-15%), and optimal CO2 retention (improves oxygen delivery via the Bohr effect). Chronic mouth breathing is associated with sleep apnea, dental problems, increased stress response, and reduced athletic performance.</p>
+
+    <div class="callout info">
+        <div class="callout-title">BOLT Score (CO2 Tolerance)</div>
+        <p>After a normal exhale, time how long until you feel the first urge to breathe. Under 20 seconds suggests chronic hyperventilation. 40+ seconds indicates excellent CO2 tolerance. Improve with nasal breathing practice and Buteyko method exercises.</p>
+    </div>
+
+    <h3>Toxin Avoidance</h3>
+    <ul>
+        <li><strong>BPA:</strong> Endocrine disruptor in plastics. Use glass/stainless steel containers. Never heat food in plastic</li>
+        <li><strong>Pesticides:</strong> Buy organic for the "Dirty Dozen" (strawberries, spinach, kale, peaches, pears, etc.)</li>
+        <li><strong>Heavy metals:</strong> Filter drinking water, choose small fish (sardines > tuna), vary rice sources</li>
+        <li><strong>Air pollution:</strong> Use HEPA air purifiers indoors. PM2.5 causes 4.2 million premature deaths annually (WHO)</li>
+        <li><strong>Microplastics:</strong> Humans ingest ~5 grams/week (a credit card). Filter water, avoid plastic containers, reduce synthetic clothing</li>
+    </ul>
+
+    <h3>Posture & Movement</h3>
+    <p>The <strong>20-8-2 Rule</strong> (Cornell University): 20 minutes sitting, 8 minutes standing, 2 minutes moving. Sitting 8+ hours/day without activity has mortality risk comparable to smoking.</p>
+
+    <h3>NEAT: Non-Exercise Activity Thermogenesis</h3>
+    <p>NEAT varies by up to <strong>2,000 calories/day</strong> between individuals. It includes walking, standing, fidgeting, household chores, gardening, and stairs. Walk <strong>7,000-10,000 steps daily</strong> (associated with 50-70% lower mortality). Take a 10-15 minute walk after each meal to dramatically improve blood sugar.</p>
+
+    <h3>Dental Health = Heart Health</h3>
+    <p>Periodontal disease allows pathogenic bacteria to enter the bloodstream, producing TMAO (linked to atherosclerosis) and triggering systemic inflammation. Brush 2x daily, floss daily, get cleanings every 6 months. Bleeding gums = active inflammation.</p>
+
+    <h3>Eye Health</h3>
+    <p>The <strong>20-20-2 Rule:</strong> Every 20 minutes of close work, look 20 feet away for 20 seconds, and spend 2 hours outdoors daily. Blink consciously during screen use (blink rate drops from 15-20/min to 3-4 during screen time). Blue light blocking glasses are not evidence-based for eye protection (AAO), but night mode helps sleep.</p>
+</section>
+
+<div class="separator"></div>
+
+<!-- ============================================
+     SECTION 9: BIOMARKERS
+     ============================================ -->
+<section class="section fade-in" id="biomarkers">
+    <div class="section-header">
+        <span class="section-number blue">Section 09</span>
+        <h2>Biomarkers: The Numbers That Matter</h2>
+        <p class="section-subtitle">What to track, what's optimal, and how often to test</p>
+    </div>
+
+    <h3>Cardiovascular Markers</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr><th>Biomarker</th><th>Optimal</th><th>Concerning</th><th>Why It Matters</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Blood Pressure</strong></td><td>&lt;120/80 mmHg</td><td>&ge;130/80</td><td>#1 modifiable risk factor for heart disease &amp; stroke</td></tr>
+                <tr><td><strong>Resting Heart Rate</strong></td><td>50-65 bpm</td><td>&gt;80 bpm consistently</td><td>Lower = greater cardiovascular fitness &amp; longevity</td></tr>
+                <tr><td><strong>LDL Cholesterol</strong></td><td>&lt;100 mg/dL</td><td>&gt;130 mg/dL</td><td>ApoB is superior marker. Target ApoB &lt;80 mg/dL</td></tr>
+                <tr><td><strong>HDL Cholesterol</strong></td><td>&gt;60 mg/dL</td><td>&lt;40 (men) / &lt;50 (women)</td><td>Protective. Higher is better</td></tr>
+                <tr><td><strong>Triglycerides</strong></td><td>&lt;100 mg/dL</td><td>&gt;150 mg/dL</td><td>TG:HDL ratio &lt;2 = good insulin sensitivity</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>Metabolic Markers</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr><th>Biomarker</th><th>Optimal</th><th>Concerning</th><th>Why It Matters</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>HbA1c</strong></td><td>4.8-5.2%</td><td>&ge;5.7% (pre-diabetic)</td><td>Average blood sugar over 2-3 months. Best metabolic marker</td></tr>
+                <tr><td><strong>Fasting Insulin</strong></td><td>&lt;5 uIU/mL</td><td>&gt;8 uIU/mL</td><td>Early insulin resistance indicator (years before HbA1c elevates)</td></tr>
+                <tr><td><strong>Fasting Glucose</strong></td><td>70-90 mg/dL</td><td>&ge;100 mg/dL</td><td>Less useful than HbA1c alone</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>Inflammation Markers</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr><th>Biomarker</th><th>Optimal</th><th>Concerning</th><th>Why It Matters</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>hs-CRP</strong></td><td>&lt;1.0 mg/L</td><td>&gt;3.0 mg/L</td><td>Chronic systemic inflammation. Links to CVD and all-cause mortality</td></tr>
+                <tr><td><strong>Homocysteine</strong></td><td>&lt;8 umol/L</td><td>&gt;15 umol/L</td><td>CVD, stroke, dementia risk. Correctable with B6, B12, folate</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>Nutrient & Hormone Markers</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr><th>Biomarker</th><th>Optimal</th><th>Concerning</th><th>Action</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Vitamin D</strong></td><td>40-60 ng/mL</td><td>&lt;20 ng/mL (deficient)</td><td>Supplement 1,000-4,000 IU D3 with K2 if low</td></tr>
+                <tr><td><strong>Ferritin</strong></td><td>40-100 ng/mL</td><td>&gt;200 or &lt;20</td><td>Iron stores. High = inflammation. Low = anemia</td></tr>
+                <tr><td><strong>Omega-3 Index</strong></td><td>&gt;8%</td><td>&lt;4%</td><td>EPA+DHA in red blood cells. &lt;4% = significantly higher cardiac risk</td></tr>
+                <tr><td><strong>TSH</strong></td><td>0.5-2.5 mIU/L</td><td>&gt;4.0 mIU/L</td><td>Thyroid function. Affects metabolism, energy, weight, mood</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>Testing Frequency</h3>
+    <ul>
+        <li><strong>Annually:</strong> Comprehensive metabolic panel, lipids, HbA1c, vitamin D, hs-CRP, thyroid, CBC</li>
+        <li><strong>Every 2-3 years:</strong> Homocysteine, ferritin, omega-3 index, Lp(a) (test once if never done)</li>
+        <li><strong>Daily/Weekly tracking:</strong> Blood pressure, resting heart rate, HRV, body weight trends</li>
+    </ul>
+
+    <h3>The Daily Protocol: Putting It All Together</h3>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr><th>Time</th><th>Practice</th><th>Mechanism</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Morning</strong></td><td>Sunlight within 30-60 min of waking</td><td>Circadian entrainment, cortisol regulation</td></tr>
+                <tr><td><strong>Morning</strong></td><td>Nasal breathing, hydrate, move</td><td>Nitric oxide, rehydration, BDNF</td></tr>
+                <tr><td><strong>Throughout day</strong></td><td>Move every 20-30 min (20-8-2 rule)</td><td>NEAT, metabolic health, posture</td></tr>
+                <tr><td><strong>Meals</strong></td><td>Plant-heavy, protein first, stop at 80% full</td><td>Blood sugar control, micronutrient density</td></tr>
+                <tr><td><strong>After meals</strong></td><td>10-15 min walk</td><td>Glucose management (-20-30% spike)</td></tr>
+                <tr><td><strong>Afternoon</strong></td><td>Zone 2 cardio or strength training</td><td>Cardiovascular health, muscle, hormones</td></tr>
+                <tr><td><strong>Evening</strong></td><td>Cold/heat exposure (2-4x/week)</td><td>Hormesis, cardiovascular adaptation</td></tr>
+                <tr><td><strong>Evening</strong></td><td>Social connection, no caffeine after 2PM</td><td>Vagal tone, stress reduction, sleep quality</td></tr>
+                <tr><td><strong>Night</strong></td><td>Dark room, cool (65-68&deg;F), consistent bedtime</td><td>Sleep architecture, autophagy, recovery</td></tr>
+                <tr><td><strong>Ongoing</strong></td><td>Track key biomarkers annually</td><td>Early detection, course correction</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="callout success">
+        <div class="callout-title">The Most Important Takeaway</div>
+        <p>You don't need to do everything at once. Start with the three highest-impact habits: <strong>sleep 7-9 hours consistently, move your body daily, and eat mostly whole foods.</strong> These three alone address 80% of what drives chronic disease. Everything else is optimization on top of these foundations. Small, consistent improvements compound. Your body is remarkably resilient and responsive to positive change at any age.</p>
+    </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+    <p>This guide is for educational purposes only and does not constitute medical advice. Always consult healthcare professionals for personal health decisions.</p>
+    <p style="margin-top: 0.5rem;">Research sourced from PubMed, Harvard Health, WHO, NIH, and peer-reviewed journals. Last updated February 2026.</p>
+    <p style="margin-top: 1rem; color: var(--accent-blue);">Built with science. Designed for humans.</p>
+</footer>
+
+<!-- ============================================
+     BACK TO TOP BUTTON
+     ============================================ -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr;</button>
+
+<!-- ============================================
+     JAVASCRIPT
+     ============================================ -->
+<script>
+    // Back to top button visibility
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
