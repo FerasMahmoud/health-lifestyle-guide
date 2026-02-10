@@ -2,8 +2,18 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>الدليل الشامل للصحة ونمط الحياة</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0a0a0f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="دليل الصحة">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap');
 
@@ -1727,6 +1737,100 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ============================================
+    // PWA: Service Worker Registration
+    // ============================================
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').then(reg => {
+            reg.addEventListener('updatefound', () => {
+                const newWorker = reg.installing;
+                newWorker.addEventListener('statechange', () => {
+                    if (newWorker.state === 'activated') {
+                        // Show subtle update toast
+                        const toast = document.createElement('div');
+                        toast.textContent = 'تم تحديث المحتوى';
+                        toast.style.cssText = 'position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:#4facfe;color:#fff;padding:0.8rem 1.5rem;border-radius:12px;font-size:0.9rem;z-index:9999;opacity:0;transition:opacity 0.3s';
+                        document.body.appendChild(toast);
+                        requestAnimationFrame(() => toast.style.opacity = '1');
+                        setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 3000);
+                    }
+                });
+            });
+        });
+    }
+
+    // ============================================
+    // localStorage: Save & Restore Scroll Position
+    // ============================================
+    const SCROLL_KEY = 'health-guide-scroll';
+    const SECTION_KEY = 'health-guide-section';
+
+    // Restore scroll position on load
+    const savedScroll = localStorage.getItem(SCROLL_KEY);
+    if (savedScroll && parseInt(savedScroll) > 100) {
+        requestAnimationFrame(() => {
+            window.scrollTo(0, parseInt(savedScroll));
+        });
+    }
+
+    // Save scroll position periodically
+    let scrollTimer;
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+            localStorage.setItem(SCROLL_KEY, window.scrollY.toString());
+            // Track which section is visible
+            const sections = document.querySelectorAll('section[id]');
+            for (const sec of sections) {
+                const rect = sec.getBoundingClientRect();
+                if (rect.top <= 200 && rect.bottom > 200) {
+                    localStorage.setItem(SECTION_KEY, sec.id);
+                    break;
+                }
+            }
+        }, 200);
+    });
+
+    // ============================================
+    // localStorage: Reading Progress Indicator
+    // ============================================
+    const progressBar = document.createElement('div');
+    progressBar.style.cssText = 'position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#4facfe,#a855f7);z-index:10001;transition:width 0.15s;width:0';
+    document.body.appendChild(progressBar);
+
+    function updateProgress() {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0;
+        progressBar.style.width = progress + '%';
+        localStorage.setItem('health-guide-progress', Math.round(progress).toString());
+    }
+    window.addEventListener('scroll', updateProgress);
+    updateProgress();
+
+    // ============================================
+    // Offline Status Indicator
+    // ============================================
+    function showOfflineStatus(isOffline) {
+        let indicator = document.getElementById('offline-indicator');
+        if (isOffline) {
+            if (!indicator) {
+                indicator = document.createElement('div');
+                indicator.id = 'offline-indicator';
+                indicator.textContent = 'وضع عدم الاتصال';
+                indicator.style.cssText = 'position:fixed;top:0;left:0;right:0;text-align:center;background:#f87171;color:#fff;padding:4px;font-size:0.8rem;z-index:10002;transition:transform 0.3s';
+                document.body.appendChild(indicator);
+                // Push nav down
+                document.querySelector('.nav').style.top = '28px';
+            }
+        } else if (indicator) {
+            indicator.remove();
+            document.querySelector('.nav').style.top = '0';
+        }
+    }
+    window.addEventListener('offline', () => showOfflineStatus(true));
+    window.addEventListener('online', () => showOfflineStatus(false));
+    if (!navigator.onLine) showOfflineStatus(true);
 </script>
 
 </body>
