@@ -5,7 +5,8 @@
 
 const Data = (() => {
   // ---- Configuration ----
-  let API_URL = localStorage.getItem('mylife_api_url') || '';
+  const DEFAULT_API = 'https://script.google.com/macros/s/AKfycbzkkWOOZDZ_EmcX4BZIXv0tdhYeBB8A6FCn21WgzkXx41Bp0foqKaASlbZ4rlVcZsCe/exec';
+  let API_URL = localStorage.getItem('mylife_api_url') || DEFAULT_API;
 
   const SHEETS = {
     steps:       ['date', 'steps', 'distance_km', 'flights_climbed', 'active_calories', 'resting_calories'],
