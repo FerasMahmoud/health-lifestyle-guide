@@ -1,13 +1,13 @@
 {
-  "name": "الدليل الشامل للصحة ونمط الحياة",
-  "short_name": "دليل الصحة",
-  "description": "دليل شامل مبني على العلم للصحة والتغذية والرياضة والنوم والصحة النفسية",
+  "name": "MyLife — Smart Health Dashboard",
+  "short_name": "MyLife",
+  "description": "AI-powered health dashboard with Apple Health sync, smart insights, and personalized plans",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "dir": "rtl",
-  "lang": "ar",
+  "dir": "ltr",
+  "lang": "en",
   "background_color": "#0a0a0f",
   "theme_color": "#0a0a0f",
   "icons": [
@@ -24,6 +24,6 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["health", "lifestyle", "education"],
+  "categories": ["health", "lifestyle", "fitness"],
   "prefer_related_applications": false
 }

@@ -1,1837 +1,363 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>الدليل الشامل للصحة ونمط الحياة</title>
-
-    <!-- PWA -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0a0a0f">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="دليل الصحة">
-    <link rel="apple-touch-icon" href="icon-192.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap');
-
-        /* ============================================
-           CSS VARIABLES & RESET
-           ============================================ */
-        :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #12121a;
-            --bg-card: #1a1a2e;
-            --bg-card-hover: #1e1e35;
-            --text-primary: #e8e8f0;
-            --text-secondary: #a0a0b8;
-            --text-muted: #6a6a82;
-            --accent-blue: #4facfe;
-            --accent-purple: #a855f7;
-            --accent-green: #34d399;
-            --accent-orange: #fb923c;
-            --accent-red: #f87171;
-            --accent-pink: #f472b6;
-            --accent-cyan: #22d3ee;
-            --accent-yellow: #fbbf24;
-            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-blue: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --gradient-green: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            --gradient-purple: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
-            --gradient-orange: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-warm: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --border-subtle: rgba(255, 255, 255, 0.06);
-            --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.3);
-            --shadow-glow: 0 0 40px rgba(79, 172, 254, 0.15);
-            --radius: 16px;
-            --radius-sm: 8px;
-            --font-main: 'Tajawal', 'Segoe UI', sans-serif;
-            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-            --max-width: 900px;
-        }
-
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
-        body {
-            font-family: var(--font-main);
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.75;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* ============================================
-           SCROLLBAR
-           ============================================ */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-primary); }
-        ::-webkit-scrollbar-thumb { background: var(--bg-card); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent-blue); }
-
-        /* ============================================
-           NAVIGATION
-           ============================================ */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(10, 10, 15, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-subtle);
-            padding: 0.75rem 0;
-            transition: transform 0.3s ease;
-        }
-
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            background: var(--gradient-blue);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 0.25rem;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.75rem;
-            padding: 0.35rem 0.65rem;
-            border-radius: 6px;
-            transition: all 0.2s;
-            white-space: nowrap;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-blue);
-            background: rgba(79, 172, 254, 0.1);
-        }
-
-        /* ============================================
-           HERO
-           ============================================ */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 6rem 2rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at 30% 50%, rgba(79, 172, 254, 0.08) 0%, transparent 50%),
-                        radial-gradient(ellipse at 70% 50%, rgba(168, 85, 247, 0.06) 0%, transparent 50%);
-            animation: heroFloat 20s ease-in-out infinite;
-        }
-
-        @keyframes heroFloat {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(1deg); }
-            66% { transform: translate(-20px, 20px) rotate(-1deg); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            background: rgba(79, 172, 254, 0.1);
-            color: var(--accent-blue);
-            border: 1px solid rgba(79, 172, 254, 0.2);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #fff 0%, #a0a0b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-            line-height: 1.8;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .hero-stat {
-            text-align: center;
-        }
-
-        .hero-stat-number {
-            font-size: 2rem;
-            font-weight: 800;
-            background: var(--gradient-blue);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-stat-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        /* ============================================
-           TOC (Table of Contents)
-           ============================================ */
-        .toc {
-            max-width: var(--max-width);
-            margin: 0 auto 4rem;
-            padding: 0 2rem;
-        }
-
-        .toc-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 1rem;
-        }
-
-        .toc-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 1.25rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-sm);
-            text-decoration: none;
-            color: var(--text-primary);
-            transition: all 0.25s;
-        }
-
-        .toc-item:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--accent-blue);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .toc-icon {
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .toc-text {
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .toc-desc {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* ============================================
-           SECTIONS
-           ============================================ */
-        .section {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .section-header {
-            margin-bottom: 3rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .section-number {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            padding: 0.3rem 0.8rem;
-            border-radius: 100px;
-            margin-bottom: 0.75rem;
-        }
-
-        .section-number.blue { background: rgba(79, 172, 254, 0.12); color: var(--accent-blue); }
-        .section-number.purple { background: rgba(168, 85, 247, 0.12); color: var(--accent-purple); }
-        .section-number.green { background: rgba(52, 211, 153, 0.12); color: var(--accent-green); }
-        .section-number.orange { background: rgba(251, 146, 60, 0.12); color: var(--accent-orange); }
-        .section-number.red { background: rgba(248, 113, 113, 0.12); color: var(--accent-red); }
-        .section-number.pink { background: rgba(244, 114, 182, 0.12); color: var(--accent-pink); }
-        .section-number.cyan { background: rgba(34, 211, 238, 0.12); color: var(--accent-cyan); }
-        .section-number.yellow { background: rgba(251, 191, 36, 0.12); color: var(--accent-yellow); }
-
-        .section h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-subtitle {
-            color: var(--text-secondary);
-            font-size: 1rem;
-        }
-
-        .section h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin: 2.5rem 0 1rem;
-            color: var(--text-primary);
-            letter-spacing: -0.01em;
-        }
-
-        .section h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin: 1.5rem 0 0.75rem;
-            color: var(--accent-blue);
-        }
-
-        .section p {
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-        }
-
-        .section strong {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .section ul, .section ol {
-            margin: 0.75rem 1.5rem 1.25rem 0;
-            color: var(--text-secondary);
-        }
-
-        .section li {
-            margin-bottom: 0.4rem;
-            padding-right: 0.25rem;
-        }
-
-        .section li::marker {
-            color: var(--accent-blue);
-        }
-
-        /* ============================================
-           CARDS & CALLOUTS
-           ============================================ */
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .card-title {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .callout {
-            border-radius: var(--radius);
-            padding: 1.25rem 1.5rem;
-            margin: 1.5rem 0;
-            border-right: 4px solid;
-        }
-
-        .callout.info {
-            background: rgba(79, 172, 254, 0.06);
-            border-color: var(--accent-blue);
-        }
-
-        .callout.warning {
-            background: rgba(251, 191, 36, 0.06);
-            border-color: var(--accent-yellow);
-        }
-
-        .callout.success {
-            background: rgba(52, 211, 153, 0.06);
-            border-color: var(--accent-green);
-        }
-
-        .callout.danger {
-            background: rgba(248, 113, 113, 0.06);
-            border-color: var(--accent-red);
-        }
-
-        .callout-title {
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
-
-        .callout.info .callout-title { color: var(--accent-blue); }
-        .callout.warning .callout-title { color: var(--accent-yellow); }
-        .callout.success .callout-title { color: var(--accent-green); }
-        .callout.danger .callout-title { color: var(--accent-red); }
-
-        /* ============================================
-           TABLES
-           ============================================ */
-        .table-wrapper {
-            overflow-x: auto;
-            margin: 1.5rem 0;
-            border-radius: var(--radius);
-            border: 1px solid var(--border-subtle);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.88rem;
-        }
-
-        thead {
-            background: var(--bg-card);
-        }
-
-        th {
-            padding: 0.85rem 1rem;
-            text-align: right;
-            font-weight: 700;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-muted);
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        td {
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid var(--border-subtle);
-            color: var(--text-secondary);
-        }
-
-        tr:last-child td { border-bottom: none; }
-
-        tr:hover td {
-            background: rgba(79, 172, 254, 0.03);
-        }
-
-        /* ============================================
-           STATS GRID
-           ============================================ */
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius);
-            padding: 1.25rem;
-            text-align: center;
-            transition: all 0.25s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .stat-value {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 0.25rem;
-        }
-
-        .stat-value.blue { color: var(--accent-blue); }
-        .stat-value.green { color: var(--accent-green); }
-        .stat-value.purple { color: var(--accent-purple); }
-        .stat-value.orange { color: var(--accent-orange); }
-        .stat-value.red { color: var(--accent-red); }
-        .stat-value.cyan { color: var(--accent-cyan); }
-
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        /* ============================================
-           PROGRESS BARS
-           ============================================ */
-        .progress-item {
-            margin: 0.75rem 0;
-        }
-
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            margin-bottom: 0.35rem;
-        }
-
-        .progress-bar {
-            height: 6px;
-            background: var(--bg-card);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            border-radius: 3px;
-            transition: width 1s ease;
-        }
-
-        .progress-fill.blue { background: var(--gradient-blue); }
-        .progress-fill.green { background: var(--gradient-green); }
-        .progress-fill.purple { background: var(--gradient-purple); }
-        .progress-fill.orange { background: var(--gradient-orange); }
-
-        /* ============================================
-           DIAGRAM FLOW
-           ============================================ */
-        .flow {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            margin: 2rem 0;
-        }
-
-        .flow-step {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius);
-            padding: 1.25rem 1.5rem;
-            position: relative;
-        }
-
-        .flow-arrow {
-            text-align: center;
-            padding: 0.5rem;
-            color: var(--accent-blue);
-            font-size: 1.25rem;
-        }
-
-        .flow-step-title {
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 0.35rem;
-        }
-
-        .flow-step-desc {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* ============================================
-           SEPARATOR
-           ============================================ */
-        .separator {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
-            margin: 2rem 0;
-            max-width: var(--max-width);
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* ============================================
-           FOOTER
-           ============================================ */
-        .footer {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border-subtle);
-            margin-top: 4rem;
-        }
-
-        .footer a {
-            color: var(--accent-blue);
-            text-decoration: none;
-        }
-
-        /* ============================================
-           BACK TO TOP
-           ============================================ */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--accent-blue);
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s;
-            z-index: 999;
-            box-shadow: 0 4px 20px rgba(79, 172, 254, 0.4);
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ============================================
-           RESPONSIVE
-           ============================================ */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero { min-height: 80vh; padding: 5rem 1.5rem 3rem; }
-            .hero h1 { font-size: 2.2rem; }
-            .section { padding: 3rem 1.25rem; }
-            .section h2 { font-size: 1.7rem; }
-            .stat-grid { grid-template-columns: repeat(2, 1fr); }
-            .hero-stats { gap: 1.25rem; }
-            .toc-grid { grid-template-columns: 1fr; }
-        }
-
-        /* ============================================
-           ANIMATIONS
-           ============================================ */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Tag / badge inline */
-        .tag {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 0.15rem 0.5rem;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .tag.blue { background: rgba(79,172,254,0.15); color: var(--accent-blue); }
-        .tag.green { background: rgba(52,211,153,0.15); color: var(--accent-green); }
-        .tag.red { background: rgba(248,113,113,0.15); color: var(--accent-red); }
-        .tag.purple { background: rgba(168,85,247,0.15); color: var(--accent-purple); }
-        .tag.orange { background: rgba(251,146,60,0.15); color: var(--accent-orange); }
-        .tag.yellow { background: rgba(251,191,36,0.15); color: var(--accent-yellow); }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MyLife — Smart Health Dashboard</title>
+
+  <!-- PWA -->
+  <meta name="theme-color" content="#0a0a0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js" defer></script>
 </head>
 <body>
 
-<!-- ============================================
-     NAVIGATION
-     ============================================ -->
-<nav class="nav">
-    <div class="nav-inner">
-        <div class="nav-logo">دليل الصحة</div>
-        <div class="nav-links">
-            <a href="#brain">الدماغ</a>
-            <a href="#mental">النفسية</a>
-            <a href="#nutrition">التغذية</a>
-            <a href="#exercise">الرياضة</a>
-            <a href="#sleep">النوم</a>
-            <a href="#body">الجسم</a>
-            <a href="#longevity">طول العمر</a>
-            <a href="#habits">العادات</a>
-            <a href="#biomarkers">المؤشرات</a>
+  <!-- ============================================================
+       PAGE 1 — DASHBOARD
+       ============================================================ -->
+  <section id="page-dashboard" class="page page--active">
+    <header class="page-header">
+      <h1>Dashboard</h1>
+    </header>
+
+    <!-- Health Score Ring -->
+    <div class="card card--score">
+      <canvas id="health-score-ring" width="180" height="180"></canvas>
+      <p class="score-label">Health Score</p>
+    </div>
+
+    <!-- AI Summary -->
+    <div id="ai-summary" class="card card--ai">
+      <h3>AI Summary</h3>
+      <p class="skeleton">Loading your personalized health insights...</p>
+    </div>
+
+    <!-- Metrics Grid -->
+    <div class="metrics-grid">
+      <div class="card card--metric">
+        <span class="metric-icon">&#x1F6B6;</span>
+        <span class="metric-label">Steps</span>
+        <span id="val-steps" class="metric-value skeleton">--</span>
+        <canvas id="sparkline-steps" width="120" height="40"></canvas>
+      </div>
+      <div class="card card--metric">
+        <span class="metric-icon">&#x2764;&#xFE0F;</span>
+        <span class="metric-label">Heart Rate</span>
+        <span id="val-hr" class="metric-value skeleton">--</span>
+        <canvas id="sparkline-hr" width="120" height="40"></canvas>
+      </div>
+      <div class="card card--metric">
+        <span class="metric-icon">&#x1F634;</span>
+        <span class="metric-label">Sleep</span>
+        <span id="val-sleep" class="metric-value skeleton">--</span>
+        <canvas id="sparkline-sleep" width="120" height="40"></canvas>
+      </div>
+      <div class="card card--metric">
+        <span class="metric-icon">&#x1F525;</span>
+        <span class="metric-label">Calories</span>
+        <span id="val-calories" class="metric-value skeleton">--</span>
+        <canvas id="sparkline-calories" width="120" height="40"></canvas>
+      </div>
+      <div class="card card--metric">
+        <span class="metric-icon">&#x2696;&#xFE0F;</span>
+        <span class="metric-label">Weight</span>
+        <span id="val-weight" class="metric-value skeleton">--</span>
+        <canvas id="sparkline-weight" width="120" height="40"></canvas>
+      </div>
+      <div class="card card--metric">
+        <span class="metric-icon">&#x1F493;</span>
+        <span class="metric-label">HRV</span>
+        <span id="val-hrv" class="metric-value skeleton">--</span>
+        <canvas id="sparkline-hrv" width="120" height="40"></canvas>
+      </div>
+    </div>
+
+    <!-- Last Sync -->
+    <div id="last-sync" class="sync-status">Last synced: --</div>
+  </section>
+
+  <!-- ============================================================
+       PAGE 2 — PLANS
+       ============================================================ -->
+  <section id="page-plans" class="page">
+    <header class="page-header">
+      <h1>Plans</h1>
+    </header>
+
+    <!-- Workout Plan -->
+    <div class="card card--plan">
+      <div class="plan-header">
+        <span class="plan-icon">&#x1F4AA;</span>
+        <h3>Workout Plan</h3>
+        <button id="btn-regen-workout" class="btn btn--icon" data-type="workout" aria-label="Regenerate workout plan">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+          </svg>
+        </button>
+      </div>
+      <div id="plan-workout" class="plan-content">
+        <p class="skeleton">Generating your personalized workout plan...</p>
+      </div>
+    </div>
+
+    <!-- Meal Plan -->
+    <div class="card card--plan">
+      <div class="plan-header">
+        <span class="plan-icon">&#x1F957;</span>
+        <h3>Meal Plan</h3>
+        <button id="btn-regen-meal" class="btn btn--icon" data-type="meal" aria-label="Regenerate meal plan">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+          </svg>
+        </button>
+      </div>
+      <div id="plan-meal" class="plan-content">
+        <p class="skeleton">Generating your personalized meal plan...</p>
+      </div>
+    </div>
+
+    <!-- Sleep Plan -->
+    <div class="card card--plan">
+      <div class="plan-header">
+        <span class="plan-icon">&#x1F319;</span>
+        <h3>Sleep Plan</h3>
+        <button id="btn-regen-sleep" class="btn btn--icon" data-type="sleep" aria-label="Regenerate sleep plan">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+          </svg>
+        </button>
+      </div>
+      <div id="plan-sleep" class="plan-content">
+        <p class="skeleton">Generating your personalized sleep plan...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAGE 3 — TRENDS
+       ============================================================ -->
+  <section id="page-trends" class="page">
+    <header class="page-header">
+      <h1>Trends</h1>
+    </header>
+
+    <!-- Range Selector -->
+    <div id="trend-range-selector" class="range-selector">
+      <button class="btn btn--range active" data-range="7d">7d</button>
+      <button class="btn btn--range" data-range="30d">30d</button>
+      <button class="btn btn--range" data-range="90d">90d</button>
+      <button class="btn btn--range" data-range="1y">1y</button>
+    </div>
+
+    <!-- Chart Cards -->
+    <div class="card card--chart">
+      <h3>Weight</h3>
+      <canvas id="chart-weight"></canvas>
+    </div>
+
+    <div class="card card--chart">
+      <h3>Steps</h3>
+      <canvas id="chart-steps"></canvas>
+    </div>
+
+    <div class="card card--chart">
+      <h3>Heart Rate</h3>
+      <canvas id="chart-hr"></canvas>
+    </div>
+
+    <div class="card card--chart">
+      <h3>Sleep</h3>
+      <canvas id="chart-sleep"></canvas>
+    </div>
+
+    <div class="card card--chart">
+      <h3>Calories</h3>
+      <canvas id="chart-calories"></canvas>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAGE 4 — CHAT
+       ============================================================ -->
+  <section id="page-chat" class="page">
+    <header class="page-header">
+      <h1>Health Coach</h1>
+    </header>
+
+    <div id="chat-messages" class="chat-messages"></div>
+
+    <div class="quick-questions">
+      <button class="btn btn--quick" data-question="How am I doing today?">How am I doing today?</button>
+      <button class="btn btn--quick" data-question="Suggest a workout">Suggest a workout</button>
+      <button class="btn btn--quick" data-question="Analyze my sleep">Analyze my sleep</button>
+      <button class="btn btn--quick" data-question="Tips to improve">Tips to improve</button>
+    </div>
+
+    <div class="chat-input-area">
+      <input id="chat-input" type="text" placeholder="Ask your health coach..." class="chat-input">
+      <button id="chat-send" class="btn btn--send" aria-label="Send message">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAGE 5 — SETTINGS
+       ============================================================ -->
+  <section id="page-settings" class="page">
+    <header class="page-header">
+      <h1>Settings</h1>
+    </header>
+
+    <!-- Connection -->
+    <div class="card card--settings">
+      <h3>Connection</h3>
+      <label for="input-api-url">Apps Script URL</label>
+      <input id="input-api-url" type="url" placeholder="Paste your Apps Script URL" class="input">
+      <button id="btn-save-url" class="btn btn--primary">Save URL</button>
+    </div>
+
+    <!-- AI Provider -->
+    <div class="card card--settings">
+      <h3>AI Provider</h3>
+      <label for="select-ai-provider">Provider</label>
+      <select id="select-ai-provider" class="input">
+        <option value="gemini">Gemini</option>
+        <option value="claude">Claude</option>
+        <option value="pollinations">Pollinations</option>
+      </select>
+
+      <label for="input-api-key">API Key</label>
+      <input id="input-api-key" type="password" placeholder="API Key (stored server-side)" class="input">
+
+      <div class="settings-actions">
+        <button id="btn-test-ai" class="btn btn--secondary">Test AI</button>
+        <button id="btn-save-ai" class="btn btn--primary">Save AI Config</button>
+      </div>
+      <div id="ai-test-status" class="status-message"></div>
+    </div>
+
+    <!-- Profile -->
+    <div class="card card--settings">
+      <h3>Profile</h3>
+      <label for="input-name">Name</label>
+      <input id="input-name" type="text" placeholder="Your name" class="input">
+
+      <label for="input-age">Age</label>
+      <input id="input-age" type="number" placeholder="Age" class="input">
+
+      <label for="input-height">Height (cm)</label>
+      <input id="input-height" type="number" placeholder="Height (cm)" class="input">
+
+      <button id="btn-save-profile" class="btn btn--primary">Save Profile</button>
+    </div>
+
+    <!-- Apple Health Setup -->
+    <div class="card card--settings">
+      <h3>Apple Health Setup</h3>
+      <details class="setup-guide">
+        <summary>How to create Apple Shortcuts</summary>
+        <div class="guide-content">
+          <div class="guide-step">
+            <h4>1. Daily Health Sync</h4>
+            <p>Create a shortcut that reads Steps, Walking Distance, Flights Climbed, and Active Calories from Apple Health, then sends JSON to your Apps Script URL via POST request. Set it to run daily at midnight.</p>
+          </div>
+          <div class="guide-step">
+            <h4>2. Daily Vitals Sync</h4>
+            <p>Create a shortcut that reads Heart Rate, Resting Heart Rate, HRV, and Blood Oxygen from Apple Health, then sends JSON to your Apps Script URL. Schedule it to run daily after waking.</p>
+          </div>
+          <div class="guide-step">
+            <h4>3. Sleep Sync</h4>
+            <p>Create a shortcut that reads Bedtime, Wake Time, Sleep Duration, and Sleep Quality from Apple Health, then sends JSON to your Apps Script URL. Schedule it to run each morning.</p>
+          </div>
         </div>
-    </div>
-</nav>
-
-<!-- ============================================
-     HERO
-     ============================================ -->
-<header class="hero">
-    <div class="hero-content">
-        <div class="hero-badge">علوم صحية مبنية على الأدلة</div>
-        <h1>الدليل الشامل لصحة الإنسان والأداء</h1>
-        <p>استكشاف عميق وشامل لكيفية عمل جسمك، وما يحتاجه، وكيفية تحسين كل نظام لحياة أطول وأكثر صحة وإشباعاً. مدعوم بالأبحاث، مبني على العلم.</p>
-        <div class="hero-stats">
-            <div class="hero-stat">
-                <div class="hero-stat-number">٩</div>
-                <div class="hero-stat-label">أقسام رئيسية</div>
-            </div>
-            <div class="hero-stat">
-                <div class="hero-stat-number">+٢٠٠</div>
-                <div class="hero-stat-label">حقيقة علمية</div>
-            </div>
-            <div class="hero-stat">
-                <div class="hero-stat-number">+٥٠</div>
-                <div class="hero-stat-label">خطوة عملية</div>
-            </div>
-        </div>
-    </div>
-</header>
-
-<!-- ============================================
-     TABLE OF CONTENTS
-     ============================================ -->
-<div class="toc">
-    <div class="toc-grid">
-        <a href="#brain" class="toc-item">
-            <span class="toc-icon">&#129504;</span>
-            <div><div class="toc-text">دماغك</div><div class="toc-desc">الناقلات العصبية، المرونة العصبية، وكيف يشكّل دماغك كل شيء</div></div>
-        </a>
-        <a href="#mental" class="toc-item">
-            <span class="toc-icon">&#128161;</span>
-            <div><div class="toc-text">الصحة النفسية</div><div class="toc-desc">القلق، الاكتئاب، أنواع العلاج، التأمل، وتقنيات التنفس</div></div>
-        </a>
-        <a href="#nutrition" class="toc-item">
-            <span class="toc-icon">&#129382;</span>
-            <div><div class="toc-text">التغذية والغذاء</div><div class="toc-desc">المغذيات الكبرى والصغرى، صحة الأمعاء، الأطعمة الخارقة، وتوقيت الوجبات</div></div>
-        </a>
-        <a href="#exercise" class="toc-item">
-            <span class="toc-icon">&#127947;</span>
-            <div><div class="toc-text">الرياضة والحركة</div><div class="toc-desc">القوة، تمارين القلب، المرونة، التعافي، وتكوين الجسم</div></div>
-        </a>
-        <a href="#sleep" class="toc-item">
-            <span class="toc-icon">&#128164;</span>
-            <div><div class="toc-text">علم النوم</div><div class="toc-desc">الدورات، الإيقاع اليومي، نظافة النوم، ولماذا النوم غير قابل للتفاوض</div></div>
-        </a>
-        <a href="#body" class="toc-item">
-            <span class="toc-icon">&#129728;</span>
-            <div><div class="toc-text">أنظمة الجسم</div><div class="toc-desc">كيف تعمل ١١ نظاماً مترابطاً للحفاظ على حياتك وكيف تحميها</div></div>
-        </a>
-        <a href="#longevity" class="toc-item">
-            <span class="toc-icon">&#9203;</span>
-            <div><div class="toc-text">علم طول العمر</div><div class="toc-desc">المناطق الزرقاء، الالتهام الذاتي، التيلوميرات، وأسرار المعمّرين</div></div>
-        </a>
-        <a href="#habits" class="toc-item">
-            <span class="toc-icon">&#128736;</span>
-            <div><div class="toc-text">العادات ونمط الحياة</div><div class="toc-desc">الروتين الصباحي، التعرض للبرد، ضوء الشمس، تجنب السموم</div></div>
-        </a>
-        <a href="#biomarkers" class="toc-item">
-            <span class="toc-icon">&#128200;</span>
-            <div><div class="toc-text">المؤشرات الحيوية والمتابعة</div><div class="toc-desc">الأرقام المهمة وما يجب أن تكون عليه</div></div>
-        </a>
-    </div>
-</div>
-
-<div class="separator"></div>
-
-<!-- ============================================
-     SECTION 1: الدماغ
-     ============================================ -->
-<section class="section fade-in" id="brain">
-    <div class="section-header">
-        <span class="section-number blue">القسم ٠١</span>
-        <h2>الدماغ: مركز التحكم</h2>
-        <p class="section-subtitle">فهم العضو الذي يزن ١.٤ كجم والذي ينظّم كل فكرة وعاطفة ووظيفة جسدية</p>
+      </details>
     </div>
 
-    <h3>أوركسترا الناقلات العصبية</h3>
-    <p>يتواصل دماغك من خلال رسائل كيميائية تُسمى الناقلات العصبية. فهمها هو أساس فهم مزاجك ودافعيتك ونومك وصحتك النفسية بشكل عام.</p>
-
-    <div class="stat-grid">
-        <div class="stat-card">
-            <div class="stat-value blue">السيروتونين</div>
-            <div class="stat-label">المزاج والهدوء</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value purple">الدوبامين</div>
-            <div class="stat-label">الدافعية والمكافأة</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value green">GABA</div>
-            <div class="stat-label">الاسترخاء والنوم</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value orange">النورإبينفرين</div>
-            <div class="stat-label">التركيز واليقظة</div>
-        </div>
+    <!-- Sync -->
+    <div class="card card--settings">
+      <h3>Sync</h3>
+      <div id="settings-last-sync" class="sync-status">Last synced: --</div>
+      <div class="settings-actions">
+        <button id="btn-force-sync" class="btn btn--secondary">Force Sync</button>
+        <button id="btn-clear-cache" class="btn btn--danger">Clear Cache</button>
+      </div>
     </div>
 
-    <h4>السيروتونين - مادة الاستقرار الكيميائية</h4>
-    <p><strong>95% من السيروتونين يُنتَج في الأمعاء</strong>، وليس في الدماغ. لهذا السبب تؤثر صحة الأمعاء مباشرة على المزاج. ينظّم السيروتونين المزاج ودورات النوم والاستيقاظ والشهية والسلوك الاجتماعي. انخفاض السيروتونين مرتبط بالاكتئاب والقلق والتفكير الوسواسي.</p>
-    <ul>
-        <li><strong>المعززات:</strong> التعرض لأشعة الشمس، التمارين الرياضية، الأطعمة الغنية بالتريبتوفان (الديك الرومي، البيض، الجبن، السلمون)، صحة الأمعاء (البروبيوتيك، الألياف)</li>
-        <li><strong>يُستنزَف بسبب:</strong> الإجهاد المزمن، سوء التغذية، الكحول، قلة أشعة الشمس، سوء صحة الأمعاء</li>
-    </ul>
-
-    <h4>الدوبامين - مادة الدافع الكيميائية</h4>
-    <p>يحرّك الدوبامين <strong>الدافعية والترقب والسعي نحو الأهداف</strong>. إنه ليس مادة "المتعة" الكيميائية - بل هو مادة "الرغبة" الكيميائية. يرتفع عند ترقّب المكافأة، وليس بعد تلقّيها. تخطف البيئات الحديثة الدوبامين من خلال وسائل التواصل الاجتماعي والوجبات السريعة والتصفّح اللانهائي.</p>
-    <ul>
-        <li><strong>المعززات:</strong> التعرض للبرد (زيادة +250%)، التمارين الرياضية، إنجاز المهام الصعبة، الأطعمة الغنية بالتيروسين (اللحوم، الأسماك، البيض)</li>
-        <li><strong>يُستنزَف بسبب:</strong> الإفراط في استخدام وسائل التواصل الاجتماعي، السكر المفرط، الإباحية، القمار، قلة النوم</li>
-    </ul>
-
-    <div class="callout warning">
-        <div class="callout-title">فخ الدوبامين</div>
-        <p>كل جرعة "سهلة" من الدوبامين (التصفح، تناول الوجبات الخفيفة، مشاهدة المسلسلات بنهم) ترفع عتبة خط الأساس لديك. مع الوقت، تحتاج إلى مزيد من التحفيز للحصول على نفس التأثير. لهذا السبب تصبح نفس الأنشطة أقل إرضاءً مع مرور الوقت. صيام الدوبامين المتعمّد (تقليل المكافآت السهلة لمدة ٢٤-٤٨ ساعة) يساعد في إعادة ضبط الحساسية.</p>
-    </div>
-
-    <h4>GABA - دواسة الفرامل</h4>
-    <p>حمض غاما-أمينوبيوتيريك (GABA) هو الناقل العصبي المثبط الأساسي في الدماغ. إنه <strong>يبطئ النشاط العصبي</strong>، مما يخلق الهدوء ويقلل القلق ويمكّن النوم. بدون مستويات كافية من GABA، يبقى دماغك في حالة إثارة مفرطة.</p>
-    <ul>
-        <li><strong>المعززات:</strong> التأمل، اليوغا، المغنيسيوم، الأطعمة المخمّرة، إل-ثيانين (الشاي الأخضر)، جذر الناردين</li>
-        <li><strong>يُستنزَف بسبب:</strong> الإجهاد المزمن، انسحاب الكحول، الإفراط في الكافيين</li>
-    </ul>
-
-    <h4>النورإبينفرين - مادة اليقظة الكيميائية</h4>
-    <p>يعمل بشكل وثيق مع الدوبامين لتنظيم <strong>الانتباه والتركيز واستجابة الكرّ والفرّ</strong>. يحتاج القشرة الأمامية الجبهية (مركز الوظيفة التنفيذية) إلى مستويات مثالية من النورإبينفرين للعمل بشكل صحيح. يتضمن اضطراب فرط الحركة ونقص الانتباه (ADHD) نقصاً في النورإبينفرين والدوبامين في القشرة الأمامية الجبهية.</p>
-
-    <h3>المرونة العصبية: دماغك يمكن أن يتغيّر في أي عمر</h3>
-    <p>المرونة العصبية هي قدرة الدماغ على <strong>إعادة تنظيم نفسه من خلال تكوين اتصالات عصبية جديدة طوال الحياة</strong>. كان يُعتقد أنها تتوقف بعد الطفولة، لكننا نعلم الآن أن الدماغ يبقى مرناً حتى الشيخوخة.</p>
-
-    <div class="card">
-        <div class="card-title">كيف تتكوّن المسارات العصبية</div>
-        <p>عندما تكرر سلوكاً ما، تنشط الخلايا العصبية المرتبطة به معاً، مما يعزز اتصالها (<strong>"الخلايا العصبية التي تنشط معاً تترابط معاً"</strong> - قاعدة هيب). مع الوقت، تغلّف الخلايا القليلة التغصّن المسار النشط بـ<strong>غمد الميالين</strong>، مما يعزله ويزيد سرعة الإشارة بما يصل إلى ١٠٠ ضعف. لهذا السبب تصبح العادات تلقائية - الطريق السريع العصبي يصبح أسرع مع كل تكرار.</p>
-    </div>
-
-    <p>وجدت دراسة في جامعة هارفارد أن <strong>٨ أسابيع فقط من تأمل اليقظة الذهنية</strong> زادت كثافة المادة الرمادية في الحُصين (التعلم/الذاكرة) وقلّلت المادة الرمادية في اللوزة الدماغية (الخوف/الإجهاد). دماغك يتغيّر جسدياً بناءً على كيفية استخدامه.</p>
-
-    <h3>محور الأمعاء-الدماغ</h3>
-    <p>ترتبط الأمعاء والدماغ عبر <strong>العصب المبهم</strong> - أطول عصب قحفي في الجسم. تحتوي الأمعاء على ٥٠٠ مليون خلية عصبية (جهازها العصبي الخاص، يُسمى الجهاز العصبي المعوي). هذا التواصل ثنائي الاتجاه يعني:</p>
-    <ul>
-        <li>الميكروبيوم المعوي غير الصحي يزيد الالتهاب الجهازي الذي يعبر الحاجز الدموي الدماغي، مما يساهم في الاكتئاب والقلق</li>
-        <li>الميكروبيوم الصحي ينتج سلائف الناقلات العصبية والأحماض الدهنية قصيرة السلسلة والمركبات المضادة للالتهابات</li>
-        <li>أظهرت تجربة SMILES أن حمية البحر الأبيض المتوسط حسّنت درجات الاكتئاب بشكل ملحوظ - ٣٢% حققوا الشفاء مقابل ٨% مع الدعم الاجتماعي وحده</li>
-    </ul>
-</section>
-
-<div class="separator"></div>
-
-<!-- ============================================
-     SECTION 2: الصحة النفسية
-     ============================================ -->
-<section class="section fade-in" id="mental">
-    <div class="section-header">
-        <span class="section-number purple">القسم ٠٢</span>
-        <h2>الصحة النفسية: أساس كل شيء</h2>
-        <p class="section-subtitle">استراتيجيات مبنية على الأدلة للقلق والاكتئاب والإجهاد والمرونة العاطفية</p>
-    </div>
-
-    <h3>فهم الحالات الشائعة</h3>
-
-    <h4>القلق</h4>
-    <p>القلق هو <strong>إفراط في تنشيط اللوزة الدماغية</strong> (مركز كشف التهديدات) والجهاز العصبي الودّي. يدخل الجسم في حالة الكرّ والفرّ عندما لا يوجد تهديد حقيقي. القلق المزمن يُبقي الكورتيزول مرتفعاً، مما يضر بالحُصين والجهاز المناعي والجهاز الهضمي.</p>
-    <ul>
-        <li><strong>الأعراض الجسدية:</strong> تسارع القلب، التنفس السطحي، توتر العضلات، مشاكل المعدة، الأرق</li>
-        <li><strong>الرؤية الأساسية:</strong> القلق حالة جسدية أولاً، وحالة ذهنية ثانياً. التدخلات الجسدية (التنفس، التعرض للبرد، التمارين) غالباً تعمل أسرع من التدخلات المعرفية</li>
-    </ul>
-
-    <h4>الاكتئاب</h4>
-    <p>يتضمن الاكتئاب اضطراباً في عدة ناقلات عصبية (السيروتونين، الدوبامين، النورإبينفرين)، والتهاباً مزمناً، وخللاً في محور HPA، وانخفاضاً في المرونة العصبية. <strong>ليس ببساطة "انخفاض السيروتونين"</strong> - نموذج عدم التوازن الكيميائي القديم يُفهم الآن أنه تبسيط مفرط.</p>
-    <ul>
-        <li><strong>التمارين كعلاج:</strong> وجد تحليل تلوي أن التمارين فعّالة بقدر مضادات الاكتئاب للاكتئاب الخفيف إلى المتوسط، بتأثيرات مماثلة لمثبطات استرداد السيروتونين الانتقائية (SSRIs)</li>
-        <li><strong>رابط الالتهاب:</strong> الأشخاص الذين يعانون من التهاب مزمن أكثر عرضة بمرتين إلى ثلاث مرات للإصابة بالاكتئاب</li>
-    </ul>
-
-    <h4>الاحتراق الوظيفي والإجهاد المزمن</h4>
-    <p>الإجهاد المزمن ينشّط <strong>محور HPA</strong> (تحت المهاد-الغدة النخامية-الكظرية) بشكل مستمر، مما يغمر الجسم بالكورتيزول. ارتفاع الكورتيزول المستمر يسبب ضمور الحُصين، وقمع المناعة، وزيادة الدهون الحشوية، ومقاومة الأنسولين، وتسريع تقصير التيلوميرات.</p>
-
-    <h3>أنواع العلاج المبنية على الأدلة</h3>
-
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th>العلاج</th>
-                    <th>الأفضل لـ</th>
-                    <th>الفعالية</th>
-                    <th>المدة الزمنية</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>العلاج المعرفي السلوكي (CBT)</strong></td>
-                    <td>القلق، الاكتئاب، الوسواس القهري</td>
-                    <td>80-90% للقلق</td>
-                    <td>12-20 جلسة (6-12 أسبوعاً)</td>
-                </tr>
-                <tr>
-                    <td><strong>العلاج الجدلي السلوكي (DBT)</strong></td>
-                    <td>تنظيم العواطف، اضطراب الشخصية الحدية، إيذاء النفس</td>
-                    <td>فعّال جداً لاضطراب الشخصية الحدية</td>
-                    <td>3-6 أشهر</td>
-                </tr>
-                <tr>
-                    <td><strong>إزالة الحساسية وإعادة المعالجة بحركة العين (EMDR)</strong></td>
-                    <td>الصدمات النفسية، اضطراب ما بعد الصدمة</td>
-                    <td>77-90% لاضطراب ما بعد الصدمة</td>
-                    <td>6-12 جلسة (3-6 أسابيع)</td>
-                </tr>
-                <tr>
-                    <td><strong>التحليل النفسي الديناميكي</strong></td>
-                    <td>الأنماط المتجذّرة، صدمات الطفولة</td>
-                    <td>تغييرات طويلة الأمد</td>
-                    <td>6-12+ شهراً</td>
-                </tr>
-                <tr>
-                    <td><strong>علاج القبول والالتزام (ACT)</strong></td>
-                    <td>الألم المزمن، القلق، العمل على القيم</td>
-                    <td>قوي للقبول</td>
-                    <td>8-16 أسبوعاً</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <h3>التأمل واليقظة الذهنية</h3>
-    <p>بعد ٨ أسابيع من برنامج الحد من الإجهاد القائم على اليقظة الذهنية (MBSR)، بممارسة ٢٧ دقيقة/يوم فقط:</p>
-    <ul>
-        <li>زيادة المادة الرمادية في الحُصين (الذاكرة، التعلم)</li>
-        <li>انخفاض المادة الرمادية في اللوزة الدماغية (الإجهاد، الخوف)</li>
-        <li>تحسّن الانتباه والتنظيم العاطفي والوعي الذاتي</li>
-        <li>انخفاض مستويات الكورتيزول ومؤشرات الالتهاب</li>
-    </ul>
-
-    <h3>تقنيات التنفس</h3>
-
-    <div class="card">
-        <div class="card-title">التنفس المربّع (4-4-4-4)</div>
-        <p>استنشق ٤ ثوانٍ، احبس ٤، أخرج الزفير ٤، احبس ٤. يستخدمه فريق البحرية الأمريكية (Navy SEALs) لإدارة الإجهاد. ينظّم الجهاز العصبي اللاإرادي، ويخفض ضغط الدم، ويحدث الهدوء خلال ٢-٣ دورات.</p>
-    </div>
-
-    <div class="card">
-        <div class="card-title">تنفس 4-7-8</div>
-        <p>استنشق ٤ ثوانٍ، احبس ٧، أخرج الزفير ٨. الزفير الممتد ينشّط الجهاز العصبي نظير الودّي (الراحة والهضم). فعّال بشكل خاص للنوم والقلق الحاد.</p>
-    </div>
-
-    <div class="card">
-        <div class="card-title">التنهيدة الفسيولوجية</div>
-        <p>شهيقان سريعان من الأنف، ثم زفير طويل واحد من الفم. أسرع تقنية معروفة لتقليل الإجهاد في الوقت الفعلي (مختبر هوبرمان، ستانفورد). الشهيق المزدوج يعيد نفخ الحويصلات الهوائية المنهارة في الرئتين، مما يزيد طرح ثاني أكسيد الكربون في الزفير إلى أقصى حد.</p>
-    </div>
-
-    <h3>كتابة اليوميات: الأداة المُقلَّل من قيمتها</h3>
-    <p>أظهرت أبحاث جيمس بينبيكر (أكثر من ٤٠٠ دراسة) أن الكتابة التعبيرية عن التجارب العاطفية:</p>
-    <ul>
-        <li>تخفض مستويات الكورتيزول بنسبة تصل إلى <strong>23%</strong></li>
-        <li>تحسّن وظائف المناعة (تعزيز نشاط الخلايا اللمفاوية)</li>
-        <li>تقلل درجات الاكتئاب بنسبة <strong>30% خلال ٨ أسابيع</strong></li>
-        <li>تنشّط القشرة الأمامية الجبهية بينما تخمد نشاط اللوزة الدماغية</li>
-    </ul>
-
-    <h3>ممارسة الامتنان</h3>
-    <p>تستفيد ممارسة الامتنان من المرونة العصبية - التركيز المستمر على التجارب الإيجابية يعزز المسارات العصبية للعواطف الإيجابية بينما يُضعف السلبية منها. وجدت دراسة أن كتابة يوميات الامتنان لمدة ٣ أشهر <strong>زادت المادة الرمادية في القشرة الأمامية الجبهية</strong>، مما حسّن التنظيم العاطفي واتخاذ القرارات. ينشّط الامتنان الجسم المخطط البطني والقشرة الأمامية الجبهية الوسطى، مما يعزز كلاً من السيروتونين والدوبامين.</p>
-</section>
-
-<div class="separator"></div>
-
-<!-- ============================================
-     SECTION 3: التغذية
-     ============================================ -->
-<section class="section fade-in" id="nutrition">
-    <div class="section-header">
-        <span class="section-number green">القسم ٠٣</span>
-        <h2>التغذية: وقود الآلة</h2>
-        <p class="section-subtitle">كل ما تأكله يصبح جزءاً منك. اختر بحكمة.</p>
-    </div>
-
-    <h3>المغذيات الكبرى</h3>
-
-    <h4>البروتين - البنّاء</h4>
-    <p>البروتينات هي سلاسل من الأحماض الأمينية. من بين ٢٠ حمضاً أمينياً، <strong>٩ أساسية</strong> (يجب الحصول عليها من الغذاء). يبني البروتين ويصلح العضلات، ويصنع الإنزيمات والهرمونات، ويدعم وظائف المناعة.</p>
-
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr><th>مستوى النشاط</th><th>الحاجة من البروتين</th><th>لشخص وزنه ٧٠ كجم</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>خامل (الحد الأدنى الموصى به)</td><td>0.8 جم/كجم/يوم</td><td>56 جم/يوم</td></tr>
-                <tr><td>نشاط معتدل</td><td>1.0-1.3 جم/كجم/يوم</td><td>70-91 جم/يوم</td></tr>
-                <tr><td>بناء العضلات / مكثّف</td><td>1.6-2.0 جم/كجم/يوم</td><td>112-140 جم/يوم</td></tr>
-                <tr><td>الحد الأقصى الآمن</td><td>2.0-3.5 جم/كجم/يوم</td><td>140-245 جم/يوم</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <p><strong>البروتينات الكاملة</strong> (تحتوي على جميع الأحماض الأمينية الأساسية التسعة): اللحوم، الأسماك، البيض، منتجات الألبان، الصويا، الكينوا. <strong>البروتينات غير الكاملة</strong> (تفتقر لبعضها): معظم الأطعمة النباتية. لا تحتاج للجمع بينها في كل وجبة - التنوع اليومي كافٍ.</p>
-
-    <h4>الكربوهيدرات - مصدر الطاقة</h4>
-    <p>ليست كل الكربوهيدرات متساوية. <strong>مؤشر نسبة السكر في الدم (GI)</strong> يقيس مدى سرعة رفع الطعام لسكر الدم:</p>
-    <ul>
-        <li><strong>مؤشر سكري منخفض (٥٥ أو أقل):</strong> العدس (~٣٢)، الشوفان (~٥٥)، معظم الفواكه، البقوليات. طاقة بطيئة ومستقرة</li>
-        <li><strong>مؤشر سكري متوسط (٥٦-٦٩):</strong> الأرز البني (~٦٨)، خبز القمح الكامل (~٦٩)</li>
-        <li><strong>مؤشر سكري مرتفع (٧٠+):</strong> الخبز الأبيض (~٧٥)، الأرز الأبيض (~٧٣)، البطاطس (~٧٨). ارتفاع سريع ثم هبوط</li>
-    </ul>
-
-    <p><strong>الألياف</strong> ضرورية: ٢٥ جم/يوم للنساء، ٣٨ جم/يوم للرجال. معظم الناس يحصلون على ١٥ جم فقط. الألياف القابلة للذوبان (الشوفان، الفاصوليا) تخفض الكوليسترول وتبطئ امتصاص الجلوكوز. الألياف غير القابلة للذوبان (نخالة القمح، الخضروات) تعزز انتظام الأمعاء.</p>
-
-    <h4>الدهون - المغذّي الأساسي</h4>
-    <ul>
-        <li><strong>أوميغا-3</strong> (مضاد للالتهابات): الأسماك الدهنية، بذور الكتان، الشيا، الجوز. الهدف: 250-500 مجم EPA+DHA يومياً</li>
-        <li><strong>أوميغا-6</strong>: الزيوت النباتية، المكسرات. أساسية لكن يُفرَط في استهلاكها. النسبة المثالية أوميغا-6:أوميغا-3 هي 4:1 (النظام الغذائي الحديث 15-20:1)</li>
-        <li><strong>أحادية عدم التشبع:</strong> زيت الزيتون، الأفوكادو، اللوز. واقية للقلب</li>
-        <li><strong>الدهون المتحولة:</strong> اصطناعية وخطيرة. خطر إصابة الممرضات بأمراض القلب تضاعف لكل زيادة 2% في سعرات الدهون المتحولة. محظورة إلى حد كبير في الولايات المتحدة</li>
-    </ul>
-
-    <h3>الفيتامينات الأساسية</h3>
-
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr><th>الفيتامين</th><th>الجرعة اليومية الموصى بها</th><th>الوظيفة الرئيسية</th><th>أهم المصادر</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>فيتامين أ</td><td>700-900 ميكروجرام</td><td>البصر، المناعة، الجلد</td><td>الكبد، الجزر، البطاطا الحلوة، السبانخ</td></tr>
-                <tr><td>فيتامين ب12</td><td>2.4 ميكروجرام</td><td>وظائف الأعصاب، كريات الدم الحمراء</td><td>اللحوم، الأسماك، الألبان (النباتيون يجب أن يتناولوا مكملات)</td></tr>
-                <tr><td>فيتامين سي</td><td>75-90 مجم</td><td>الكولاجين، مضاد أكسدة، امتصاص الحديد</td><td>الفلفل الملون، الحمضيات، الفراولة، البروكلي</td></tr>
-                <tr><td>فيتامين د</td><td>600-2000 وحدة دولية</td><td>امتصاص الكالسيوم، المناعة، المزاج</td><td>أشعة الشمس، الأسماك الدهنية، الحليب المدعّم</td></tr>
-                <tr><td>فيتامين هـ</td><td>15 مجم</td><td>مضاد أكسدة، حماية الخلايا</td><td>بذور عباد الشمس، اللوز، الأفوكادو</td></tr>
-                <tr><td>فيتامين ك</td><td>90-120 ميكروجرام</td><td>تخثر الدم، أيض العظام</td><td>الكرنب الأجعد، السبانخ، البروكلي، الناتو</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <h3>المعادن الأساسية</h3>
-
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr><th>المعدن</th><th>الجرعة اليومية الموصى بها</th><th>الوظيفة</th><th>علامات النقص</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>المغنيسيوم</td><td>310-420 مجم</td><td>أكثر من 300 تفاعل إنزيمي، النوم، العضلات</td><td>تشنجات، قلق، أرق، عدم انتظام ضربات القلب</td></tr>
-                <tr><td>الحديد</td><td>8-18 مجم</td><td>نقل الأكسجين (الهيموجلوبين)</td><td>إرهاق، ضعف، شحوب الجلد، فقر الدم</td></tr>
-                <tr><td>الزنك</td><td>8-11 مجم</td><td>وظائف المناعة، التئام الجروح</td><td>ضعف المناعة، تساقط الشعر</td></tr>
-                <tr><td>الكالسيوم</td><td>1000-1200 مجم</td><td>العظام، تقلّص العضلات</td><td>هشاشة العظام، تشنجات عضلية</td></tr>
-                <tr><td>البوتاسيوم</td><td>2600-3400 مجم</td><td>ضغط الدم، وظائف الأعصاب</td><td>ضعف، تشنجات، عدم انتظام ضربات القلب</td></tr>
-                <tr><td>السيلينيوم</td><td>55 ميكروجرام</td><td>الغدة الدرقية، دفاع مضاد الأكسدة</td><td>خلل الغدة الدرقية (حبة جوز برازيلية واحدة = 174% من القيمة اليومية)</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <h3>الميكروبيوم المعوي</h3>
-    <p>تستضيف أمعاؤك <strong>حوالي ١٠٠ تريليون كائن حي دقيق</strong> يزن حوالي ٢ كجم. هذا النظام البيئي يؤثر بعمق على الهضم والمناعة والمزاج وخطر الأمراض المزمنة.</p>
-    <ul>
-        <li><strong>البروبيوتيك:</strong> بكتيريا حية مفيدة. الأفضل من الأطعمة المخمّرة الكاملة (الزبادي، الكفير، الكيمتشي، مخلل الملفوف، الكمبوتشا). وجدت ستانفورد أن ٦ حصص/يوم من الأطعمة المخمّرة زادت تنوع الميكروبيوم وقلّلت ١٩ مؤشراً للالتهاب</li>
-        <li><strong>البريبيوتيك:</strong> غذاء للبكتيريا النافعة. المصادر: الثوم، البصل، الهليون، الموز، الشوفان، بذور الكتان. تخمّر بكتيريا الأمعاء هذه إلى أحماض دهنية قصيرة السلسلة (البوتيرات، الأسيتات، البروبيونات) التي تغذّي بطانة الأمعاء</li>
-        <li><strong>الألياف هي رقم ١:</strong> العامل الغذائي الأهم لصحة الميكروبيوم. الأنظمة الغذائية منخفضة الألياف تجعل الميكروبيوم "يأكل" طبقة المخاط المعوي، مما قد يسبب تسرّب الأمعاء</li>
-    </ul>
-
-    <h3>الأطعمة المضادة للالتهابات مقابل المسببة للالتهابات</h3>
-
-    <div class="callout success">
-        <div class="callout-title">تناول المزيد (مضادة للالتهابات)</div>
-        <p>الأسماك الدهنية (السلمون، السردين)، زيت الزيتون البكر الممتاز، التوت (العنب البري، الفراولة)، الخضروات الورقية، المكسرات (الجوز، اللوز)، الكركم + الفلفل الأسود، الشاي الأخضر، الشوكولاتة الداكنة (70%+)، الطماطم، الكرز</p>
-    </div>
-
-    <div class="callout danger">
-        <div class="callout-title">قلّل من (مسببة للالتهابات)</div>
-        <p>المشروبات المحلّاة بالسكر، الكربوهيدرات المكرّرة (الخبز الأبيض، المعجنات)، اللحوم المصنّعة (النقانق، لحوم الديلي)، الدهون المتحولة، الأطعمة المقلية بعمق، الإفراط في الكحول، الإفراط في زيوت أوميغا-6 النباتية</p>
-    </div>
-
-    <h3>الأطعمة فائقة التصنيع: التهديد الحديث</h3>
-    <p>وجدت مراجعة شاملة عام 2024 لـ ٤٥ تحليلاً تلوياً (حوالي ١٠ ملايين مشارك) أن استهلاك الأطعمة فائقة التصنيع يزيد خطر الوفاة القلبية الوعائية، وداء السكري من النوع ٢، والقلق، والسرطان (خاصة القولون والمستقيم)، والسمنة، ومتلازمة التمثيل الغذائي. <strong>تشكّل الأطعمة فائقة التصنيع الآن 50-60% من إجمالي استهلاك الطاقة في الولايات المتحدة والمملكة المتحدة وكندا.</strong></p>
-    <p><strong>القاعدة:</strong> إذا احتوت قائمة المكونات على أشياء لن تجدها في مطبخ منزلي (مستحلبات، نكهات اصطناعية، شراب الذرة عالي الفركتوز)، قلّل منها. استهدف أن يكون 80%+ من نظامك الغذائي من أطعمة كاملة أو قليلة التصنيع.</p>
-
-    <h3>إدارة سكر الدم</h3>
-    <p>مقاومة الأنسولين تسبق داء السكري من النوع ٢ بمدة <strong>10-15 سنة</strong> وهي مرتبطة بأمراض القلب والكبد الدهني وألزهايمر ("السكري من النوع ٣").</p>
-    <ol>
-        <li><strong>اختر كربوهيدرات منخفضة المؤشر السكري:</strong> البقوليات، الشوفان الكامل، الشعير بدلاً من الخبز/الأرز الأبيض</li>
-        <li><strong>تناول البروتين والدهون قبل الكربوهيدرات:</strong> يقلل ارتفاعات الجلوكوز بعد الوجبة بنسبة 30-40%</li>
-        <li><strong>امشِ بعد الوجبات:</strong> 10-15 دقيقة يقلل ارتفاعات سكر الدم بنسبة 20-30%</li>
-        <li><strong>أضف الخل:</strong> 1-2 ملعقة كبيرة قبل وجبة غنية بالكربوهيدرات يقلل ارتفاع الجلوكوز بحوالي 20-30%</li>
-        <li><strong>زِد الألياف بشكل كبير:</strong> استهدف 30-40 جم/يوم</li>
-    </ol>
-
-    <h3>المكملات التي تعمل فعلاً</h3>
-
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr><th>المكمّل</th><th>الأدلة</th><th>الجرعة</th><th>من يحتاجه</th></tr>
-            </thead>
-            <tbody>
-                <tr><td><span class="tag green">قوي</span> فيتامين د</td><td>صحة العظام، المناعة، المزاج</td><td>1,000-2,000 وحدة دولية/يوم</td><td>42% من البالغين الأمريكيين يعانون من نقص</td></tr>
-                <tr><td><span class="tag green">قوي</span> أوميغا-3</td><td>القلب، الدماغ، الالتهاب</td><td>1-2 جم EPA+DHA/يوم</td><td>أي شخص يتناول أقل من حصتي سمك/أسبوع</td></tr>
-                <tr><td><span class="tag green">قوي</span> الكرياتين</td><td>العضلات، القوة، الإدراك</td><td>3-5 جم/يوم</td><td>الرياضيون، كبار السن</td></tr>
-                <tr><td><span class="tag green">قوي</span> المغنيسيوم</td><td>النوم، القلق، العضلات</td><td>200-400 مجم/يوم</td><td>أكثر من 50% من البالغين دون الجرعة الموصى بها</td></tr>
-                <tr><td><span class="tag yellow">متوسط</span> الزنك</td><td>المناعة، مدة الزكام</td><td>8-11 مجم من الغذاء</td><td>في حالة النقص أو المرض</td></tr>
-                <tr><td><span class="tag red">ضعيف</span> الفيتامينات المتعددة</td><td>لا فائدة لطول العمر/السرطان</td><td>-</td><td>فقط في حالة النظام الغذائي المقيّد</td></tr>
-            </tbody>
-        </table>
-    </div>
-</section>
-
-<div class="separator"></div>
-<!-- ============================================
-     القسم ٤: الرياضة والحركة
-     ============================================ -->
-<section class="section fade-in" id="exercise" dir="rtl">
-    <div class="section-header">
-        <span class="section-number orange">القسم ٠٤</span>
-        <h2>الرياضة: الحركة هي الدواء</h2>
-        <p class="section-subtitle">أقوى تدخل منفرد لكل جانب من جوانب الصحة تقريباً</p>
-    </div>
-
-    <h3>أنواع التمارين الرياضية</h3>
-
-    <div class="stat-grid">
-        <div class="stat-card">
-            <div class="stat-value blue">هوائي</div>
-            <div class="stat-label">القلب والتحمل</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value purple">مقاومة</div>
-            <div class="stat-label">العضلات والعظام</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value green">مرونة</div>
-            <div class="stat-label">الحركة والتعافي</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value orange">تدريب متقطع</div>
-            <div class="stat-label">الكفاءة والقوة</div>
-        </div>
-    </div>
-
-    <h4>التمارين الهوائية</h4>
-    <p>الجري، السباحة، ركوب الدراجة، المشي. تُقوّي القلب، وتُحسّن الحد الأقصى لاستهلاك الأكسجين VO2 max (المعيار الذهبي لقياس اللياقة القلبية الوعائية)، وتُخفّض معدل نبض القلب أثناء الراحة، وتزيد كثافة الشعيرات الدموية لتحسين إيصال الأكسجين إلى الأنسجة.</p>
-
-    <h4>تمارين المقاومة</h4>
-    <p>رفع الأثقال، تمارين وزن الجسم، الأشرطة المطاطية. تبني العضلات (وهي أنسجة نشطة أيضياً)، وتزيد كثافة العظام (مما يقي من هشاشة العظام)، وتُحسّن حساسية الإنسولين، وتُعزّز معدل الأيض أثناء الراحة.</p>
-
-    <h4>المرونة والحركة</h4>
-    <p>اليوغا، تمارين الإطالة، التدليك بالأسطوانة الرغوية. تحافظ على مدى حركة المفاصل، وتُقلّل خطر الإصابة، وتُحسّن وضعية الجسم، وتُعزّز التعافي. <strong>الإطالة الديناميكية</strong> قبل التمرين (تأرجح الساقين، دوران الذراعين)، و<strong>الإطالة الثابتة</strong> بعده.</p>
-
-    <h3>كيف تعمل العضلات</h3>
-    <p>لديك نوعان رئيسيان من الألياف العضلية:</p>
-    <ul>
-        <li><strong>النوع الأول (بطيئة الانقباض):</strong> موجّهة للتحمل. مقاومة للتعب. تُستخدم في المشي والركض الخفيف والحفاظ على وضعية الجسم. تُغذّى بشكل أساسي عبر الأيض الهوائي (الأكسجين)</li>
-        <li><strong>النوع الثاني (سريعة الانقباض):</strong> موجّهة للقوة. تتعب بسرعة. تُستخدم في العَدْو السريع والرفع الثقيل والحركات الانفجارية. تُغذّى عبر الأيض اللاهوائي (الغلايكوجين). تنقسم إلى النوع IIa (تحمل معتدل) والنوع IIx (قوة صرفة)</li>
-    </ul>
-
-    <p><strong>تضخم العضلات</strong> (النمو) يحدث من خلال التوتر الميكانيكي والإجهاد الأيضي وتلف الألياف العضلية. نافذة تخليق البروتين العضلي تستمر 24-72 ساعة بعد التدريب، وتبلغ ذروتها عند 24 ساعة. لهذا فإن تناول كمية كافية من البروتين (0.4 غرام/كغم لكل وجبة، 3-4 وجبات) وتدريب كل مجموعة عضلية مرتين أسبوعياً هو الأمثل.</p>
-
-    <h3>أساسيات تدريب القوة</h3>
-
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr><th>الهدف</th><th>نطاق التكرارات</th><th>المجموعات</th><th>الراحة</th><th>الحمل</th></tr>
-            </thead>
-            <tbody>
-                <tr><td><strong>القوة</strong></td><td>1-5 تكرارات</td><td>3-6</td><td>3-5 دقائق</td><td>85-100% من الحد الأقصى</td></tr>
-                <tr><td><strong>تضخم العضلات</strong></td><td>8-12 تكرار</td><td>3-4</td><td>60-90 ثانية</td><td>65-80% من الحد الأقصى</td></tr>
-                <tr><td><strong>التحمل</strong></td><td>+15-25 تكرار</td><td>2-3</td><td>30-60 ثانية</td><td>40-60% من الحد الأقصى</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <p><strong>التحميل التدريجي</strong> هو المبدأ الأول: زيادة الوزن أو التكرارات أو حجم التدريب تدريجياً بمرور الوقت. بدون التحميل التدريجي، يتوقف التكيّف.</p>
-
-    <p><strong>التمارين المركّبة</strong> (القرفصاء، الرفعة الميتة، ضغط البنش، الضغط العلوي، التجديف، السحب للأعلى) يجب أن تُشكّل 80% من برنامجك. فهي تُشرك مجموعات عضلية متعددة، وتحرق سعرات حرارية أكثر، وتُحفّز استجابة هرمونية أكبر من تمارين العزل.</p>
-
-    <h3>علم القلب: مناطق معدل نبض القلب</h3>
-
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr><th>المنطقة</th><th>% من الحد الأقصى لمعدل النبض</th><th>الشعور</th><th>الفوائد</th></tr>
-            </thead>
-            <tbody>
-                <tr><td><strong>المنطقة ١</strong></td><td>50-60%</td><td>سهل جداً (مشي)</td><td>التعافي، الإحماء</td></tr>
-                <tr><td><strong>المنطقة ٢</strong> <span class="tag blue">أساسي</span></td><td>60-70%</td><td>مريح (يمكنك التحدث)</td><td>حرق الدهون، كثافة الميتوكوندريا، القاعدة الهوائية</td></tr>
-                <tr><td><strong>المنطقة ٣</strong></td><td>70-80%</td><td>معتدل</td><td>السعة الهوائية</td></tr>
-                <tr><td><strong>المنطقة ٤</strong></td><td>80-90%</td><td>شاق (لا يمكنك التحدث)</td><td>عتبة اللاكتات، الحد الأقصى لاستهلاك الأكسجين</td></tr>
-                <tr><td><strong>المنطقة ٥</strong></td><td>90-100%</td><td>أقصى جهد</td><td>قدرة العَدْو السريع، القوة اللاهوائية</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="callout info">
-        <div class="callout-title">تدريب المنطقة ٢: منطقة طول العمر</div>
-        <p>يُؤكد بيتر أتيا وباحثون آخرون في مجال طول العمر على أن تدريب المنطقة ٢ هو أساس اللياقة القلبية الوعائية. فهو يبني كثافة الميتوكوندريا، ويُحسّن أكسدة الدهون، ويُعزّز المرونة الأيضية، ويمكن الحفاظ عليه لفترات طويلة دون إجهاد مفرط. الهدف: <strong>3-4 ساعات أسبوعياً</strong> من تمارين المنطقة ٢ الهوائية (المشي السريع، ركوب الدراجة الخفيف، الركض الخفيف حيث يمكنك إجراء محادثة).</p>
-    </div>
-
-    <h3>الرياضة والدماغ</h3>
-    <p>التمرين هو <strong>أقوى محفّز معروف للمرونة العصبية</strong>:</p>
-    <ul>
-        <li><strong>عامل التغذية العصبية المشتق من الدماغ (BDNF):</strong> يزيد التمرين من BDNF الذي يُعزّز نمو الخلايا العصبية الجديدة (تكوّن الخلايا العصبية) في الحُصين. يُسمّى "سماد المعجزات للدماغ"</li>
-        <li><strong>تأثير مضاد للاكتئاب:</strong> تُظهر التحليلات التجميعية أن التمرين فعّال كمثبطات استرداد السيروتونين الانتقائية (SSRIs) للاكتئاب الخفيف إلى المعتدل</li>
-        <li><strong>الحماية المعرفية:</strong> الممارسون المنتظمون للرياضة لديهم خطر أقل بنسبة 30-40% للإصابة بالخرف</li>
-        <li><strong>التأثيرات الفورية:</strong> جلسة تمرين واحدة تُحسّن الانتباه والمزاج والوظائف التنفيذية لمدة 2-3 ساعات</li>
-    </ul>
-
-    <h3>الرياضة والهرمونات</h3>
-    <ul>
-        <li><strong>التستوستيرون:</strong> التمارين المركّبة (القرفصاء، الرفعة الميتة) ترفع التستوستيرون بشكل حاد. الإفراط في تدريبات التحمل المزمن قد يُخفّضه</li>
-        <li><strong>هرمون النمو:</strong> يبلغ ذروته أثناء التمرين المكثف والنوم العميق. التدريب المتقطع عالي الشدة والرفع الثقيل هما أقوى المحفّزات</li>
-        <li><strong>الكورتيزول:</strong> الارتفاع الحاد أثناء التمرين مفيد (يُحرّك الطاقة). الإفراط المزمن في التدريب يُبقيه مرتفعاً (ضار)</li>
-        <li><strong>الإندورفينات:</strong> "نشوة العَدّاء." تُفرَز أثناء التمرين المتوسط إلى المكثف والمستمر. مسكن طبيعي للألم ومُحسّن للمزاج</li>
-    </ul>
-
-    <h3>التعافي: النصف الآخر من اللياقة</h3>
-    <ul>
-        <li><strong>النوم:</strong> أداة التعافي الأولى. هرمون النمو يبلغ ذروته أثناء النوم العميق. الرياضيون الذين ينامون أقل من 7 ساعات لديهم خطر إصابة أعلى بـ 1.7 مرة</li>
-        <li><strong>أيام الراحة:</strong> العضلات تنمو أثناء الراحة وليس أثناء التدريب. يوم إلى يومين راحة أسبوعياً كحد أدنى</li>
-        <li><strong>التعافي النشط:</strong> المشي الخفيف أو السباحة أو اليوغا في أيام الراحة تُعزّز تدفق الدم دون إرهاق الجسم</li>
-        <li><strong>أسابيع التخفيف:</strong> كل 4-6 أسابيع، خفّض الحجم/الشدة بنسبة 40-50% للسماح بالتعافي الكامل</li>
-    </ul>
-
-    <h3>الحد الأدنى من إرشادات منظمة الصحة العالمية</h3>
-    <div class="callout success">
-        <div class="callout-title">الجرعة الفعّالة الدنيا</div>
-        <p><strong>150-300 دقيقة أسبوعياً</strong> من النشاط الهوائي المعتدل أو <strong>75-150 دقيقة أسبوعياً</strong> من النشاط المكثف، بالإضافة إلى <strong>جلستين أو أكثر أسبوعياً</strong> من تدريبات المقاومة (جميع المجموعات العضلية الرئيسية). هذا وحده يُقلّل معدل الوفيات لجميع الأسباب بنسبة 30-40%.</p>
-    </div>
-
-    <h3>تكوين الجسم</h3>
-    <p><strong>معدل الأيض الأساسي (BMR):</strong> السعرات الحرارية المحروقة في الراحة التامة. يتحدد بشكل أساسي بالكتلة العضلية والعمر والجنس والطول. <strong>إجمالي الإنفاق اليومي للطاقة (TDEE)</strong> = معدل الأيض الأساسي &times; معامل النشاط. لخسارة الدهون: تناول أقل من TDEE بـ 300-500 سعرة حرارية. لبناء العضلات: تناول أعلى من TDEE بـ 200-300 سعرة حرارية مع بروتين كافٍ.</p>
-    <p>رطل واحد من العضلات يحرق ~6 سعرات حرارية يومياً أثناء الراحة مقابل ~2 للدهون. والأهم من ذلك، العضلات تُحسّن حساسية الإنسولين، وتحمي المفاصل، وهي أقوى مؤشر على الشيخوخة الصحية.</p>
-</section>
-
-<div class="separator"></div>
-
-<!-- ============================================
-     القسم ٥: علم النوم
-     ============================================ -->
-<section class="section fade-in" id="sleep" dir="rtl">
-    <div class="section-header">
-        <span class="section-number cyan">القسم ٠٥</span>
-        <h2>النوم: الأساس غير القابل للتفاوض</h2>
-        <p class="section-subtitle">ثلث حياتك الذي تقضيه نائماً يُحدّد جودة الثلثين الآخرين</p>
-    </div>
-
-    <h3>هندسة النوم</h3>
-    <p>النوم ليس حالة موحّدة. أنت تمر بمراحل متميزة كل <strong>~90 دقيقة تقريباً</strong>، مكملاً 4-6 دورات في الليلة:</p>
-
-    <div class="flow">
-        <div class="flow-step">
-            <div class="flow-step-title">المرحلة ١ NREM (النوم الخفيف) - 5%</div>
-            <div class="flow-step-desc">الانتقال من اليقظة. تستمر 1-7 دقائق. يسهل الاستيقاظ منها. قد تحدث الارتعاشات النومية.</div>
-        </div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-step">
-            <div class="flow-step-title">المرحلة ٢ NREM (النوم الحقيقي) - 45%</div>
-            <div class="flow-step-desc">ينخفض معدل نبض القلب ودرجة الحرارة. مغازل النوم (رشقات من النشاط العصبي) تُرسّخ التعلم الحركي والذاكرة.</div>
-        </div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-step">
-            <div class="flow-step-title">المرحلة ٣ NREM (النوم العميق) - 25%</div>
-            <div class="flow-step-desc">المرحلة الأكثر تجديداً. هرمون النمو يبلغ ذروته. الجهاز المناعي يُصلح نفسه. الجهاز الغلمفاوي ينظّف فضلات الدماغ (بيتا أميلويد). تسود في النصف الأول من الليل.</div>
-        </div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-step">
-            <div class="flow-step-title">نوم حركة العين السريعة REM (نوم الأحلام) - 25%</div>
-            <div class="flow-step-desc">الدماغ نشط للغاية. المعالجة العاطفية وحل المشكلات الإبداعي. ترسيخ الذاكرة (خاصة الإجرائية). تسود في النصف الثاني من الليل.</div>
-        </div>
-    </div>
-
-    <div class="callout warning">
-        <div class="callout-title">رؤية حاسمة</div>
-        <p>النوم العميق يسود في الدورات الأولى، ونوم حركة العين السريعة يسود في الدورات الأخيرة. إذا نمت 6 ساعات بدلاً من 8، فأنت لا تفقد 25% من نومك - بل تفقد <strong>60-90% من نوم حركة العين السريعة REM</strong> الذي يحدث بشكل أساسي في آخر ساعتين. هذا يُدمّر التنظيم العاطفي والإبداع والذاكرة.</p>
-    </div>
-
-    <h3>الإيقاع اليوماوي</h3>
-    <p>جسمك يعمل بساعة داخلية مدتها ~24 ساعة تُتحكّم بها <strong>النواة فوق التصالبية (SCN)</strong> في منطقة ما تحت المهاد. هرمونان أساسيان:</p>
-    <ul>
-        <li><strong>الكورتيزول:</strong> يبلغ ذروته بعد 30-45 دقيقة من الاستيقاظ (استجابة الكورتيزول الصباحية). يمنحك طاقة ويقظة في الصباح. يجب أن ينخفض على مدار اليوم</li>
-        <li><strong>الميلاتونين:</strong> يرتفع مع حلول الظلام (إشارة إلى النوم). يُثبَّط بالضوء الأزرق من الشاشات. حتى الضوء الخافت (8-10 لوكس) يمكن أن يُثبّط الميلاتونين بنسبة 50%</li>
-    </ul>
-
-    <p><strong>ضوء الشمس الصباحي</strong> خلال 30-60 دقيقة من الاستيقاظ هو أقوى ضابط للإيقاع اليوماوي. يُثبّت ساعتك الداخلية، مما يؤدي إلى بدء إفراز الميلاتونين مبكراً في الليل وتحسين جودة النوم.</p>
-
-    <h3>لماذا يهم النوم</h3>
-
-    <div class="stat-grid">
-        <div class="stat-card">
-            <div class="stat-value cyan">الغلمفاوي</div>
-            <div class="stat-label">تنظيف فضلات الدماغ أنشط 10 أضعاف أثناء النوم</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value green">المناعة</div>
-            <div class="stat-label">فعالية الخلايا التائية تنخفض 70% مع النوم السيئ</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value purple">الذاكرة</div>
-            <div class="stat-label">النوم يُرسّخ ما تعلمته خلال اليوم</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value orange">الهرمونات</div>
-            <div class="stat-label">هرمون النمو يبلغ ذروته في النوم العميق</div>
-        </div>
-    </div>
-
-    <h3>الحرمان من النوم: العواقب</h3>
-    <ul>
-        <li><strong>معرفياً:</strong> بعد 24 ساعة بدون نوم، يُعادل الضعف المعرفي مستوى كحول في الدم بنسبة 0.10% (مستوى السكر القانوني)</li>
-        <li><strong>زيادة الوزن:</strong> الحرمان من النوم يزيد هرمون الجريلين (هرمون الجوع) بنسبة 28% ويُنقص اللبتين (الشبع) بنسبة 18%. تأكل ~300-400 سعرة حرارية إضافية يومياً</li>
-        <li><strong>القلب والأوعية الدموية:</strong> النوم أقل من 6 ساعات ليلاً يزيد خطر النوبة القلبية بنسبة 20%. التوقيت الصيفي (فقدان ساعة واحدة) يُسبّب ارتفاعاً بنسبة 24% في النوبات القلبية في اليوم التالي</li>
-        <li><strong>السرطان:</strong> تُصنّف منظمة الصحة العالمية العمل في النوبات الليلية كـ "مادة مسرطنة محتملة". نشاط الخلايا القاتلة الطبيعية ينخفض 70% مع ليلة واحدة من 4 ساعات نوم</li>
-        <li><strong>عاطفياً:</strong> اللوزة الدماغية تصبح أكثر تفاعلاً بنسبة 60% مع الحرمان من النوم، بينما ينخفض تحكم قشرة الفص الجبهي. هذا يخلق تقلبات عاطفية</li>
-    </ul>
-
-    <h3>نظافة النوم: البروتوكول</h3>
-    <ol>
-        <li><strong>درجة الحرارة:</strong> غرفة باردة، 18-20 درجة مئوية (65-68 فهرنهايت). يجب أن تنخفض درجة حرارة الجسم الأساسية 1-2 درجة مئوية لبدء النوم</li>
-        <li><strong>الظلام:</strong> ظلام تام. حتى الضوء الخافت عبر الجفون المغلقة يُعطّل الميلاتونين. استخدم ستائر حاجبة للضوء</li>
-        <li><strong>الانتظام:</strong> نفس وقت النوم والاستيقاظ كل يوم (حتى في عطلة نهاية الأسبوع). أهم عادة في نظافة النوم</li>
-        <li><strong>لا شاشات قبل النوم بساعة:</strong> الضوء الأزرق يُثبّط الميلاتونين. إذا كانت الشاشات حتمية، استخدم الوضع الليلي/الإضاءة الدافئة</li>
-        <li><strong>لا كافيين بعد الثانية ظهراً:</strong> نصف عمر الكافيين 5-6 ساعات. قهوة الثالثة عصراً لا يزال 50% من كافيينها في جسمك عند التاسعة مساءً</li>
-        <li><strong>لا كحول:</strong> الكحول ليس مساعداً على النوم. إنه مهدئ يحجب نوم حركة العين السريعة، ويُسبّب استيقاظاً متكرراً، ويُفتّت بنية النوم</li>
-        <li><strong>روتين الاسترخاء:</strong> 30-60 دقيقة من القراءة أو الإطالة أو كتابة اليوميات أو التأمل قبل النوم</li>
-    </ol>
-
-    <h3>علم القيلولة</h3>
-    <ul>
-        <li><strong>قيلولة القوة (10-20 دقيقة):</strong> تُعزّز اليقظة والأداء. تبقى في النوم الخفيف. لا خمول عند الاستيقاظ. وجدت ناسا أن قيلولة 26 دقيقة حسّنت أداء الطيارين بنسبة 34% واليقظة بنسبة 54%</li>
-        <li><strong>قيلولة الدورة الكاملة (90 دقيقة):</strong> تُكمل دورة نوم كاملة بما في ذلك نوم حركة العين السريعة. تُعزّز الإبداع والمعالجة العاطفية. الأفضل إذا كنت محروماً من النوم</li>
-        <li><strong>منطقة الخطر (30-60 دقيقة):</strong> الاستيقاظ من النوم العميق يُسبّب خمول النوم (إرهاق وارتباك). تجنّب هذا النطاق</li>
-    </ul>
-
-    <h3>النوم حسب العمر</h3>
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr><th>العمر</th><th>الساعات الموصى بها</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>حديثو الولادة (0-3 أشهر)</td><td>14-17 ساعة</td></tr>
-                <tr><td>الرُّضّع (4-11 شهراً)</td><td>12-15 ساعة</td></tr>
-                <tr><td>الأطفال الصغار (1-2 سنة)</td><td>11-14 ساعة</td></tr>
-                <tr><td>ما قبل المدرسة (3-5 سنوات)</td><td>10-13 ساعة</td></tr>
-                <tr><td>سن المدرسة (6-13 سنة)</td><td>9-11 ساعة</td></tr>
-                <tr><td>المراهقون (14-17 سنة)</td><td>8-10 ساعات</td></tr>
-                <tr><td>البالغون (18-64 سنة)</td><td>7-9 ساعات</td></tr>
-                <tr><td>كبار السن (+65 سنة)</td><td>7-8 ساعات</td></tr>
-            </tbody>
-        </table>
-    </div>
-</section>
-
-<div class="separator"></div>
-
-<!-- ============================================
-     القسم ٦: أجهزة الجسم البشري
-     ============================================ -->
-<section class="section fade-in" id="body" dir="rtl">
-    <div class="section-header">
-        <span class="section-number red">القسم ٠٦</span>
-        <h2>جسم الإنسان: أنظمة مترابطة</h2>
-        <p class="section-subtitle">11 نظاماً يعمل بتناغم. الضرر في أحدها يتسلسل إلى جميع الأنظمة الأخرى.</p>
-    </div>
-
-    <h3>الجهاز القلبي الوعائي</h3>
-    <p>قلبك ينبض ~100,000 مرة يومياً، ويضخ ~7,500 لتر من الدم عبر أكثر من 96,000 كيلومتر من الأوعية الدموية. تصلّب الشرايين (تراكم اللويحات) هو <strong>مرض نمط حياة</strong> يبدأ في الطفولة وهو القاتل الأول عالمياً.</p>
-    <ul>
-        <li><strong>ضغط الدم:</strong> المثالي أقل من 120/80 ملم زئبق. عامل الخطر الأول القابل للتعديل لأمراض القلب والسكتة الدماغية</li>
-        <li><strong>تأثير التمرين:</strong> التمارين الهوائية المنتظمة تُخفّض معدل نبض القلب أثناء الراحة بمقدار 10-20 نبضة في الدقيقة، وتزيد حجم الضربة، وتُحسّن وظيفة البطانة الداخلية</li>
-        <li><strong>الحماية:</strong> حمية البحر الأبيض المتوسط، تمارين المنطقة ٢، إدارة التوتر، عدم التدخين، أحماض أوميغا-3 الدهنية</li>
-    </ul>
-
-    <h3>الجهاز المناعي</h3>
-    <p>فرعان يعملان معاً:</p>
-    <ul>
-        <li><strong>المناعة الفطرية:</strong> خط الدفاع الأول. غير متخصصة. الجلد، الأغشية المخاطية، العَدِلات، الخلايا القاتلة الطبيعية. تستجيب في دقائق</li>
-        <li><strong>المناعة التكيفية:</strong> استجابة محددة ومكتسبة. الخلايا التائية والخلايا البائية. تُكوّن ذاكرة (لهذا تعمل اللقاحات). تستغرق أياماً للتطور لكنها موجّهة بدقة</li>
-    </ul>
-    <p><strong>الالتهاب المزمن</strong> هو الجسر بين نمط الحياة والمرض. عندما يكون الجهاز المناعي نشطاً بشكل مزمن (بسبب النظام الغذائي السيئ والتوتر والسمنة والسموم)، فإنه يُتلف الأنسجة السليمة، مما يُحرّك أمراض القلب والسرطان والسكري والزهايمر وأمراض المناعة الذاتية.</p>
-
-    <h3>جهاز الغدد الصماء</h3>
-    <p>الهرمونات هي رسائل كيميائية تُنظّم تقريباً كل وظيفة في الجسم:</p>
-    <ul>
-        <li><strong>الإنسولين:</strong> يُنظّم سكر الدم. مقاومة الإنسولين تتطور من الاستهلاك المزمن للكربوهيدرات المكررة ونمط الحياة الخامل</li>
-        <li><strong>الكورتيزول:</strong> هرمون التوتر. يجب أن يبلغ ذروته صباحاً وينخفض ليلاً. الارتفاع المزمن يُدمّر الجسم</li>
-        <li><strong>الغدة الدرقية (T3/T4):</strong> المنظم الأيضي الرئيسي. يؤثر على الطاقة والوزن والمزاج ودرجة الحرارة</li>
-        <li><strong>التستوستيرون/الإستروجين:</strong> ينخفضان مع التقدم في العمر. يتأثران بالنوم والتمرين والتوتر ونسبة الدهون والتغذية</li>
-        <li><strong>هرمون النمو:</strong> يبلغ ذروته أثناء النوم العميق والتمرين المكثف. حاسم لإصلاح الأنسجة وصيانة العضلات</li>
-    </ul>
-
-    <h3>الجهاز العصبي</h3>
-    <ul>
-        <li><strong>الجهاز الودّي (القتال أو الهروب):</strong> المُسرّع. يزيد معدل نبض القلب، يُوسّع حدقة العين، يُحوّل الدم إلى العضلات. يُنشَّط بالتوتر والكافيين والخطر</li>
-        <li><strong>الجهاز نظير الودّي (الراحة والهضم):</strong> المكبح. يُخفّض معدل نبض القلب، يُعزّز الهضم، يُمكّن التعافي. يُنشَّط بالتنفس العميق والتأمل وتحفيز العصب الحائر</li>
-        <li><strong>العصب الحائر:</strong> أطول عصب قحفي. النغمة الحائرية العالية = تعافٍ أفضل من التوتر، التهاب أقل، تغيّر أفضل في معدل نبض القلب (HRV). يتحسّن بالتعرض للبرد، والطنين، والتنفس البطيء، والتواصل الاجتماعي</li>
-    </ul>
-
-    <h3>الجهاز الهضمي</h3>
-    <p>يُحلَّل الطعام بواسطة حمض المعدة (درجة حموضة 1.5-3.5) والإنزيمات والصفراء. تُمتص العناصر الغذائية بشكل أساسي في الأمعاء الدقيقة (مساحة سطحها بحجم ملعب تنس). بطانة الأمعاء تُجدّد نفسها كل 3-5 أيام، مما يجعلها شديدة الاستجابة للتغييرات الغذائية.</p>
-
-    <h3>الجهاز العضلي الهيكلي</h3>
-    <ul>
-        <li><strong>العظام:</strong> نسيج حي يُعاد تشكيله باستمرار. ذروة كثافة العظام تُبلغ في سن الثلاثين. بعد ذلك، الوقاية هي المفتاح. التمارين بتحميل الوزن والكالسيوم وفيتامين د ضرورية</li>
-        <li><strong>المفاصل:</strong> الغضاريف لا تمتلك إمداداً دموياً - تعتمد على الحركة لتلقّي العناصر الغذائية (السائل الزلالي). نمط الحياة الخامل يُجوّع الغضاريف</li>
-        <li><strong>وضعية الجسم:</strong> الجلوس المطوّل يُسبّب شد عضلات ثني الورك، وانطواء الصدر، وضعف عضلات الألوية، ووضعية الرأس الأمامية. تشبيه "الجلوس هو التدخين الجديد" موجود لأن الجلوس 8+ ساعات يومياً بدون نشاط له خطر وفاة مماثل للتدخين</li>
-    </ul>
-
-    <h3>الترابط الشامل: كيف يرتبط كل شيء</h3>
-    <div class="callout info">
-        <div class="callout-title">تأثير التسلسل</div>
-        <p><strong>التوتر</strong> يرفع الكورتيزول &larr; يُضعف بطانة الأمعاء &larr; يسمح للبكتيريا/السموم بدخول مجرى الدم &larr; يُحفّز <strong>استجابة مناعية</strong> (التهاب) &larr; الالتهاب يُتلف الأوعية الدموية &larr; يزيد خطر <strong>أمراض القلب</strong> &larr; يصل إلى الدماغ عبر <strong>الحاجز الدموي الدماغي</strong> &larr; يُضعف السيروتونين/الدوبامين &larr; يُسبّب <strong>الاكتئاب/القلق</strong> &larr; يُعطّل <strong>النوم</strong> &larr; يُقلّل هرمون النمو &larr; يُضعف <strong>تعافي العضلات</strong> &larr; يزيد مقاومة الإنسولين &larr; يُخزّن المزيد من <strong>الدهون الحشوية</strong> &larr; الأنسجة الدهنية تُنتج المزيد من السيتوكينات الالتهابية &larr; تتضخم الدورة.</p>
-        <p>نفس السلسلة تعمل بالعكس: التمرين يُقلّل الالتهاب، ويُحسّن صحة الأمعاء، ويُعزّز الناقلات العصبية، ويُحسّن النوم، ويُقلّل الكورتيزول، ويُحسّن حساسية الإنسولين. <strong>كل تغيير إيجابي يُحدث سلسلة من التأثيرات الإيجابية.</strong></p>
-    </div>
-
-    <h3>الميتوكوندريا: محطات الطاقة الخلوية</h3>
-    <p>كل خلية تحتوي على مئات إلى آلاف الميتوكوندريا التي تُنتج <strong>ATP</strong> (عملة الطاقة في الحياة). صحة الميتوكوندريا تتراجع مع التقدم في العمر، مما يُساهم في التعب وانخفاض القدرة على التمرين والشيخوخة الخلوية.</p>
-    <p><strong>مُعزّزات الميتوكوندريا:</strong> تمارين المنطقة ٢ الهوائية (تزيد كثافة الميتوكوندريا)، التعرض للبرد، الصيام (يُحفّز تكوّن الميتوكوندريا الحيوي)، إنزيم CoQ10 المساعد، النوم الكافي، تجنّب الإجهاد التأكسدي المفرط.</p>
-</section>
-
-<div class="separator"></div>
-
-<!-- ============================================
-     القسم ٧: طول العمر
-     ============================================ -->
-<section class="section fade-in" id="longevity" dir="rtl">
-    <div class="section-header">
-        <span class="section-number pink">القسم ٠٧</span>
-        <h2>طول العمر: علم العيش لفترة أطول وأفضل</h2>
-        <p class="section-subtitle">دروس من أطول الشعوب عمراً في العالم وأحدث أبحاث الشيخوخة</p>
-    </div>
-
-    <h3>المناطق الزرقاء: حيث يعيش الناس حتى المئة</h3>
-    <p>خمس مناطق حدّدتها ناشيونال جيوغرافيك حيث يبلغ الناس سن المئة بمعدل 10 أضعاف المتوسط:</p>
-
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr><th>المنطقة الزرقاء</th><th>الممارسة الرئيسية</th><th>النظام الغذائي المميز</th></tr>
-            </thead>
-            <tbody>
-                <tr><td><strong>أوكيناوا، اليابان</strong></td><td>هارا هاتشي بو (كُل حتى تمتلئ 80%)، موآي (مجموعات اجتماعية)</td><td>البطاطا الحلوة، التوفو، القرع المر</td></tr>
-                <tr><td><strong>سردينيا، إيطاليا</strong></td><td>رعي الأغنام (مشي جبلي يومي)، العائلة أولاً</td><td>الحبوب الكاملة، البقوليات، نبيذ كانوناو</td></tr>
-                <tr><td><strong>نيكويا، كوستاريكا</strong></td><td>خطة الحياة (الإحساس بالهدف)</td><td>الفاصوليا، الذرة، القرع (الأخوات الثلاث)</td></tr>
-                <tr><td><strong>إيكاريا، اليونان</strong></td><td>القيلولة اليومية، الوجبات الجماعية، شاي الأعشاب</td><td>حمية البحر الأبيض المتوسط، الخضراوات البرية، زيت الزيتون</td></tr>
-                <tr><td><strong>لوما ليندا، كاليفورنيا</strong></td><td>راحة السبت، المجتمع الديني، بدون كحول/تبغ</td><td>نباتي. يعيشون 10 سنوات أطول من المتوسط</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <h4>القوة التسع - العادات المشتركة</h4>
-    <ol>
-        <li><strong>تحرّك طبيعياً:</strong> الحدائق، المشي، العمل اليدوي - وليس عضويات الصالات الرياضية</li>
-        <li><strong>الهدف (إيكيغاي):</strong> يساوي حتى 7 سنوات إضافية من العمر. امتلاك سبب للاستيقاظ</li>
-        <li><strong>التهدئة:</strong> طقوس يومية لتخفيف التوتر (الصلاة، القيلولة، اللقاءات الاجتماعية)</li>
-        <li><strong>قاعدة الـ 80%:</strong> توقّف عن الأكل عندما تمتلئ 80%. أصغر وجبة في وقت متأخر من بعد الظهر/المساء</li>
-        <li><strong>الميل النباتي:</strong> 95% نباتي. البقوليات هي حجر الأساس (~كوب واحد يومياً). اللحوم ~5 مرات شهرياً</li>
-        <li><strong>النبيذ عند الخامسة:</strong> 1-2 كأس يومياً مع الطعام والأصدقاء (الشاربون المعتدلون يعيشون أطول من غير الشاربين)</li>
-        <li><strong>الانتماء:</strong> مجتمع ديني 4 مرات شهرياً يُضيف 4-14 سنة من العمر المتوقع</li>
-        <li><strong>الأحباء أولاً:</strong> إبقاء الوالدين المسنين قريبين، الالتزام بشريك الحياة، الاستثمار في الأبناء</li>
-        <li><strong>القبيلة المناسبة:</strong> دائرتك الاجتماعية تُشكّل سلوكك. أصدقاء أصحاء = أنت صحي</li>
-    </ol>
-
-    <h3>مسارات الشيخوخة الخلوية</h3>
-
-    <h4>الالتهام الذاتي - التنظيف الذاتي للخلايا</h4>
-    <p>فاز يوشينوري أوسومي بجائزة نوبل عام 2016 لتوضيحه آلية الالتهام الذاتي (الأوتوفاجي) - عملية تحلّل الخلية للمكونات التالفة وإعادة تدويرها. الالتهام الذاتي يُزيل البروتينات المشوّهة والميتوكوندريا التالفة والممرضات داخل الخلوية. يُنشَّط بـ<strong>الصيام والتمرين وتقييد السعرات الحرارية</strong>. يُثبَّط بالأكل المستمر وارتفاع الإنسولين.</p>
-
-    <h4>mTOR - مفتاح النمو وطول العمر</h4>
-    <p>mTOR (الهدف الآلي للرابامايسين) هو المنظم الرئيسي لنمو الخلايا. عند تنشيطه، يزيد تخليق البروتين وتكاثر الخلايا لكنه <strong>يُثبّط الالتهام الذاتي</strong>. الرؤية الأساسية: تحتاج إلى <strong>التناوب بين تنشيط mTOR</strong> (بعد التمرين، مع البروتين، للبناء) <strong>وتثبيط mTOR</strong> (فترات الصيام، للصيانة الخلوية).</p>
-
-    <h4>التيلوميرات - الساعات الكروموسومية</h4>
-    <p>التيلوميرات هي أغطية حماية على أطراف الكروموسومات تقصر مع كل انقسام خلوي. عندما تصبح قصيرة بشكل حرج، تدخل الخلية في الشيخوخة (تتوقف عن الانقسام) أو تموت. يتسارع قِصَر التيلوميرات بسبب التوتر المزمن والنوم السيئ والتدخين والسمنة والالتهاب. ويتباطأ بالتمرين وحمية البحر الأبيض المتوسط والتأمل والتواصل الاجتماعي.</p>
-
-    <h4>السيرتوينات - جينات طول العمر</h4>
-    <p>سبعة بروتينات (SIRT1-SIRT7) تُنظّم صحة الخلايا. تعتمد على <strong>NAD+</strong> كعامل مساعد، ومستويات NAD+ تنخفض مع التقدم في العمر. تقييد السعرات الحرارية والتمرين والصيام والتعرض للبرد تُعزّز طبيعياً مستويات NAD+ ونشاط السيرتوينات.</p>
-
-    <h3>التواصل الاجتماعي: أقوى عامل لطول العمر</h3>
-    <p><strong>دراسة هارفارد لتطور البالغين</strong> (أكثر من 85 عاماً، أطول دراسة جارية عن السعادة) وجدت: "العلاقات الجيدة تُبقينا أكثر سعادة وصحة. نقطة." الأشخاص الأكثر ارتباطاً اجتماعياً يعيشون أطول وأكثر صحة.</p>
-    <ul>
-        <li>الأشخاص الذين كانوا في علاقات مُرضية في سن الخمسين كانوا الأكثر صحة في سن الثمانين</li>
-        <li>الوحدة تزيد خطر الوفاة بنسبة <strong>26-32%</strong> (تحليل تجميعي لأكثر من 300,000 فرد)</li>
-        <li>الوحدة تُعادل تدخين <strong>15 سيجارة يومياً</strong> في خطر الوفاة - أكثر ضرراً من السمنة أو الخمول البدني</li>
-    </ul>
-</section>
-
-<div class="separator"></div><!-- ============================================
-     SECTION 8: HABITS & LIFESTYLE
-     ============================================ -->
-<section class="section fade-in" id="habits">
-    <div class="section-header">
-        <span class="section-number yellow">القسم ٠٨</span>
-        <h2>العادات ونمط الحياة: الممارسات اليومية</h2>
-        <p class="section-subtitle">الإجراءات الصغيرة والمتسقة تتراكم لتحقق نتائج استثنائية بمرور الوقت</p>
-    </div>
-
-    <h3>التأثير التراكمي</h3>
-    <p>التحسن بنسبة <strong>١٪ فقط يومياً</strong> يتراكم ليصبح <strong>٣٧.٧٨ ضعفاً خلال عام واحد</strong> (١.٠١^٣٦٥). أما التراجع بنسبة ١٪ فيؤدي إلى ما يقارب الصفر (٠.٩٩^٣٦٥ = ٠.٠٣). هذه الحقيقة الرياضية تفسر لماذا تتفوق العادات الصغيرة المتسقة بشكل كبير على الجهود المتقطعة الكبيرة.</p>
-
-    <div class="card">
-        <div class="card-title">تراكم العادات (جيمس كلير)</div>
-        <p>الصيغة: "بعد [العادة الحالية]، سأفعل [العادة الجديدة]." اربط السلوكيات الجديدة بالروتين الحالي. أمثلة: بعد صب قهوة الصباح، تأمل لمدة ٦٠ ثانية. بعد الجلوس على المكتب، اكتب ٣ أولويات. بعد تنظيف الأسنان، دوّن جملة واحدة في دفتر يومياتك.</p>
-    </div>
-
-    <h3>علم الروتين الصباحي</h3>
-    <p>يصل الكورتيزول طبيعياً إلى ذروته بعد ٣٠-٤٥ دقيقة من الاستيقاظ، مما يجعل الصباح الوقت الأمثل لترسيخ الانضباط:</p>
-    <ol>
-        <li><strong>ضوء الشمس صباحاً</strong> خلال ٣٠-٦٠ دقيقة (يضبط الساعة البيولوجية، يعزز السيروتونين)</li>
-        <li><strong>الترطيب</strong> (الجسم يكون مجففاً بعد ٧-٨ ساعات من النوم)</li>
-        <li><strong>الحركة</strong> لمدة ٥-١٠ دقائق (تزيد BDNF واليقظة)</li>
-        <li><strong>تأخير الكافيين ٩٠-١٢٠ دقيقة</strong> بعد الاستيقاظ (يسمح للكورتيزول الطبيعي بتصفية الأدينوسين أولاً)</li>
-    </ol>
-
-    <h3>التعرض للبرد والحرارة</h3>
-
-    <div class="card">
-        <div class="card-title">فوائد التعرض للبرد</div>
-        <ul>
-            <li><strong>النورإبينفرين:</strong> زيادة +٢٠٠-٥٣٠٪ (تعتمد على الجرعة). التركيز والانتباه والمزاج</li>
-            <li><strong>الدوبامين:</strong> زيادة +٢٥٠٪ (ماء بدرجة ١٤ مئوية لمدة ساعة). مماثل للكوكايين دون الانهيار</li>
-            <li><strong>تنشيط الدهون البنية:</strong> تحرق السعرات لتوليد الحرارة، مما يحسن الصحة الأيضية</li>
-            <li><strong>تقليل الالتهاب:</strong> يخفض السيتوكينات المسببة للالتهاب</li>
-        </ul>
-        <p><strong>البروتوكول:</strong> ابدأ بـ ٣٠ ثانية من الماء البارد في نهاية الاستحمام. تدرج إلى ٢-٥ دقائق عند ١٠-١٥ درجة مئوية (٥٠-٥٩ فهرنهايت)، ٢-٤ مرات في الأسبوع.</p>
-    </div>
-
-    <div class="card">
-        <div class="card-title">فوائد الساونا (دراسة فنلندية، ٢٠ عاماً، ٢,٣١٥ رجل)</div>
-        <ul>
-            <li>٤-٧ جلسات/أسبوع: <strong>انخفاض ٦٣٪</strong> في خطر الموت القلبي المفاجئ مقارنة بمرة/أسبوع</li>
-            <li><strong>انخفاض ٥٠٪</strong> في خطر أمراض القلب والأوعية الدموية المميتة</li>
-            <li><strong>انخفاض ٤٠٪</strong> في خطر الوفاة لجميع الأسباب</li>
-            <li>زيادة هرمون النمو ٢-٥ أضعاف خلال الجلسة</li>
-        </ul>
-        <p><strong>البروتوكول:</strong> ٨٠-١٠٠ درجة مئوية (١٧٦-٢١٢ فهرنهايت) لمدة ١٥-٢٠ دقيقة، ٤-٧ مرات في الأسبوع. اشرب سوائل كافية.</p>
-    </div>
-
-    <h3>ضوء الشمس: الدواء الذي لا يُقدَّر</h3>
-    <ul>
-        <li><strong>فيتامين د:</strong> ٤٠-٨٠٪ من سكان العالم لديهم مستويات غير كافية. المثالي: ٤٠-٦٠ نانوغرام/مل</li>
-        <li><strong>الإيقاع اليومي:</strong> ضوء الشمس الصباحي يضبط الساعة الرئيسية لنوم أفضل ليلاً</li>
-        <li><strong>أكسيد النيتريك:</strong> الأشعة فوق البنفسجية تطلق أكسيد النيتريك، مما يخفض ضغط الدم</li>
-        <li><strong>السيروتونين:</strong> ضوء الشمس يعزز مباشرة إنتاج السيروتونين</li>
-        <li><strong>الوقاية من قصر النظر:</strong> ساعتان+ من الضوء الخارجي يومياً تقلل بشكل كبير من خطر قصر النظر عند الأطفال</li>
-    </ul>
-    <p><strong>البروتوكول:</strong> ١٠-٣٠ دقيقة من شمس الظهيرة على الذراعين/الساقين ٢-٣ مرات في الأسبوع (يختلف حسب لون البشرة). لا تتعرض للحروق أبداً. أضف مكمل ١,٠٠٠-٤,٠٠٠ وحدة دولية من فيتامين D3 إذا كانت المستويات منخفضة.</p>
-
-    <h3>التنفس: الأنفي مقابل الفموي</h3>
-    <p>يوفر التنفس الأنفي ترشيح الهواء (٩٨٪ من مسببات الأمراض)، والترطيب، <strong>وإنتاج أكسيد النيتريك</strong> (يزيد امتصاص الأكسجين بنسبة ١٠-١٥٪)، والاحتفاظ الأمثل بثاني أكسيد الكربون (يحسن توصيل الأكسجين عبر تأثير بوهر). يرتبط التنفس الفموي المزمن بانقطاع النفس أثناء النوم، ومشاكل الأسنان، وزيادة الاستجابة للضغط، وانخفاض الأداء الرياضي.</p>
-
-    <div class="callout info">
-        <div class="callout-title">درجة BOLT (تحمل ثاني أكسيد الكربون)</div>
-        <p>بعد زفير طبيعي، قِس المدة حتى تشعر بأول رغبة في التنفس. أقل من ٢٠ ثانية تشير إلى فرط التنفس المزمن. ٤٠ ثانية أو أكثر تشير إلى تحمل ممتاز لثاني أكسيد الكربون. حسّنه بممارسة التنفس الأنفي وتمارين طريقة بوتيكو.</p>
-    </div>
-
-    <h3>تجنب السموم</h3>
-    <ul>
-        <li><strong>BPA:</strong> مُختل للغدد الصماء في البلاستيك. استخدم حاويات زجاجية/ستانلس ستيل. لا تسخن الطعام في البلاستيك أبداً</li>
-        <li><strong>المبيدات الحشرية:</strong> اشترِ عضوياً لقائمة "الاثني عشر الملوثة" (الفراولة، السبانخ، الكرنب، الخوخ، الإجاص، إلخ)</li>
-        <li><strong>المعادن الثقيلة:</strong> صفِّ مياه الشرب، اختر الأسماك الصغيرة (السردين أفضل من التونة)، نوّع مصادر الأرز</li>
-        <li><strong>تلوث الهواء:</strong> استخدم أجهزة تنقية هواء HEPA داخلياً. الجسيمات الدقيقة PM2.5 تسبب ٤.٢ مليون وفاة مبكرة سنوياً (منظمة الصحة العالمية)</li>
-        <li><strong>البلاستيك الدقيق:</strong> يبتلع البشر نحو ٥ غرامات أسبوعياً (بطاقة ائتمان). صفِّ الماء، تجنب الحاويات البلاستيكية، قلل الملابس الصناعية</li>
-    </ul>
-
-    <h3>القوام والحركة</h3>
-    <p>قاعدة <strong>٢٠-٨-٢</strong> (جامعة كورنيل): ٢٠ دقيقة جلوس، ٨ دقائق وقوف، ٢ دقيقة حركة. الجلوس ٨ ساعات يومياً أو أكثر دون نشاط ينطوي على خطر وفاة مماثل للتدخين.</p>
-
-    <h3>NEAT: التوليد الحراري بالنشاط غير الرياضي</h3>
-    <p>يختلف NEAT بما يصل إلى <strong>٢,٠٠٠ سعرة حرارية/يوم</strong> بين الأفراد. يشمل المشي والوقوف والتململ والأعمال المنزلية والبستنة والسلالم. امشِ <strong>٧,٠٠٠-١٠,٠٠٠ خطوة يومياً</strong> (مرتبط بانخفاض ٥٠-٧٠٪ في معدل الوفيات). تمشَّ ١٠-١٥ دقيقة بعد كل وجبة لتحسين سكر الدم بشكل كبير.</p>
-
-    <h3>صحة الأسنان = صحة القلب</h3>
-    <p>تسمح أمراض اللثة للبكتيريا الممرضة بدخول مجرى الدم، مما ينتج TMAO (مرتبط بتصلب الشرايين) ويحفز الالتهاب الجهازي. نظّف أسنانك مرتين يومياً، استخدم خيط الأسنان يومياً، احصل على تنظيف كل ٦ أشهر. نزيف اللثة = التهاب نشط.</p>
-
-    <h3>صحة العيون</h3>
-    <p>قاعدة <strong>٢٠-٢٠-٢:</strong> كل ٢٠ دقيقة من العمل القريب، انظر إلى مسافة ٢٠ قدماً لمدة ٢٠ ثانية، واقضِ ساعتين في الهواء الطلق يومياً. ارمش بوعي أثناء استخدام الشاشة (معدل الرمش ينخفض من ١٥-٢٠/دقيقة إلى ٣-٤ أثناء استخدام الشاشة). نظارات حجب الضوء الأزرق ليست مبنية على أدلة لحماية العيون (الأكاديمية الأمريكية لطب العيون)، لكن الوضع الليلي يساعد على النوم.</p>
-</section>
-
-<div class="separator"></div>
-
-<!-- ============================================
-     SECTION 9: BIOMARKERS
-     ============================================ -->
-<section class="section fade-in" id="biomarkers">
-    <div class="section-header">
-        <span class="section-number blue">القسم ٠٩</span>
-        <h2>المؤشرات الحيوية: الأرقام التي تهم</h2>
-        <p class="section-subtitle">ما يجب تتبعه، وما هو المثالي، وكم مرة يجب الفحص</p>
-    </div>
-
-    <h3>مؤشرات القلب والأوعية الدموية</h3>
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr><th>المؤشر الحيوي</th><th>المثالي</th><th>المقلق</th><th>لماذا يهم</th></tr>
-            </thead>
-            <tbody>
-                <tr><td><strong>ضغط الدم</strong></td><td>&lt;120/80 ملم زئبق</td><td>&ge;130/80</td><td>عامل الخطر الأول القابل للتعديل لأمراض القلب والسكتة الدماغية</td></tr>
-                <tr><td><strong>معدل ضربات القلب أثناء الراحة</strong></td><td>50-65 نبضة/دقيقة</td><td>&gt;80 نبضة/دقيقة باستمرار</td><td>أقل = لياقة قلبية أكبر وعمر أطول</td></tr>
-                <tr><td><strong>كوليسترول LDL</strong></td><td>&lt;100 ملغ/دل</td><td>&gt;130 ملغ/دل</td><td>ApoB مؤشر أفضل. الهدف ApoB &lt;80 ملغ/دل</td></tr>
-                <tr><td><strong>كوليسترول HDL</strong></td><td>&gt;60 ملغ/دل</td><td>&lt;40 (رجال) / &lt;50 (نساء)</td><td>وقائي. الأعلى أفضل</td></tr>
-                <tr><td><strong>الدهون الثلاثية</strong></td><td>&lt;100 ملغ/دل</td><td>&gt;150 ملغ/دل</td><td>نسبة TG:HDL &lt;2 = حساسية جيدة للأنسولين</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <h3>المؤشرات الأيضية</h3>
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr><th>المؤشر الحيوي</th><th>المثالي</th><th>المقلق</th><th>لماذا يهم</th></tr>
-            </thead>
-            <tbody>
-                <tr><td><strong>HbA1c</strong></td><td>4.8-5.2%</td><td>&ge;5.7% (ما قبل السكري)</td><td>متوسط سكر الدم خلال ٢-٣ أشهر. أفضل مؤشر أيضي</td></tr>
-                <tr><td><strong>الأنسولين الصائم</strong></td><td>&lt;5 uIU/mL</td><td>&gt;8 uIU/mL</td><td>مؤشر مبكر لمقاومة الأنسولين (سنوات قبل ارتفاع HbA1c)</td></tr>
-                <tr><td><strong>الجلوكوز الصائم</strong></td><td>70-90 ملغ/دل</td><td>&ge;100 ملغ/دل</td><td>أقل فائدة من HbA1c وحده</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <h3>مؤشرات الالتهاب</h3>
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr><th>المؤشر الحيوي</th><th>المثالي</th><th>المقلق</th><th>لماذا يهم</th></tr>
-            </thead>
-            <tbody>
-                <tr><td><strong>hs-CRP</strong></td><td>&lt;1.0 ملغ/لتر</td><td>&gt;3.0 ملغ/لتر</td><td>الالتهاب الجهازي المزمن. مرتبط بأمراض القلب والوفاة لجميع الأسباب</td></tr>
-                <tr><td><strong>الهوموسيستين</strong></td><td>&lt;8 umol/L</td><td>&gt;15 umol/L</td><td>خطر أمراض القلب، السكتة الدماغية، الخرف. قابل للتصحيح بفيتامين B6 وB12 وحمض الفوليك</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <h3>مؤشرات المغذيات والهرمونات</h3>
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr><th>المؤشر الحيوي</th><th>المثالي</th><th>المقلق</th><th>الإجراء</th></tr>
-            </thead>
-            <tbody>
-                <tr><td><strong>فيتامين د</strong></td><td>40-60 نانوغرام/مل</td><td>&lt;20 نانوغرام/مل (نقص)</td><td>أضف مكمل ١,٠٠٠-٤,٠٠٠ وحدة دولية D3 مع K2 إذا كان منخفضاً</td></tr>
-                <tr><td><strong>الفيريتين</strong></td><td>40-100 نانوغرام/مل</td><td>&gt;200 أو &lt;20</td><td>مخزون الحديد. مرتفع = التهاب. منخفض = فقر دم</td></tr>
-                <tr><td><strong>مؤشر أوميغا-3</strong></td><td>&gt;8%</td><td>&lt;4%</td><td>EPA+DHA في كريات الدم الحمراء. &lt;4% = خطر قلبي أعلى بشكل كبير</td></tr>
-                <tr><td><strong>TSH</strong></td><td>0.5-2.5 mIU/L</td><td>&gt;4.0 mIU/L</td><td>وظيفة الغدة الدرقية. يؤثر على الأيض والطاقة والوزن والمزاج</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <h3>تكرار الفحوصات</h3>
-    <ul>
-        <li><strong>سنوياً:</strong> فحص التمثيل الغذائي الشامل، الدهون، HbA1c، فيتامين د، hs-CRP، الغدة الدرقية، تعداد الدم الكامل</li>
-        <li><strong>كل ٢-٣ سنوات:</strong> الهوموسيستين، الفيريتين، مؤشر أوميغا-3، Lp(a) (افحصه مرة واحدة إذا لم يُفحص من قبل)</li>
-        <li><strong>تتبع يومي/أسبوعي:</strong> ضغط الدم، معدل ضربات القلب أثناء الراحة، تقلب معدل ضربات القلب HRV، اتجاهات وزن الجسم</li>
-    </ul>
-
-    <h3>البروتوكول اليومي: تجميع كل شيء</h3>
-
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr><th>الوقت</th><th>الممارسة</th><th>الآلية</th></tr>
-            </thead>
-            <tbody>
-                <tr><td><strong>الصباح</strong></td><td>ضوء الشمس خلال ٣٠-٦٠ دقيقة من الاستيقاظ</td><td>ضبط الإيقاع اليومي، تنظيم الكورتيزول</td></tr>
-                <tr><td><strong>الصباح</strong></td><td>تنفس أنفي، ترطيب، حركة</td><td>أكسيد النيتريك، إعادة الترطيب، BDNF</td></tr>
-                <tr><td><strong>طوال اليوم</strong></td><td>تحرك كل ٢٠-٣٠ دقيقة (قاعدة ٢٠-٨-٢)</td><td>NEAT، الصحة الأيضية، القوام</td></tr>
-                <tr><td><strong>الوجبات</strong></td><td>غنية بالنباتات، البروتين أولاً، توقف عند ٨٠٪ شبع</td><td>التحكم بسكر الدم، كثافة المغذيات الدقيقة</td></tr>
-                <tr><td><strong>بعد الوجبات</strong></td><td>مشي ١٠-١٥ دقيقة</td><td>إدارة الجلوكوز (تخفيض ٢٠-٣٠٪ من الارتفاع)</td></tr>
-                <tr><td><strong>بعد الظهر</strong></td><td>تمارين كارديو المنطقة ٢ أو تمارين القوة</td><td>صحة القلب والأوعية الدموية، العضلات، الهرمونات</td></tr>
-                <tr><td><strong>المساء</strong></td><td>تعرض للبرد/الحرارة (٢-٤ مرات/أسبوع)</td><td>الهورمسيس، التكيف القلبي الوعائي</td></tr>
-                <tr><td><strong>المساء</strong></td><td>تواصل اجتماعي، لا كافيين بعد الساعة ٢ ظهراً</td><td>التوتر العصبي المبهمي، تقليل الضغط، جودة النوم</td></tr>
-                <tr><td><strong>الليل</strong></td><td>غرفة مظلمة، باردة (١٨-٢٠ درجة مئوية)، موعد نوم ثابت</td><td>بنية النوم، الالتهام الذاتي، التعافي</td></tr>
-                <tr><td><strong>مستمر</strong></td><td>تتبع المؤشرات الحيوية الرئيسية سنوياً</td><td>الكشف المبكر، تصحيح المسار</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="callout success">
-        <div class="callout-title">أهم خلاصة</div>
-        <p>لا تحتاج لفعل كل شيء دفعة واحدة. ابدأ بأهم ثلاث عادات ذات التأثير الأعلى: <strong>نم ٧-٩ ساعات باستمرار، حرّك جسمك يومياً، وتناول أطعمة كاملة في الغالب.</strong> هذه الثلاث وحدها تعالج ٨٠٪ مما يسبب الأمراض المزمنة. كل شيء آخر هو تحسين فوق هذه الأسس. التحسينات الصغيرة المتسقة تتراكم. جسمك يتمتع بمرونة ملحوظة ويستجيب للتغيير الإيجابي في أي عمر.</p>
-    </div>
-</section>
-
-<!-- ============================================
-     FOOTER
-     ============================================ -->
-<footer class="footer">
-    <p>هذا الدليل لأغراض تعليمية فقط ولا يشكل نصيحة طبية. استشر دائماً المتخصصين في الرعاية الصحية لاتخاذ القرارات الصحية الشخصية.</p>
-    <p style="margin-top: 0.5rem;">الأبحاث مصدرها PubMed، Harvard Health، منظمة الصحة العالمية، المعاهد الوطنية للصحة، والمجلات العلمية المحكّمة. آخر تحديث فبراير ٢٠٢٦.</p>
-    <p style="margin-top: 1rem; color: var(--accent-blue);">مبني على العلم. مصمم للبشر.</p>
-</footer>
-
-<!-- ============================================
-     BACK TO TOP BUTTON
-     ============================================ -->
-<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr;</button>
-
-<!-- ============================================
-     JAVASCRIPT
-     ============================================ -->
-<script>
-    // Back to top button visibility
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
-    });
-
-    // Fade-in on scroll
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // ============================================
-    // PWA: Service Worker Registration
-    // ============================================
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js').then(reg => {
-            reg.addEventListener('updatefound', () => {
-                const newWorker = reg.installing;
-                newWorker.addEventListener('statechange', () => {
-                    if (newWorker.state === 'activated') {
-                        // Show subtle update toast
-                        const toast = document.createElement('div');
-                        toast.textContent = 'تم تحديث المحتوى';
-                        toast.style.cssText = 'position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:#4facfe;color:#fff;padding:0.8rem 1.5rem;border-radius:12px;font-size:0.9rem;z-index:9999;opacity:0;transition:opacity 0.3s';
-                        document.body.appendChild(toast);
-                        requestAnimationFrame(() => toast.style.opacity = '1');
-                        setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 3000);
-                    }
-                });
-            });
-        });
-    }
-
-    // ============================================
-    // localStorage: Save & Restore Scroll Position
-    // ============================================
-    const SCROLL_KEY = 'health-guide-scroll';
-    const SECTION_KEY = 'health-guide-section';
-
-    // Restore scroll position on load
-    const savedScroll = localStorage.getItem(SCROLL_KEY);
-    if (savedScroll && parseInt(savedScroll) > 100) {
-        requestAnimationFrame(() => {
-            window.scrollTo(0, parseInt(savedScroll));
-        });
-    }
-
-    // Save scroll position periodically
-    let scrollTimer;
-    window.addEventListener('scroll', () => {
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(() => {
-            localStorage.setItem(SCROLL_KEY, window.scrollY.toString());
-            // Track which section is visible
-            const sections = document.querySelectorAll('section[id]');
-            for (const sec of sections) {
-                const rect = sec.getBoundingClientRect();
-                if (rect.top <= 200 && rect.bottom > 200) {
-                    localStorage.setItem(SECTION_KEY, sec.id);
-                    break;
-                }
-            }
-        }, 200);
-    });
-
-    // ============================================
-    // localStorage: Reading Progress Indicator
-    // ============================================
-    const progressBar = document.createElement('div');
-    progressBar.style.cssText = 'position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#4facfe,#a855f7);z-index:10001;transition:width 0.15s;width:0';
-    document.body.appendChild(progressBar);
-
-    function updateProgress() {
-        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0;
-        progressBar.style.width = progress + '%';
-        localStorage.setItem('health-guide-progress', Math.round(progress).toString());
-    }
-    window.addEventListener('scroll', updateProgress);
-    updateProgress();
-
-    // ============================================
-    // Offline Status Indicator
-    // ============================================
-    function showOfflineStatus(isOffline) {
-        let indicator = document.getElementById('offline-indicator');
-        if (isOffline) {
-            if (!indicator) {
-                indicator = document.createElement('div');
-                indicator.id = 'offline-indicator';
-                indicator.textContent = 'وضع عدم الاتصال';
-                indicator.style.cssText = 'position:fixed;top:0;left:0;right:0;text-align:center;background:#f87171;color:#fff;padding:4px;font-size:0.8rem;z-index:10002;transition:transform 0.3s';
-                document.body.appendChild(indicator);
-                // Push nav down
-                document.querySelector('.nav').style.top = '28px';
-            }
-        } else if (indicator) {
-            indicator.remove();
-            document.querySelector('.nav').style.top = '0';
-        }
-    }
-    window.addEventListener('offline', () => showOfflineStatus(true));
-    window.addEventListener('online', () => showOfflineStatus(false));
-    if (!navigator.onLine) showOfflineStatus(true);
-</script>
-
+    <!-- Version -->
+    <div class="app-version">MyLife v2.0</div>
+  </section>
+
+  <!-- ============================================================
+       BOTTOM NAVIGATION
+       ============================================================ -->
+  <nav class="bottom-nav">
+    <button class="nav-tab active" id="nav-dashboard" data-page="dashboard">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7"></rect>
+        <rect x="14" y="3" width="7" height="7"></rect>
+        <rect x="3" y="14" width="7" height="7"></rect>
+        <rect x="14" y="14" width="7" height="7"></rect>
+      </svg>
+      <span>Dashboard</span>
+    </button>
+    <button class="nav-tab" id="nav-plans" data-page="plans">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+        <line x1="16" y1="13" x2="8" y2="13"></line>
+        <line x1="16" y1="17" x2="8" y2="17"></line>
+        <polyline points="10 9 9 9 8 9"></polyline>
+      </svg>
+      <span>Plans</span>
+    </button>
+    <button class="nav-tab" id="nav-trends" data-page="trends">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+      </svg>
+      <span>Trends</span>
+    </button>
+    <button class="nav-tab" id="nav-chat" data-page="chat">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+      <span>Chat</span>
+    </button>
+    <button class="nav-tab" id="nav-settings" data-page="settings">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+      </svg>
+      <span>Settings</span>
+    </button>
+  </nav>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="charts.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

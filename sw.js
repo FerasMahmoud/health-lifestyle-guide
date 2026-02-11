@@ -1,7 +1,11 @@
-const CACHE_NAME = 'health-guide-v1';
+const CACHE_NAME = 'mylife-v2';
 const ASSETS = [
   './',
   './index.html',
+  './style.css',
+  './app.js',
+  './data.js',
+  './charts.js',
   './manifest.json',
   './icon-192.png',
   './icon-512.png'
@@ -25,12 +29,20 @@ self.addEventListener('activate', e => {
   self.clients.claim();
 });
 
-// Fetch: cache-first for same-origin, network-first for fonts
+// Fetch: network-first for API, cache-first for assets
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
 
-  // Google Fonts: network-first with cache fallback
-  if (url.hostname.includes('googleapis.com') || url.hostname.includes('gstatic.com')) {
+  // Google Apps Script API: network-only (no caching)
+  if (url.hostname.includes('script.google.com') || url.hostname.includes('script.googleusercontent.com')) {
+    e.respondWith(fetch(e.request).catch(() => new Response('{"error":"offline"}', {
+      headers: { 'Content-Type': 'application/json' }
+    })));
+    return;
+  }
+
+  // CDN resources (Chart.js, fonts): network-first with cache fallback
+  if (url.hostname.includes('cdn') || url.hostname.includes('googleapis.com') || url.hostname.includes('gstatic.com')) {
     e.respondWith(
       fetch(e.request).then(res => {
         const clone = res.clone();
@@ -41,7 +53,7 @@ self.addEventListener('fetch', e => {
     return;
   }
 
-  // Same-origin: cache-first
+  // Same-origin: cache-first with background update
   if (url.origin === location.origin) {
     e.respondWith(
       caches.match(e.request).then(cached => {
